@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/singles_item_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal" >
+	
+    <!-- “选 中”标记 -->
+    <ImageView
+        android:id="@+id/iv_chosen"
+        android:layout_width="5dp"
+        android:layout_height="70dp"
+        android:background="@color/current_playing"
+        android:contentDescription="@string/app_name" />
+    
+    <!-- 标记为删除 -->
+    <LinearLayout
+        android:id="@+id/item_select_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:visibility="gone" >
+		<CheckBox
+		    android:id="@+id/item_select_box"
+		    style="@style/customerCheckbox"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="10dp"
+		    android:focusable="false"
+		    android:enabled="false" />
+	</LinearLayout>
+	
+	<!-- 单曲序号 -->
+    <TextView
+        android:id="@+id/single_position"
+        android:layout_width="30dp"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        style="@style/BigBlackTitle"
+        android:text="000"
+        android:textColor="@color/album_single_no"
+        android:visibility="visible"/>
+        
+    <!-- 主、副标题 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="vertical" >
+		
+		<!-- 曲目名称 -->
+        <TextView
+            android:id="@+id/tv_music_name"
+            style="@style/BigBlackTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:singleLine="true"
+            android:text="music_name" />
+        
+		<!-- 缓存状态 -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="6dp"
+            android:paddingLeft="18dp"
+            android:orientation="horizontal" >
+			
+            <ImageView
+                android:id="@+id/iv_saving_state"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:background="@drawable/wait"
+                android:contentDescription="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/tv_music_artist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="music_artist"
+                android:singleLine="true"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/iv_playing"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="加载中"
+            android:textSize="10sp"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+</LinearLayout>

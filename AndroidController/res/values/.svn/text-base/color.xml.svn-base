@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="demo_color">#3d3d3d</color>
+    <color name="tips_orange">#F5740A</color>
+    <color name="icecream_bg">#ece5db</color>
+    <color name="white">#ffffff</color>
+    <color name="transculent_white">#aaffffff</color>
+    <color name="player_bg">#1c1816</color>
+    <color name="transparent">#0000</color>
+    <color name="nearly_transparent">#05000000</color>
+    <color name="sliding_menu_bg">#53493f</color>
+    <color name="sliding_menu_selected_bg">#3a322b</color>
+    <color name="divider_common">#bbb4ac</color>
+    <color name="divider_gray">#3e3e3e</color>
+    <color name="text_color_on_cream">#998f80</color>
+    <color name="volumn_bg">#110e0d</color>
+    <color name="current_playing">#b79971</color>
+    <color name="progress_bg">#453b35</color>
+    <color name="progress_color">#c8b284</color>
+    <color name="groupview_bg">#d4cec4</color>
+    <color name="album_single_no">#b9b3a9</color>
+    <color name="tabwidget_divider">#99000000</color>
+    <color name="player_cache_progress">#453b35</color>
+    <color name="top_btn_bg">#22000000</color>
+    <color name="pressed_bg_common_item">#c6c0b6</color>
+    <color name="botique_title">#3f332c</color>
+    <color name="botique_title_underline">#cfc9c0</color>
+    <color name="translucent_black">#cc000000</color>
+    <color name="translucent_black_alpha2">#22000000</color>
+    <color name="dark_green">#c1bab1</color>
+    <color name="dark_green1">#938c82</color>
+    <color name="dark_green2">#5a554c</color>
+    <color name="dark_chocolate">#433c3c</color>
+    <color name="spinnerItemSeleted">#D6CFC6</color>
+    <color name="spinnerItem">#E0D9CF</color>
+    <color name="spinnerTextColorSeleted">#F06E27</color>
+    <color name="spinnerTextColor">#3D3D3D</color>
+    <color name="letter_chosen">#CDB88C</color>
+    <color name="letter_view_border">#CECAC3</color>
+    <color name="selected_bg">#7A6351</color>
+    <color name="artist_textcolor">#a6a198</color>
+	
+    <!--我的音乐-->
+    <color name="sub_title_textcolor">#a6a198</color>
+    
+    <!-- test viewpager -->
+    <color name="red">#900</color>
+    <color name="green">#090</color>
+    <color name="blue">#009</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="login_hint_color">#ffffff</color>
+    <color name="login_list_item_color">#D7A265</color>
+    <color name="login_list_item_select">#282119</color>
+    <color name="login_button_text">#8E9094</color>
+    <color name="login_sync_progress">#D7A265</color>
+    <color name="login_error_title">#F6740A</color>
+    <color name="login_error_hint">#655C53</color>
+    
+    <!--  -->
+    <color name="album_group_item_for_web_textcolor">#808080</color>
+    <color name="popup_listitem_textcolor_in_purchased">#615347</color>
+    <color name="login_hint_textcolor">#504539</color>
+    
+    <!-- TOP ALBUM LIST -->
+	<color name="top_1_textcolor">#e36400</color>
+	<color name="top_2_textcolor">#d4a24c</color>
+	<color name="top_other_textcolor">#b9b3a9</color>
+	
+</resources>

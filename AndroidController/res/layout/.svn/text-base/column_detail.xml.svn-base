@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/icecream_bg"
+    android:layout_gravity="center_horizontal"
+    android:paddingTop="30dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical" >
+    <!-- 加载中 -->
+
+    <LinearLayout
+         android:id="@+id/ll_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/icecream_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_loading"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <TextView
+            style="@style/BigBlackTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="加载中..."
+            android:textColor="@color/dark_green1"
+            android:textSize="35sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+    
+    <!-- 内容区 -->
+    <GridView
+        android:id="@+id/gv_albums"
+        android:layout_width="wrap_content"
+        android:layout_height="1000dp"
+        android:columnWidth="200dp"
+        android:gravity="center_horizontal"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" 
+        android:visibility="visible" />
+
+</LinearLayout>

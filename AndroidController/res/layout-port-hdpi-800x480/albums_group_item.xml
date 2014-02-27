@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal" >
+
+        <TextView 
+            style="@style/BigBlackTitle"
+            android:textSize="15sp"
+            android:id="@+id/tv_disc_no"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:background="@color/groupview_bg"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="DISC 1"
+            android:textColor="@color/white"/>
+
+</LinearLayout>

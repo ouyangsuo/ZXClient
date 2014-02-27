@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- 加载中 -->
+
+    <LinearLayout
+        android:id="@+id/ll_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/icecream_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_loading"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            style="@style/BigBlackTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="加载中..."
+            android:textColor="@color/dark_green1"
+            android:textSize="35sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!-- 无内容 -->
+
+    <LinearLayout
+        android:id="@+id/ll_no_data"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tv_no_data"
+            style="@style/NoDataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="暂无数据！" />
+    </LinearLayout>
+    
+    <!-- 加载失败 -->
+    <LinearLayout
+        android:id="@+id/ll_dataload_failed"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            style="@style/NoDataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="加载失败！" />
+    </LinearLayout>
+    
+    <!-- 内容区 -->
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <!-- 题头 -->
+
+        <FrameLayout
+            android:id="@+id/fl_album_info"
+            android:layout_width="fill_parent"
+            android:layout_height="320dp"
+            android:background="@drawable/web_album_bg"
+            android:gravity="center" >
+
+            <!-- 底图 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@color/transparent" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/sliding_menu_divider" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.2"
+                    android:background="@color/translucent_black" />
+            </LinearLayout>
+
+            <!-- 专辑信息 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.7"
+                    android:gravity="left|center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="40dp" >
+
+                    <FrameLayout
+                        android:layout_width="250dp"
+                        android:layout_height="250dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_artist"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/pic1" />
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/album_cover_bg" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingRight="40dp" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.2"
+                        android:gravity="left|bottom"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp" >
+
+                        <TextView
+                            android:id="@+id/tv_artist_name"
+                            style="@style/BigBlackTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="专辑名称"
+                            android:textColor="@android:color/white"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="20dp"
+                        android:paddingTop="10dp" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp" >
+
+                        <TextView
+                            android:id="@+id/tv_num_albums"
+                            style="@style/AlreadyBoughtText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="专辑：0张"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tv_num_musics"
+                            style="@style/AlreadyBoughtText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:gravity="center"
+                            android:text="单曲：0首"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_disc_no"
+            style="@style/BigBlackTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/album_group_item_height"
+            android:background="@color/groupview_bg"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:shadowColor="@color/white"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="0.3"
+            android:text="@string/album"
+            android:textColor="@color/album_group_item_for_web_textcolor" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_common" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ListView
+                android:id="@+id/lv_artist_albums"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="@color/divider_common"
+                android:dividerHeight="2dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_common" />
+    </LinearLayout>
+
+</LinearLayout>

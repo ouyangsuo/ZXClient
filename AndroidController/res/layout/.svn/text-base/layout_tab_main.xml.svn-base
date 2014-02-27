@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/main_title_height"
+    android:background="@drawable/title_bar_bg"
+    android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/btn_menu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_title_btn_height"
+        android:layout_weight="1"
+        android:background="@drawable/common_transparent_bg_selector"
+        android:gravity="center"
+        android:src="@drawable/btn_menu"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="@color/transparent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TabTitle"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="3.5"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="@color/transparent" />
+
+    <ImageButton
+        android:id="@+id/btn_player"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_title_btn_height"
+        android:layout_weight="1"
+        android:background="@drawable/common_transparent_bg_selector"
+        android:gravity="center"
+        android:src="@drawable/btn_player"
+        android:textColor="#fff" />
+
+</LinearLayout>
+
+<LinearLayout 
+    android:id="@+id/fragment_stub"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    ></LinearLayout>
+</LinearLayout>

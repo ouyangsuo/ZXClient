@@ -1,0 +1,215 @@
+package com.dfim.app.widget.stickygridheader;
+
+import java.util.Arrays;
+import java.util.List;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.dfim.app.common.WatchDog;
+import com.dfim.app.util.PowerfulBigMan;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.tonicartos.widget.stickygridheaders.StickyGridHeadersSimpleAdapter;
+import com.union.cellremote.R;
+
+public class BotiqueAdapter<T> extends BaseAdapter implements StickyGridHeadersSimpleAdapter {
+    
+	protected static final String TAG = BotiqueAdapter.class.getSimpleName();
+
+    private int mHeaderResId;
+    private LayoutInflater mInflater;
+    private int mItemResId;
+    private List<T> mItems;
+    
+    private BotiqueItems botiqueItems;
+    private ImageLoader loader;
+    private DisplayImageOptions options;
+    
+    public BotiqueAdapter(Context context, List<T> items, int headerResId,
+            int itemResId) {
+        init(context, items, headerResId, itemResId);
+    }
+
+    public BotiqueAdapter(Context context, T[] items, int headerResId,
+            int itemResId) {
+        init(context, Arrays.asList(items), headerResId, itemResId);
+    }
+
+    public BotiqueAdapter(Context context, T[] items, BotiqueItems botiqueItems, int headerResId,
+            int itemResId) {
+    	this.botiqueItems = botiqueItems;
+        loader = ImageLoader.getInstance();
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.pic)
+                .cacheInMemory(true)
+                .cacheOnDisc(true)
+                .considerExifParams(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+        
+        init(context, Arrays.asList(items), headerResId, itemResId);
+    }
+    
+    @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
+    public int getCount() {
+        return mItems.size();
+    }
+
+    @Override
+    public long getHeaderId(int position) {
+        /*T item = getItem(position);
+        CharSequence value;
+        if (item instanceof CharSequence) {
+            value = (CharSequence)item;
+        } else {
+            value = item.toString();
+        }*/
+        
+        //eshine : 自定义排序条件,按 a-z
+//        return value.subSequence(0, 1).charAt(0);
+        return botiqueItems.get(position).getColumnIndex();
+//        return 'A';
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public View getHeaderView(int position, View convertView, ViewGroup parent) {
+        HeaderViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(mHeaderResId, parent, false);
+            holder = new HeaderViewHolder();
+//            holder.textView = (TextView)convertView.findViewById(android.R.id.text1);
+            holder.textView = (TextView)convertView.findViewById(R.id.column_name);
+//            holder.idView = (TextView)convertView.findViewById(R.id.column_id);
+            convertView.setTag(holder);
+        } else {
+            holder = (HeaderViewHolder)convertView.getTag();
+        }
+
+        T item = getItem(position);
+        /*CharSequence string;
+        if (item instanceof CharSequence) {
+            string = (CharSequence)item;
+        } else {
+            string = item.toString();
+        }*/
+
+        // set header text as first char in string
+// eshine  自定义 头标题 显示     
+//    holder.textView.setText(string.subSequence(0, 1));
+        		
+      //<eshine
+        String columnName =  botiqueItems.get(position).getColumnName();
+      //>
+      
+      holder.textView.setText(columnName);
+
+      return convertView;
+    }
+
+    @Override
+    public T getItem(int position) {
+        return mItems.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(mItemResId, parent, false);
+            holder = new ViewHolder();
+            holder.columnIndexView = (TextView)convertView.findViewById(android.R.id.text1);
+            holder.albumNameView = (TextView)convertView.findViewById(R.id.album_name);
+            holder.columnArtistView = (TextView)convertView.findViewById(R.id.artist_name);
+            holder.albumCoverImage = (ImageView)convertView.findViewById(R.id.album_cover);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder)convertView.getTag();
+        }
+
+        T item = getItem(position);
+        if (item instanceof CharSequence) {
+            holder.columnIndexView.setText((CharSequence)item);
+        } else {
+            holder.columnIndexView.setText(item.toString());
+        }
+        
+        //<eshine
+        holder.albumNameView.setText(botiqueItems.get(position).getAlbumName());
+        holder.columnArtistView.setText(botiqueItems.get(position).getArtistList().get(0).getName());
+        
+        //display cover image
+        final String imgUrl = botiqueItems.get(position).getImgUrl();
+        loader.displayImage(imgUrl, holder.albumCoverImage, options);
+        
+        //图片点击事件
+        ImageView iv = (ImageView)convertView.findViewById(R.id.iv_radiance);
+        final long id = botiqueItems.get(position).getAlbumId();
+        final String name = botiqueItems.get(position).getAlbumName();
+        iv.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			if (WatchDog.isSlidingMenuShown == true || PowerfulBigMan.testClickInterval() == false) {
+				return;
+			}
+//			((NobleMan) fragment).recordCurrentDataAndPosition();// 跳专辑详情前先记录当前数据和位置
+			showAlbumDetail(id, name, imgUrl);
+		}
+	});
+        //>
+
+        return convertView;
+    }
+	protected void showAlbumDetail(long id, String name, String imgUrl) {
+		Intent intent = new Intent("showAlbumContentReceiver");
+		intent.putExtra("albumId", id);
+		intent.putExtra("albumName", name);
+		intent.putExtra("imgUrl", imgUrl);
+
+		WatchDog.tabWebFragment.showAlbumContentReceiverOnReceive(intent);
+	}
+
+    private void init(Context context, List<T> items, int headerResId, int itemResId) {
+        this.mItems = items;
+        this.mHeaderResId = headerResId;
+        this.mItemResId = itemResId;
+        mInflater = LayoutInflater.from(context);
+    }
+
+    protected class HeaderViewHolder {
+        public TextView textView;
+        
+//        public TextView idView;
+    }
+
+    protected class ViewHolder {
+        public TextView columnIndexView;
+        
+        public TextView albumNameView;
+        public TextView columnArtistView;
+        
+        public ImageView albumCoverImage;
+    }
+}
+
+

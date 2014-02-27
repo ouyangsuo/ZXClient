@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="mymusic_menu_items">
+        <item>专辑</item>
+        <item>单曲</item>
+        <item>主题</item>
+    </string-array>
+    
+    <string-array name="sliding_menu_music">
+        <item>专辑</item>
+        <item>单曲</item>
+        <item>主题</item>
+    </string-array>
+    
+    <string-array name="sliding_menu_web">
+        <item>精品聚焦</item>
+        <item>TOP100</item>
+        <item>演出者</item>
+        <item>类型</item>
+        <item>音乐主题</item>
+        <item>我的钱包</item>
+        <item>已购音乐</item>
+       <!--<item>TEST</item> -->
+    </string-array>
+    
+    <string-array name="tab_arrays">
+        <item >我的音乐</item>
+        <item >音乐商店</item>
+        <item >外联设备</item>
+        <item >设置</item>
+    </string-array>
+</resources>

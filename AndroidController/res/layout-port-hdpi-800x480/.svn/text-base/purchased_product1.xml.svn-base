@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/icecream_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/spinnerText"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/spinneroverbackgroud"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="专辑" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_transparent_bg_selector"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="0dp"
+                android:background="#D4CEC5" />
+
+            <TextView
+                android:id="@+id/spinnerTextState"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/spinneroverbackgroud"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="全部" />
+        </LinearLayout>
+       
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pursed_lv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" 
+        >
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#D4CEC5" />
+                   <LinearLayout
+           android:id="@+id/no_music_tip"
+           android:layout_marginTop="30dp"
+           android:layout_height="300dp"
+           android:layout_width="fill_parent"
+           android:orientation="vertical"
+           android:visibility="visible"
+             > 
+           <LinearLayout 
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                 >
+           <TextView   
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:background="@drawable/no_music1"
+            />
+          
+          </LinearLayout>
+          
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp" 
+                    android:textColor="#ADA79E"
+                    android:text="暂无音乐"
+                    android:gravity="center"
+                    >
+                </TextView>
+            </LinearLayout>
+
+           </LinearLayout>
+        
+       <!--   <ListView
+            android:id="@+id/pursed_album_lv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/divider_common"
+            android:dividerHeight="1dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+        </ListView>-->
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="tab_widget_height">114</integer>
+    <integer name="home_progress_textsize">30</integer>
+    <integer name="hard_cached_size">10</integer>
+    <integer name="letter_lv_textsize">23</integer>
+    <integer name="letter_overlay_size">150</integer>
+    <integer name="artist_detail_album_item_paddingleft">15</integer>
+    <integer name="artist_detail_album_item_paddingright">0</integer>
+    
+    <!-- 已购音乐中spinner下拉列表高度参数 -->
+    <integer name="popup_listview_height_in_purchase">310</integer>
+    <integer name="popup_listitem_height_in_purchase">100</integer>
+    <integer name="popup_listview_padding_in_purchase">2</integer>
+    <integer name="popup_y_offset_in_purchase">-11</integer>
+
+</resources>

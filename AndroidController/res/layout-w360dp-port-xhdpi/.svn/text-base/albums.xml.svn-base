@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <FrameLayout
+            android:id="@+id/fl_sliding_menu"
+            android:layout_width="295dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@color/sliding_menu_bg" >
+
+            <LinearLayout
+                android:id="@+id/ll_menu_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_main_ui"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/icecream_bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/title_bar_bg"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/btn_menu"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_transparent_bg_selector"
+                        android:gravity="center"
+                        android:src="@drawable/btn_menu"
+                        android:textColor="#fff" />
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/transparent" />
+
+                    <TextView
+                        style="@style/TabTitle"
+                        android:id="@+id/tv_title"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="专辑" />
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/transparent" />
+
+                    <ImageButton
+                        android:id="@+id/btn_player"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_transparent_bg_selector"
+                        android:gravity="center"
+                        android:src="@drawable/btn_player"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_lv_album"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <!--
+                <ListView
+                    android:id="@+id/lv_album"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/divider_common"
+                    android:dividerHeight="1dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+                    -->
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_common" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_no_data"
+                    style="@style/NoDataText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:gravity="center_horizontal"
+                    android:text="暂无数据！"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+</RelativeLayout>

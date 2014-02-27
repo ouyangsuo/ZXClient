@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="190dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/icecream_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="186dp"
+                android:layout_height="186dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/shape" />
+
+            <ImageView
+                android:id="@+id/iv_album_cover"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/pic" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_album_name"
+        style="@style/BigBlackTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="15dp"
+        android:singleLine="true"
+        android:text="music_namemmmmmmmmmmmmmmmmmm"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_album_artist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="15dp"
+        android:singleLine="true"
+        android:text="未知演出者"
+        android:textSize="10sp" />
+
+</LinearLayout>

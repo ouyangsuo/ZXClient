@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp
+END
+MyStreamClientImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/MyStreamClientImpl.java
+END
+MyAbstractStreamClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/MyAbstractStreamClient.java
+END
+AVTransportSubscriptionCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/AVTransportSubscriptionCallback.java
+END
+Cacher.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/Cacher.java
+END
+CacheControlSubscriptionCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/CacheControlSubscriptionCallback.java
+END
+BoxDevice.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/BoxDevice.java
+END
+BoxControl.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/BoxControl.java
+END
+MyUpnpServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/MyUpnpServiceImpl.java
+END
+Player.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/Player.java
+END
+BoxSubscription.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/upnp/BoxSubscription.java
+END

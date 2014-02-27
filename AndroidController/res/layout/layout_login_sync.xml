@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dfim.app.widget.SyncView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/login_sync_all_height"
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/login_list_item_height"
+        android:orientation="horizontal">
+       <TextView 
+        android:id="@+id/tv_login_device_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_weight="5"
+		style="@style/login_device_item_style"
+        />
+       <FrameLayout 
+           android:layout_height="match_parent"
+           android:layout_width="wrap_content"
+           android:layout_weight="1"
+           android:layout_marginRight="20dp"
+           >
+        <ProgressBar 
+            android:id="@+id/pb_login_sync_loading"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:indeterminateDrawable="@drawable/login_sync_loading"
+            />
+        <ImageView 
+            android:id="@+id/pb_login_sync_complete"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:src="@drawable/login_sync_loading_complete"
+            android:visibility="invisible"
+            />
+        </FrameLayout>
+    </LinearLayout>
+
+	<ProgressBar
+	    android:id="@+id/pb_login_sync"
+	    android:layout_width="match_parent"
+	    android:layout_height="@dimen/login_sync_progress_height"
+	    style="?android:attr/progressBarStyleHorizontal"
+	    android:progressDrawable="@drawable/login_sync_progressbar"
+	    android:progress="0" />
+	
+	<TextView
+        android:id="@+id/tv_divider_line"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_divider_height"
+        android:layout_alignTop="@+id/login_viewstub"
+        android:background="@color/login_hint_textcolor" />
+	        
+	<TextView 
+	    android:id="@+id/tv_login_sync_percentage"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="@dimen/login_sync_percentage_txt_margintop"
+	    android:gravity="center_horizontal"
+	    style="@style/login_hint_style"
+	    android:text="0%"
+	    />
+</com.dfim.app.widget.SyncView>

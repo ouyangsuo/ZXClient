@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/translucent_black"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <!-- 左空白区域 -->
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:layout_width="dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- 上空白区域 -->
+
+        <LinearLayout
+            android:id="@+id/ll_up"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" />
+
+        <!-- 中央播放器 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="320dp"
+            android:background="@color/icecream_bg"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.4" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/iv_album_cover"
+                        android:layout_width="190dp"
+                        android:layout_height="190dp"
+                        android:background="@drawable/pic1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="bottom|right"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        android:id="@+id/tv_album_cover"
+                        style="@style/AlreadyBoughtText"
+                        android:layout_width="80dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/shape_320k"
+                        android:gravity="center"
+                        android:text="MP3 320K" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="0dp" >
+
+                <SeekBar
+                    android:id="@+id/sb_progress"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_drawable_listen"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.9"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_music_name"
+                    style="@style/BigBlackTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="Shut Up And Drive"
+                    android:textColor="@color/dark_chocolate"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_artist"
+                    style="@style/AlreadyBoughtText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:text="Assholeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+                    android:textColor="@color/dark_green1" />
+
+                <TextView
+                    android:id="@+id/tv_buy"
+                    style="@style/BuyMusicText"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/buy_music_selector"
+                    android:gravity="center"
+                    android:text="￥ 1.00"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 下空白区域 -->
+
+        <LinearLayout
+            android:id="@+id/ll_down"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <!-- 右空白区域 -->
+
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_width="dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
+
+</LinearLayout>

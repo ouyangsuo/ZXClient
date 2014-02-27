@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout
+END
+albums_group_item_for_web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/albums_group_item_for_web.xml
+END
+pulldown_footer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/pulldown_footer.xml
+END
+load_failure_layout.xml
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/load_failure_layout.xml
+END
+settings_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/settings_fragment.xml
+END
+main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/main.xml
+END
+album_info_activity.xml
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/album_info_activity.xml
+END
+mymusic_content_frame.xml
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/mymusic_content_frame.xml
+END
+search_history_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/search_history_list_item.xml
+END
+layout_login_sync.xml
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login_sync.xml
+END
+layout_login_loading.xml
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login_loading.xml
+END
+top_detail_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/top_detail_item.xml
+END
+musics.xml
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/musics.xml
+END
+device_list_footerview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/device_list_footerview.xml
+END
+nofinddevice_exption.xml
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/nofinddevice_exption.xml
+END
+layout_login_boxversion_low.xml
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login_boxversion_low.xml
+END
+layout_login.xml
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login.xml
+END
+layout_tab_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_tab_main.xml
+END
+dialog_common.xml
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/dialog_common.xml
+END
+mymusic_albums_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/mymusic_albums_item.xml
+END
+search_history_listview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/search_history_listview.xml
+END
+menu_frame.xml
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/menu_frame.xml
+END
+layout_login_error.xml
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login_error.xml
+END
+.xml
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/.xml
+END
+column_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/column_detail.xml
+END
+artists_item_footerview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/artists_item_footerview.xml
+END
+theme_list_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/theme_list_fragment.xml
+END
+musics_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/musics_item.xml
+END
+album_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/album_detail.xml
+END
+music_root.xml
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/music_root.xml
+END
+albums.xml
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/albums.xml
+END
+crouton_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/crouton_view.xml
+END
+top_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/top_detail.xml
+END
+ready_2_open_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/ready_2_open_fragment.xml
+END
+layout_login_listview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login_listview.xml
+END
+clear_cache_translucent.xml
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/clear_cache_translucent.xml
+END
+common_root.xml
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/common_root.xml
+END
+player.xml
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/player.xml
+END
+mymusic_menu_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/mymusic_menu_fragment.xml
+END
+tops_item_139.xml
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/tops_item_139.xml
+END
+pack_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/pack_detail.xml
+END
+sliding_menu_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/sliding_menu_fragment.xml
+END
+albums_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/albums_item.xml
+END
+test_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/test_fragment.xml
+END
+framedanim.xml
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/framedanim.xml
+END
+themes_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/themes_item.xml
+END
+cache_musics_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/cache_musics_item.xml
+END
+layout_tabhost_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_tabhost_main.xml
+END
+content.xml
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/content.xml
+END
+tops_fragment_for_139.xml
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/tops_fragment_for_139.xml
+END
+albums_group_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/albums_group_item.xml
+END
+layout_login_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/layout_login_list_item.xml
+END
+sling_menu_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/sling_menu_item.xml
+END
+dialog_standard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout/dialog_standard.xml
+END

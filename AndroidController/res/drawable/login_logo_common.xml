@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:src="@drawable/login_logo"
+	android:tileMode="disabled" >
+	
+	<!-- 两版本发布修改处 7-7
+	dFiM 首页标志 login_logo 
+	xxbox首页标志 login_logo_xxbox 
+	-->
+</bitmap>

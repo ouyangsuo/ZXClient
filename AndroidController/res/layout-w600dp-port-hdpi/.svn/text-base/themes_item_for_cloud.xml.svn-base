@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/common_item_height"
+    android:gravity="clip_vertical"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/common_item_height"
+        android:layout_weight="2"
+        android:gravity="center" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="206dp"
+                android:layout_height="106dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/shape" />
+
+            <ImageView
+                android:id="@+id/iv_theme_cover"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/theme_cover_bg" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="2.7"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_theme_name"
+            style="@style/BigBlackTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:singleLine="true"
+            android:text="theme_name"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_theme_mcount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:text="music_count"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/common_item_height"
+        android:layout_weight="0.9"
+        android:gravity="center" >
+
+      <ImageButton
+            android:id="@+id/cloud_download_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cloud_selector" 
+          
+            />
+    </LinearLayout>
+
+</LinearLayout>

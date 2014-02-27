@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal" 
+    android:descendantFocusability="afterDescendants">
+
+    <TextView
+        android:id="@+id/tv_num"
+        style="@style/BigBlackTitle"
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:text="0000"
+        android:textColor="@color/album_single_no"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/ll_listen"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:background="@drawable/light_bg_selector"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="vertical" 
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/tv_music_name"
+            style="@style/BigBlackTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:singleLine="true"
+            android:text="music_namemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingTop="6dp" >
+
+            <TextView
+                android:id="@+id/tv_music_artist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:text="music_artist"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="1.4"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/btn_buy"
+            style="@style/BuyMusicText"
+            android:textSize="12sp"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/buy_music_selector"
+            android:gravity="center"
+            android:text="读取中..." />
+    </LinearLayout>
+
+</LinearLayout>

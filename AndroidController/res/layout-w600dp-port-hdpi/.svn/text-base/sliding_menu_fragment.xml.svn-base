@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="470dp"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_search"
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:descendantFocusability="afterDescendants"
+                android:visibility="visible" >
+
+                <EditText
+                    android:id="@+id/et_search"
+                    style="@style/EtSearch"
+                    android:layout_width="440dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:focusable="false"
+                    android:hint="搜索音乐"
+                    android:paddingLeft="20dp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/lense" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="4dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/sliding_menu_divider" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/lv_menu"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/sliding_menu_divider"
+                android:dividerHeight="4dp" />
+
+            <!-- 下边 -->
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/sliding_menu_divider" />
+        </LinearLayout>
+
+        <!-- 右侧阴影 -->
+
+        <TextView
+            android:layout_width="6dp"
+            android:layout_height="1280dp"
+            android:layout_gravity="right"
+            android:background="@drawable/shape_shadow"
+            android:visibility="visible" />
+    </FrameLayout>
+
+</LinearLayout>

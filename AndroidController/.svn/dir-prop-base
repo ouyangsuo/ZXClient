@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 8
+bin
+gen
+
+K 13
+svn:mergeinfo
+V 73
+/trunk/二期/智能遥控器/branches/dFiM/AndroidController:12709-12710
+END

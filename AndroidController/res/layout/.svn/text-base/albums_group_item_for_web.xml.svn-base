@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+        <TextView 
+            style="@style/BigBlackTitle"
+            android:id="@+id/tv_disc_no"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/album_group_item_height"
+            android:background="@color/groupview_bg"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="DISC 1"
+            android:textColor="@color/album_group_item_for_web_textcolor"
+            android:shadowColor="@color/white"
+            android:shadowDy="2"
+            android:shadowDx="0"
+            android:shadowRadius="0.3"/>
+
+</LinearLayout>

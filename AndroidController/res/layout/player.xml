@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/player_bg"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:background="@drawable/playing_light_top" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/playing_light_buttom" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="106dp"
+                android:background="@drawable/title_bar_bg"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_back"
+                    android:gravity="center"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/transparent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_music_name"
+                        style="@style/TabTitle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="10"
+                        android:gravity="center_horizontal|bottom"
+                        android:paddingBottom="10dp"
+                        android:singleLine="true"
+                        android:text="正在播放曲目mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tv_artist_name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="6"
+                        android:gravity="center_horizontal|top"
+                        android:singleLine="true"
+                        android:text="WHOEVER U SAY"
+                        android:textColor="#b4a091"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/transparent" />
+
+                <Button
+                    android:id="@+id/btn_playlist"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_playlist"
+                    android:gravity="center"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_player"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/ll_playpic_or_playlist"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_playpic"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:visibility="visible" >
+
+                        <LinearLayout
+                            android:layout_width="446dp"
+                            android:layout_height="591dp"
+                            android:gravity="bottom|center_horizontal" >
+
+                            <FrameLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent" >
+
+                                <ImageView
+                                    android:id="@+id/iv_pic_playing"
+                                    android:layout_width="446dp"
+                                    android:layout_height="446dp"
+                                    android:layout_gravity="center_horizontal|bottom"
+                                    android:background="@drawable/pic1" />
+
+                                <ImageView
+                                    android:id="@+id/iv_pic_cover"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/playpic_bg" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_lv_playlist"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@color/icecream_bg"
+                        android:visibility="gone" >
+
+                        <ListView
+                            android:id="@+id/lv_playlist"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:divider="@color/divider_common"
+                            android:dividerHeight="2dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_control_area"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:id="@+id/panel_and_volumn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:id="@+id/ll_volumn"
+                            android:layout_width="fill_parent"
+                            android:layout_height="150dp"
+                            android:background="@color/volumn_bg"
+                            android:gravity="center"
+                            android:visibility="gone" >
+
+                            <SeekBar
+                                android:id="@+id/sb_volumn"
+                                style="@android:style/Widget.SeekBar"
+                                android:layout_width="700dp"
+                                android:layout_height="58dp"
+                                android:progressDrawable="@drawable/sb_volumn_progress_drawable"
+                                android:thumb="@drawable/sb_volumn_thumb_selector" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_cache"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/black"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="visible" >
+
+                            <FrameLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent" >
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="fill_parent"
+                                        android:layout_weight="3"
+                                        android:background="@color/player_cache_progress" />
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="fill_parent"
+                                        android:layout_weight="100"
+                                        android:background="@android:color/black" />
+                                </LinearLayout>
+
+                                <SeekBar
+                                    android:id="@+id/sb_cache_progress"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="20dp"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/sb_cache_progress_drawable"
+                                    android:thumb="@null" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/panel_bg"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp" >
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="13dp"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_current_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="00:00"
+                                    android:textColor="@color/white"
+                                    android:textSize="28sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="600dp"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:textSize="28sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="00:00"
+                                    android:textColor="@color/white"
+                                    android:textSize="28sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="20dp"
+                                android:gravity="center"
+                                android:orientation="horizontal" >
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center" >
+
+                                    <Button
+                                        android:id="@+id/btn_playmode"
+                                        android:layout_width="90dp"
+                                        android:layout_height="90dp"
+                                        android:background="@drawable/playmode_order_selector" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center" >
+
+                                    <Button
+                                        android:id="@+id/btn_prev"
+                                        android:layout_width="140dp"
+                                        android:layout_height="140dp"
+                                        android:background="@drawable/btn_prev_selector" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_btn"
+                                    android:layout_width="0dp"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical" >
+
+                                    <Button
+                                        android:id="@+id/btn_play_pause"
+                                        android:layout_width="140dp"
+                                        android:layout_height="140dp"
+                                        android:background="@drawable/btn_play_selector"
+                                        android:visibility="visible" />
+
+                                    <FrameLayout
+                                        android:id="@+id/fl_btn_anim"
+                                        android:layout_width="140dp"
+                                        android:layout_height="140dp" 
+                                        android:visibility="gone">
+
+                                        <LinearLayout
+                                            android:layout_width="140dp"
+                                            android:layout_height="140dp"
+                                            android:background="@drawable/btn_play_bg"
+                                            android:gravity="center"
+                                            android:orientation="vertical"
+                                            android:visibility="visible" >
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="140dp"
+                                            android:layout_height="60dp" 
+                                            android:layout_marginTop="25dp"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:id="@+id/iv_btn_anim_arrow"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:background="@drawable/play_download_btn" />
+                                        </LinearLayout>
+                                    </FrameLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center" >
+
+                                    <Button
+                                        android:id="@+id/btn_next"
+                                        android:layout_width="140dp"
+                                        android:layout_height="140dp"
+                                        android:background="@drawable/btn_next_selector" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center" >
+
+                                    <Button
+                                        android:id="@+id/btn_collect"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/btn_collect"
+                                        android:visibility="invisible" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/fl_sb_progress"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="3"
+                                android:background="@color/progress_color" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="100"
+                                android:background="@color/progress_bg" />
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/sb_progress"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/sb_jindu_progress_drawable"
+                            android:thumb="@drawable/sb_jindu_thumb_selector" />
+                    </FrameLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,111 @@
+package com.dfim.app.widget.stickygridheader;
+
+import java.lang.ref.SoftReference;
+import java.util.List;
+
+import android.graphics.Bitmap;
+
+import com.union.cellremote.domain.Artist;
+import com.union.cellremote.domain.Disk;
+
+public class BotiqueItem {
+
+	//copy from com.union.cellremote.domain.Album
+	private Long id;// 专辑的id
+	private String albumName; // 专辑的名字
+	private List<Artist> artistList;// 专辑的演出者列表
+
+	private String artistName;
+	private List<Disk> diskList;// 专辑的碟的列表
+	private String buyTime;// 专辑的购买时间
+	private int orderType;// 专辑的购买类型
+	private String imgUrl; // 专辑的图片
+	private SoftReference<Bitmap> srCoverBitmap;
+	private int isCloud = -1;// 是否在云端，5本地，0云端
+	
+	private String columnName = "";
+	private int columnIndex = 0;
+
+
+	public Long getAlbumId() {
+		return id;
+	}
+	public void setAlbumId(Long id) {
+		this.id = id;
+	}
+	public String getArtistName() {
+		return artistName;
+	}
+	public void setArtistName(String artistName) {
+		this.artistName = artistName;
+	}
+	public List<Disk> getDiskList() {
+		return diskList;
+	}
+	public void setDiskList(List<Disk> diskList) {
+		this.diskList = diskList;
+	}
+	public String getBuyTime() {
+		return buyTime;
+	}
+	public void setBuyTime(String buyTime) {
+		this.buyTime = buyTime;
+	}
+	public int getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(int orderType) {
+		this.orderType = orderType;
+	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+	public SoftReference<Bitmap> getSrCoverBitmap() {
+		return srCoverBitmap;
+	}
+	public void setSrCoverBitmap(SoftReference<Bitmap> srCoverBitmap) {
+		this.srCoverBitmap = srCoverBitmap;
+	}
+	public int getIsCloud() {
+		return isCloud;
+	}
+	public void setIsCloud(int isCloud) {
+		this.isCloud = isCloud;
+	}
+	
+	public String getColumnName() {
+		return columnName;
+	}
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
+	}
+	
+	public int getColumnIndex() {
+		return columnIndex;
+	}
+	public void setColumnIndex(int columnIndex) {
+		this.columnIndex = columnIndex;
+	}
+	
+	public String getAlbumName() {
+		return albumName;
+	}
+	public void setAlbumName(String name) {
+		this.albumName = name;
+	}
+
+	public List<Artist> getArtistList() {
+		return artistList;
+	}
+	public void setArtistList(List<Artist> artistList) {
+		this.artistList = artistList;
+	}
+
+	@Override
+	public String toString() {
+		return this.albumName;
+	}
+}

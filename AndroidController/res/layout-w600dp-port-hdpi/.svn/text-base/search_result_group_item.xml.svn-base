@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/divider_common" />
+
+    <TextView
+        android:id="@+id/tv_disc_no"
+        style="@style/BigBlackTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:background="@color/groupview_bg"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="DISC 1"
+        android:textColor="@color/sliding_menu_bg"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/divider_common" />
+
+</LinearLayout>

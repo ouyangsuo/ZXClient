@@ -1,0 +1,13 @@
+package com.dfim.app.widget.stickygridheader;
+
+import java.util.ArrayList;
+
+
+public class BotiqueItems extends ArrayList<BotiqueItem>{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3282045963891363458L;
+
+}

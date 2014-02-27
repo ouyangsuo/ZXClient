@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pulldown_footer_li"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:visibility="visible"
+    android:gravity="center">
+
+
+<!--     <ProgressBar
+        android:id="@+id/pulldown_footer_loading"
+        style="@android:style/Widget.ProgressBar.Large.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible" />      
+   <TextView
+        android:id="@+id/pulldown_footer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:text="加载更多中..."
+        android:textSize="25dp" 
+        android:gravity="center"
+        android:layout_gravity="center"/> -->
+   
+               <ImageView
+                android:id="@+id/pulldown_footer_loading"
+                android:layout_width="@dimen/iv_loading_anim_height"
+                android:layout_height="@dimen/iv_loading_anim_height" />
+
+            <TextView
+                android:id="@+id/pulldown_footer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ll_loading_anim_height"
+                android:layout_marginLeft="@dimen/iv_anim_text_margin"
+                android:gravity="center_vertical"
+                android:text="@string/loading_more_info" 
+                android:textColor="@color/text_color_on_cream"
+                android:textSize="@dimen/tv_loading_textsize"/>
+  
+</LinearLayout>

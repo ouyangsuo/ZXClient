@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util
+END
+StringPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/StringPool.java
+END
+SingletonUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/SingletonUtil.java
+END
+CustomerHttpClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/CustomerHttpClient.java
+END
+DaoHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/DaoHelper.java
+END
+URIParams.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/URIParams.java
+END
+HttpClientManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/HttpClientManager.java
+END
+BitmapUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/BitmapUtil.java
+END
+GUIDGenUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/GUIDGenUtil.java
+END
+UpdateUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/UpdateUtil.java
+END
+PowerfulBigMan.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/PowerfulBigMan.java
+END
+AnimUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/AnimUtil.java
+END
+Base64Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/Base64Util.java
+END
+Md5Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/Md5Util.java
+END
+VersionNumberComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/VersionNumberComparator.java
+END
+ValidateUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/ValidateUtil.java
+END
+QueryTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/QueryTask.java
+END
+CollectionUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/CollectionUtil.java
+END
+DeviceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/DeviceUtil.java
+END
+ExitApplication.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/ExitApplication.java
+END
+DateTimeFormatUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/DateTimeFormatUtil.java
+END
+StringUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/StringUtil.java
+END
+JsonUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/JsonUtil.java
+END
+MapUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/MapUtil.java
+END
+ListviewDataPositionRecorder.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/ListviewDataPositionRecorder.java
+END
+FileUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/FileUtil.java
+END
+TimerASyTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/TimerASyTask.java
+END
+LoadImageAysnc.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/LoadImageAysnc.java
+END
+ImageUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/ImageUtil.java
+END
+SystemUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/SystemUtil.java
+END
+UniqueId.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/UniqueId.java
+END
+SignaturGenUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/SignaturGenUtil.java
+END
+LrucacheUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/LrucacheUtil.java
+END
+Buyer.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/Buyer.java
+END
+UsbFileUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/UsbFileUtil.java
+END
+MediaInfoUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/MediaInfoUtil.java
+END
+IDUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/IDUtil.java
+END
+PullXmlUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/PullXmlUtil.java
+END
+DialogUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/src/com/dfim/app/util/DialogUtil.java
+END

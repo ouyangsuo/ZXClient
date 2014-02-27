@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <!-- 侧滑菜单 -->
+
+        <FrameLayout
+            android:id="@+id/fl_sliding_menu"
+            android:layout_width="470dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@color/sliding_menu_bg" >
+
+            <LinearLayout
+                android:id="@+id/ll_menu_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- 主界面 -->
+
+        <FrameLayout
+            android:id="@+id/fl_main_ui"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/icecream_bg"
+                android:orientation="vertical" >
+
+                <!-- 标题栏 -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="90dp"
+                    android:background="@drawable/title_bar_bg"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="88dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <ImageButton
+                            android:id="@+id/btn_menu"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/common_transparent_bg_selector"
+                            android:gravity="center"
+                            android:src="@drawable/btn_menu"
+                            android:visibility="visible" />
+
+                        <ImageButton
+                            android:id="@+id/btn_back"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/common_transparent_bg_selector"
+                            android:gravity="center"
+                            android:src="@drawable/btn_back"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="@color/transparent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="4.5"
+                        android:orientation="vertical" >
+
+                        <!-- 普通标题栏 -->
+
+                        <LinearLayout
+                            android:id="@+id/ll_title_normal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:orientation="horizontal"
+                            android:visibility="visible" >
+
+                            <TextView
+                                android:id="@+id/tv_title"
+                                style="@style/TabTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="3.5"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="当前标题" />
+
+                            <TextView
+                                android:layout_width="1dp"
+                                android:layout_height="fill_parent"
+                                android:background="@color/transparent" />
+
+                            <ImageButton
+                                android:id="@+id/btn_player"
+                                android:layout_width="0dp"
+                                android:layout_height="88dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/common_transparent_bg_selector"
+                                android:gravity="center"
+                                android:src="@drawable/btn_player"
+                                android:textColor="#fff" />
+                        </LinearLayout>
+
+                        <!-- 搜索标题栏 -->
+
+                        <LinearLayout
+                            android:id="@+id/ll_title_search"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:descendantFocusability="afterDescendants"
+                            android:orientation="horizontal"
+                            android:visibility="gone" >
+
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:descendantFocusability="afterDescendants"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="30dp" >
+
+                                <EditText
+                                    android:id="@+id/et_search"
+                                    style="@style/EtSearch"
+                                    android:layout_width="540dp"
+                                    android:layout_height="61dp"
+                                    android:focusable="true"
+                                    android:hint="搜索音乐"
+                                    android:imeOptions="actionSearch"
+                                    android:paddingLeft="70dp"
+                                    android:singleLine="true"
+                                    android:textSize="25sp" />
+
+                                <ImageButton
+                                    android:id="@+id/ib_clear"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="95dp"
+                                    android:layout_marginTop="9dp"
+                                    android:background="@drawable/btn_x_selector" />
+
+                                <ImageView
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginTop="9dp"
+                                    android:background="@drawable/lense"
+                                    android:focusable="false" />
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 内容区 -->
+
+
+                <!-- 装载普通首页 -->
+
+                <LinearLayout
+                    android:id="@+id/ll_web_root"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+</RelativeLayout>
