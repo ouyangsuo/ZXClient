@@ -53,6 +53,7 @@ import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.usb.ExternalDeviceFragment;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.BitmapUtil;
@@ -63,7 +64,6 @@ import com.dfim.app.util.URIParams;
 import com.dfim.app.widget.CustomToast;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.PlaylistMusicListAdapter;
-import com.union.cellremote.domain.Music;
 
 //试听曲目
 public class PlaylistFragment extends Fragment {

@@ -64,13 +64,12 @@ import com.dfim.app.util.ExitApplication;
 import com.dfim.app.util.FileUtil;
 import com.dfim.app.util.UpdateUtil;
 import com.dfim.app.widget.StandardCustomDialog;
-import com.dfim.app.widget.stickygridheader.NewBotiquesFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.union.cellremote.R;
 
 public class MainActivity extends SlidingBaseActivity implements
 		MainFragment.OnMainChangedListener, OnMenuChangedListener,
-		OnSearchViewClickListener, NewBotiquesFragment.Callbacks {
+		OnSearchViewClickListener {
 
 	private static final String TAG = MainActivity.class.getSimpleName() + ":";
 
@@ -212,8 +211,7 @@ public class MainActivity extends SlidingBaseActivity implements
 
 		super.onCreate(savedInstanceState);
 		MymusicManager.mainActivity = this;
-		UpnpApp.mainActivity = this;
-		
+		UpnpApp.mainActivity = this;		
 		ExitApplication.getInstance().addActivity(this);
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -224,27 +222,18 @@ public class MainActivity extends SlidingBaseActivity implements
 		initMainViewPager();
 
 		registerReceivers();
-		bindService(new Intent(this, MyUpnpServiceImpl.class), serviceConnection, Context.BIND_AUTO_CREATE);
+//		bindService(new Intent(this, MyUpnpServiceImpl.class), serviceConnection, Context.BIND_AUTO_CREATE);
 		
-		// 拿取盒子版本，控制端版本
-		if(!WatchDog.versionsUpdateNotificationShown){
-//			getBoxVersion();
-			updateControllerVersionIfNeccessary();
-			WatchDog.versionsUpdateNotificationShown=true;
-		}
+//		// 更新控制端版本
+//		if(!WatchDog.versionsUpdateNotificationShown){
+//			updateControllerVersionIfNeccessary();
+//			WatchDog.versionsUpdateNotificationShown=true;
+//		}
 		
 	}
 
-	private void updateControllerVersionIfNeccessary() {
-		new UpdateUtil(this, mHandler, SHOW_CONTROLLER_UPDATE_NOTIFICATION).updateControllerVersionIfNeccessary();
-	}
-
-//	private void getBoxVersion() {
-//		new BoxControl().getBoxVersion();
-//	}
-	
-//	protected void showBoxUpdateDialog() {				
-//		new DialogUtil(this).showDialog(R.string.box_update_notification_title, R.string.box_update_notification_txt, R.string.ok, -1, null, -1, -1);
+//	private void updateControllerVersionIfNeccessary() {
+//		new UpdateUtil(this, mHandler, SHOW_CONTROLLER_UPDATE_NOTIFICATION).updateControllerVersionIfNeccessary();
 //	}
 
 	private void initMainViewPager() {
@@ -406,10 +395,6 @@ public class MainActivity extends SlidingBaseActivity implements
 		Log.e("软件升级", "install APK...");		
 		new FileUtil(this).installAPKFile(Constant.APK_DOWNLOAD_PATH);
 	}
-
-//	protected void showBoxUpdateNotification() {
-//		UpnpApp.mainHandler.showAlert(R.string.box_update_notification_txt);
-//	}
 
 	private void setTouchModeAbove(int mode) {
 		getSlidingMenu().setTouchModeAbove(mode);
@@ -625,21 +610,27 @@ public class MainActivity extends SlidingBaseActivity implements
 
 		switch (position) {
 		case MainFragment.TAB_MUSIC:
+//			canSliding = true;
+//			mFrag.setSearchViewVisibility(View.GONE);
+//			mFrag.setAdapter(getResources().getStringArray(R.array.sliding_menu_music), TabMusicFragment.getCurrentPosition(), "tab_music");
+			
 			canSliding = true;
 			mFrag.setSearchViewVisibility(View.GONE);
-			mFrag.setAdapter(getResources().getStringArray(R.array.sliding_menu_music), 
-					TabMusicFragment.getCurrentPosition(), "tab_music");
+			mFrag.setAdapter(getResources().getStringArray(R.array.sliding_menu_music), TabMusicFragment.getCurrentPosition(), "tab_music");
 			break;
+			
 		case MainFragment.TAB_WEB:
 			canSliding = true;
 			mFrag.setSearchViewVisibility(View.VISIBLE);
 			mFrag.setAdapter(getResources().getStringArray(R.array.sliding_menu_web), TabWebFragment.getCurrentPosition(), "tab_web");
 			break;
+			
 		case MainFragment.TAB_DEVICE:
-			canSliding = false;
+//			canSliding = false;
 			break;
+			
 		case MainFragment.TAB_SETTING:
-			canSliding = false;
+//			canSliding = false;
 			break;
 		}
 		setSlidingMode(mainViewPager.getCurrentItem());
@@ -697,20 +688,6 @@ public class MainActivity extends SlidingBaseActivity implements
 			setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 			break;
 		}
-	}
-
-	@Override
-	public void onItemSelected(int position) {
-		// TODO Auto-generated method stub
-//		Log.i("MainActivity","MainActivity onItemSelected");
-		Toast mToast = null;
-        String text = "Body item" + position + " was tapped.";
-        if (mToast == null) {
-            mToast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
-        } else {
-            mToast.setText(text);
-        }
-        mToast.show();
 	}
 
 }

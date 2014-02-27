@@ -89,7 +89,7 @@ public class TabMusicFragment extends TabFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Log.i(TAG,"onCreateView");
+		Log.e(TAG,"onCreateView");
 		View view = inflater.inflate(R.layout.layout_tab_main, null);
 		tabTitle = (TextView) view.findViewById(R.id.tv_title);
 		btnMenuOrBack = (ImageButton) view.findViewById(R.id.btn_menu);

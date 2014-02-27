@@ -78,12 +78,13 @@
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
         <item name="android:textColor">?android:attr/editTextColor</item>
         <item name="android:gravity">center_vertical</item>
+        <item name="android:textCursorDrawable">@null</item>
     </style>
 
     <!-- 暂无数据字体样式 -->
     <style name="NoDataText">
         <item name="android:textColor">@color/text_color_on_cream</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textStyle">italic</item>
     </style>
     

@@ -29,7 +29,11 @@ import com.dfim.app.activity.TabWebActivity;
 import com.dfim.app.common.Constant;
 import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Column;
+import com.dfim.app.domain.ColumnDetail;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
+import com.dfim.app.http.HttpGetter;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.thread.Pools;
@@ -41,10 +45,6 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Column;
-import com.union.cellremote.domain.ColumnDetail;
-import com.union.cellremote.http.HttpGetter;
 
 public class TopsFragment139 extends Fragment implements NobleMan, TitlebarUpdateFragment, SelfReloader {
 

@@ -27,14 +27,14 @@ import android.widget.TextView;
 
 import com.dfim.app.activity.TabWebActivity;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.http.HttpGetter;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.widget.MyLetterListView;
 import com.dfim.app.widget.MyLetterListView.OnTouchingLetterChangedListener;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.ArtistsListAdapter;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.http.HttpGetter;
 
 public class ArtistsFragment extends Fragment implements NobleMan {
 

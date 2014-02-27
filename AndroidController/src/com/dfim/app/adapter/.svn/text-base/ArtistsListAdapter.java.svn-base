@@ -12,10 +12,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dfim.app.domain.Artist;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Artist;
 
 //Toast
 public class ArtistsListAdapter extends BaseAdapter {

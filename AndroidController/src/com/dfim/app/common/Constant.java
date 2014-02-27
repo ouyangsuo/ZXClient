@@ -31,6 +31,11 @@ public class Constant {
 	// "http://m.dfim.com.cn/app/zhenxianRemote.apk";
 	public static final String APK_DOWNLOAD_PATH = "/mnt/sdcard/cellremote/zhenxianRemote.apk";
 	public static final String P_KEY = "8920f3346d2da84d49e73b9612655c36";
+	
+	// 盒子设备号、KEY
+	public static final String DEVICE_NUMBER = "500A6B15-A20F-5C45-A053-64002E98791E";
+	public static final String DEVICE_KEY = "34a061dc06db485685ef6ca7634fe9bc";
+	public static final int DEVICE_TERMINAL_TYPE = 0;
 
 	// 播放状态
 	private static final String PLAYING = "PLAYING";

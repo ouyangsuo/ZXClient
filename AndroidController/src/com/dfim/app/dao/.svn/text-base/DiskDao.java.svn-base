@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.dfim.app.db.DBHelper;
-import com.union.cellremote.domain.Disk;
+import com.dfim.app.domain.Disk;
 
 public class DiskDao {
 	  /**

@@ -33,13 +33,13 @@ import com.dfim.app.common.BroadcastManager;
 import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.TabMusicFragment;
 import com.dfim.app.upnp.BoxControl;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
 
 public class CacheAlbumDetailFragment extends BaseFragment {
 

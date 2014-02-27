@@ -14,15 +14,14 @@ import android.util.Log;
 import com.dfim.app.common.Constant;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Column;
+import com.dfim.app.domain.Pack;
 import com.dfim.app.util.JsonUtil;
 import com.dfim.app.util.Md5Util;
 import com.dfim.app.util.SignaturGenUtil;
 import com.dfim.app.util.StringUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Column;
-import com.union.cellremote.domain.Pack;
-import com.union.cellremote.http.HttpClientProducer;
 
 public class HttpGetter {
 
@@ -46,8 +45,10 @@ public class HttpGetter {
 	}
 
 	private void getPKey() {
-		pKey = Md5Util.process(WatchDog.currentUserId + "_" + WatchDog.currentPassword);// 正确的key:f39f81eb84d2720eef51a66b8235af15
-		System.out.println("pKey=" + pKey);
+		// pKey = Md5Util.process(WatchDog.currentUserId + "_" +
+		// WatchDog.currentPassword);// 正确的key:f39f81eb84d2720eef51a66b8235af15
+		// System.out.println("pKey=" + pKey);
+		pKey = Constant.P_KEY;
 	}
 
 	public String getUri(String whatToQuery, String paramsInOrder) {
@@ -57,9 +58,22 @@ public class HttpGetter {
 		System.out.println("pstringtosign=" + pStringToSign);
 		String signature = SignaturGenUtil.generator(pStringToSign, pKey);
 
-		uri = Constant.getBaseUrl()+ whatToQuery + paramsInOrder + "&signature=" + signature;
+		uri = Constant.getBaseUrl() + whatToQuery + paramsInOrder + "&signature=" + signature;
 		System.out.println("uri=" + uri);
 
+		return uri;
+	}
+	
+	public String getUriMimingBox(String whatToQuery, String paramsInOrder) {
+		String uri = "";
+		
+		String pStringToSign = StringUtil.StringFilter(paramsInOrder);// 去掉参数中的特殊字符
+		System.out.println("pstringtosign=" + pStringToSign);
+		String signature = SignaturGenUtil.generator(pStringToSign, Constant.DEVICE_KEY);
+		
+		uri = Constant.getBaseUrl() + whatToQuery + paramsInOrder + "&signature=" + signature;
+		System.out.println("uri=" + uri);
+		
 		return uri;
 	}
 
@@ -103,7 +117,7 @@ public class HttpGetter {
 			return Constant.COLUMN_ALBUMS_4_GENRES;
 		} else if ("演出者".equals(WatchDog.tabWebFragment.currentMenuItem)) {
 			return Constant.COLUMN_ALBUMS_4_ARTISTS;
-		}else if ("搜索结果".equals(WatchDog.tabWebFragment.currentMenuItem)) {
+		} else if ("搜索结果".equals(WatchDog.tabWebFragment.currentMenuItem)) {
 			return Constant.COLUMN_ALBUMS_4_ARTISTS;
 		}
 
@@ -143,7 +157,7 @@ public class HttpGetter {
 
 		return new JsonUtil().getArtists(json);
 	}
-	
+
 	public String getArtistsListII(int startitem, int maxitems, String firstLetter) {
 		// content/artist/list? startitem=STARTITEM&maxitems=MAXITEMS&
 		// firstletter=FIRSTLETTER&apikey=DEVICENO&timestamp=TIMESTATMP&
@@ -155,9 +169,9 @@ public class HttpGetter {
 		// Long timestamp = System.currentTimeMillis();
 		String paramsInOrder = "apikey=" + Constant.apikey + "&firstletter=" + firstLetter + "&maxitems=" + maxitems + "&protocolver=" + Constant.protocolver + "&startitem=" + startitem + "&terminaltype=" + Constant.terminaltype + "&timestamp=" + System.currentTimeMillis();
 		// String uri = getUri(whatToQuery,paramsInOrder);
-		
+
 		String json = doHttpGet(getUri(whatToQuery, paramsInOrder), "artists");
-		
+
 		return json;
 	}
 
@@ -180,36 +194,36 @@ public class HttpGetter {
 	}
 
 	private String doHttpGet(String uri, String tag) {
-		String json = "";		
-		DefaultHttpClient client = new HttpClientProducer().getHttpClient(Constant.CONNECTION_TIMEOUT_MILLIS, Constant.SOCKET_TIMEOUT_MILLIS);//设置client的连接超时和读取数据超时时间
+		String json = "";
+		DefaultHttpClient client = new HttpClientProducer().getHttpClient(Constant.CONNECTION_TIMEOUT_MILLIS, Constant.SOCKET_TIMEOUT_MILLIS);// 设置client的连接超时和读取数据超时时间
 		HttpGet httpGet = new HttpGet(uri);
 
 		try {
 			HttpResponse response = client.execute(httpGet);
 
 			if (response.getStatusLine().getStatusCode() != 200) {
-				 Log.e(TAG,"获取数据失败!");
-				 Log.e(TAG,"response.getStatusLine().getStatusCode()=" + response.getStatusLine().getStatusCode());
+				Log.e(TAG, "获取数据失败!");
+				Log.e(TAG, "response.getStatusLine().getStatusCode()=" + response.getStatusLine().getStatusCode());
 				UpnpApp.mainHandler.showAlert(R.string.network_unnormal_alert);
-				
-				json=UpnpApp.context.getResources().getString(R.string.data_load_failed);
+
+				json = UpnpApp.context.getResources().getString(R.string.data_load_failed);
 				currentFragmentOnDataLoadFailed();
-				
+
 				httpGet.abort();
 			} else {
-				Log.e(TAG,">>>>>>>>>>>>>>获取数据成功<<<<<<<<<<<<<<<<");
+				Log.e(TAG, ">>>>>>>>>>>>>>获取数据成功<<<<<<<<<<<<<<<<");
 				HttpEntity entity = response.getEntity();
 				json = EntityUtils.toString(entity, "utf-8").trim();
-				System.out.println("json response="+json);
+				System.out.println("json response=" + json);
 			}
 
 		} catch (Exception e) {
-			Log.e(TAG,"发现异常：e="+e);
+			Log.e(TAG, "发现异常：e=" + e);
 			e.printStackTrace();
 
-			json=UpnpApp.context.getResources().getString(R.string.data_load_failed);
+			json = UpnpApp.context.getResources().getString(R.string.data_load_failed);
 			currentFragmentOnDataLoadFailed();
-			
+
 		} finally {
 			client.getConnectionManager().shutdown();
 			System.out.println("client 已关闭");
@@ -217,11 +231,11 @@ public class HttpGetter {
 
 		return json;
 	}
-	
+
 	private void currentFragmentOnDataLoadFailed() {
 		if (WatchDog.currentSelfReloader != null) {
 			WatchDog.currentSelfReloader.onDataLoadFailed();
-		}	
+		}
 	}
 
 	/*
@@ -291,20 +305,37 @@ public class HttpGetter {
 	}
 
 	public String getLatestVersion() {
-//		"https://ws.zhenxian.com/zhenxianwang/ws/account/appcheck? sys=SYS&type=TYPE&temptype=TEMPTYPE& apikey=DEVICENO& timestamp=TIMESTATMP&protocolver=PROTOCOLVER& signature=SIGNATURE";
+		// "https://ws.zhenxian.com/zhenxianwang/ws/account/appcheck? sys=SYS&type=TYPE&temptype=TEMPTYPE& apikey=DEVICENO& timestamp=TIMESTATMP&protocolver=PROTOCOLVER& signature=SIGNATURE";
 		String whatToQuery = "account/appcheck?";
-		
-		int sys=Constant.APP_OS_TYPE;
-		int type=Constant.APP_DEVICE_TYPE;
-		String tempType=Constant.APP_TEMP_TYPE;
-		
-		//WatchDog.currentUserId =,Constant.apikey =//fuck
-		String paramsInOrder = "apikey=" + Constant.apikey+ "&protocolver=" +  Constant.protocolver +"&sys=" +sys+ "&temptype=" +tempType+ "&terminaltype=" + Constant.terminaltype +"&timestamp=" + System.currentTimeMillis() + "&type=" + type;
+
+		int sys = Constant.APP_OS_TYPE;
+		int type = Constant.APP_DEVICE_TYPE;
+		String tempType = Constant.APP_TEMP_TYPE;
+
+		// WatchDog.currentUserId =,Constant.apikey =//fuck
+		String paramsInOrder = "apikey=" + Constant.apikey + "&protocolver=" + Constant.protocolver + "&sys=" + sys + "&temptype=" + tempType + "&terminaltype=" + Constant.terminaltype + "&timestamp=" + System.currentTimeMillis() + "&type=" + type;
 
 		Log.e("软件升级", TAG + "url=" + getUri(whatToQuery, paramsInOrder));
 		String json = doHttpGet(getUri(whatToQuery, paramsInOrder), "getLatestVersion()");
 		Log.e("软件升级", TAG + "getLatestVersion():json=" + json);
-		
+
+		return json;
+	}
+
+	public String getBotiquesListII() {
+		String whatToQuery = "content/column?";
+		int type = 1;
+		String paramsInOrder = "apikey=" + Constant.apikey + "&protocolver=" + Constant.protocolver + "&terminaltype=" + Constant.terminaltype + "&timestamp=" + System.currentTimeMillis() + "&type=" + type;
+
+		String json = doHttpGet(getUri(whatToQuery, paramsInOrder), "botiques");
+		return json;
+	}
+
+	public String getMusicDetail(Long musicId) {
+		String whatToQuery = "content/music/detail?";
+		String paramsInOrder = "apikey=" + Constant.apikey + "&id=" + musicId + "&protocolver=" + Constant.protocolver + "&terminaltype=" + Constant.terminaltype + "&timestamp=" + System.currentTimeMillis();
+
+		String json = doHttpGet(getUri(whatToQuery, paramsInOrder), "getMusicDetail");
 		return json;
 	}
 

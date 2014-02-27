@@ -38,17 +38,18 @@ import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.MusicDao;
 import com.dfim.app.dao.SearchHistoryDao;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.TabWebFragment;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
 import com.dfim.app.http.HttpPoster;
 import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.ListviewDataPositionRecorder;
+import com.dfim.app.util.MediaUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
 
 public class SearchFragment extends Fragment implements TitlebarUpdateFragment,SelfReloader {
 	// Looper.prepare
@@ -88,18 +89,10 @@ public class SearchFragment extends Fragment implements TitlebarUpdateFragment,S
 	private SearchResultListAdapter artistAdapter;
 
 	private ListviewDataPositionRecorder lpRecorder;
-//	private int firstVisibleItemPosition = -1;// 记录停止卷动时第一个ITEM的序号
-//	private int scrollTop = 0;// 记录停止卷动时第一个ITEM距离顶端的偏移量
-	// public List<Bitmap> bitmaps = new ArrayList<Bitmap>();
 	public Set<Bitmap> bitmaps = new HashSet<Bitmap>();
-	// private Bitmap dontRecycleMeBitmap;
-	// private boolean recycleNeeded = true;
 
 	private String keyword = "";
 	private SearchDataObject sdo;
-	// private List<Album> albums = new ArrayList<Album>();
-	// private List<Music> musics = new ArrayList<Music>();
-	// private List<Artist> artists = new ArrayList<Artist>();
 
 	private Button tabAll;
 	private Button tabAlbum;
@@ -527,30 +520,30 @@ public class SearchFragment extends Fragment implements TitlebarUpdateFragment,S
 	public void onMusicItemClick(int position) {
 
 		Music music = sdo.getMusics().get(position);
-		int state = getMusicStateById(music.getId());
-		String uri = "xxbox://listen?id=" + music.getId();
-		new Player().play(uri);
-		/*
-		 * 1208； 试听失败提示：“试听失败，请检查网络”； setUri成功； 信息由boxSub订阅信息返回； 让纯鹏看下；
-		 */
-
-		Intent intent = new Intent(getActivity(), WebListenActivity.class);
-		intent.putExtra("musicName", music.getName());
-		intent.putExtra("artist", music.getArtistName());
-		// intent.putExtra("bitmap", new
-		// BitmapUtil().processBigBitmap(music.getBitmap(), 250000,
-		// Constant.albumCover));
-		intent.putExtra("imgUrl", music.getImgUrl());
-		intent.putExtra("btnBuyText", getListenBtnText(music, state));
-		intent.putExtra("btnBuyEnabled", getListenBtnEnabled(state));
-		intent.putExtra("isFromSearch", true);
-
-		WatchDog.currentListeningMusic = music;
-		Log.e(TAG, "onMusicItemClick>>WatchDog.currentListeningMusic: "+WatchDog.currentListeningMusic.getName());
+//		int state = getMusicStateById(music.getId());
+//		String uri = "xxbox://listen?id=" + music.getId();
+//		new Player().play(uri);
+//		/*
+//		 * 1208； 试听失败提示：“试听失败，请检查网络”； setUri成功； 信息由boxSub订阅信息返回； 让纯鹏看下；
+//		 */
+//
+//		Intent intent = new Intent(getActivity(), WebListenActivity.class);
+//		intent.putExtra("musicName", music.getName());
+//		intent.putExtra("artist", music.getArtistName());
+//
+//		intent.putExtra("imgUrl", music.getImgUrl());
+//		intent.putExtra("btnBuyText", getListenBtnText(music, state));
+//		intent.putExtra("btnBuyEnabled", getListenBtnEnabled(state));
+//		intent.putExtra("isFromSearch", true);
+//
+//		WatchDog.currentListeningMusic = music;
+//		Log.e(TAG, "onMusicItemClick>>WatchDog.currentListeningMusic: "+WatchDog.currentListeningMusic.getName());
+//		
+//		UpnpApp.mainHandler.showInfo(R.string.store_listen_music_loading_info);
+//		
+//		getActivity().startActivity(intent);
 		
-		UpnpApp.mainHandler.showInfo(R.string.store_listen_music_loading_info);
-		
-		getActivity().startActivity(intent);
+		new MediaUtil(context).playLocally(music.getId());
 	}
 
 	private boolean getListenBtnEnabled(int state) {

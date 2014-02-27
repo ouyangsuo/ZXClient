@@ -30,14 +30,14 @@ import com.dfim.app.common.Constant;
 import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.AlbumDao;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.fragment.TabMusicFragment;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.PowerfulBigMan;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
 
 //notifyData，正在播放
 public class AlbumDetailFragment extends BaseFragment {

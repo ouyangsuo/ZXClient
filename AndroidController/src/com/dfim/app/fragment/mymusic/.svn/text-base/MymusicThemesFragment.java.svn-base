@@ -24,9 +24,9 @@ import com.dfim.app.common.BroadcastManager;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Pack;
 import com.dfim.app.fragment.TabMusicFragment;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Pack;
 import com.union.cellremote.service.impl.PackServiceImpl;
 
 public class MymusicThemesFragment extends BaseFragment {

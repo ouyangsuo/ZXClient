@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
 
 public class MusicListAdapter extends BaseAdapter {
 	private static String TAG = "MusicListAdapter";

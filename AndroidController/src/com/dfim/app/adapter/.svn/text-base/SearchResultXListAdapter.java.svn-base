@@ -14,19 +14,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dfim.app.common.Constant;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.store.SearchFragment;
+import com.dfim.app.http.HttpPoster;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.util.BitmapUtil;
 import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
-import com.union.cellremote.http.HttpPoster;
-//import com.union.cellremote.store.SearchFragment;
 
 public class SearchResultXListAdapter extends BaseExpandableListAdapter {
 

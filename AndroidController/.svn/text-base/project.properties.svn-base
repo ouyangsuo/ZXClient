@@ -14,4 +14,3 @@
 target=android-14
 android.library.reference.1=..\\AndroidControllerLibB
 android.library.reference.2=..\\AndroidControllerLibC
-android.library.reference.3=..\\StickyGridHeaders_Lib

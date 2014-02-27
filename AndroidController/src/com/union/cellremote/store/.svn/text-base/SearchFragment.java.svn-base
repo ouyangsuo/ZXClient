@@ -31,15 +31,15 @@ import com.dfim.app.activity.WebListenActivity;
 import com.dfim.app.common.Constant;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.MusicDao;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.BitmapUtil;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.SearchResultListAdapter;
 import com.union.cellremote.adapter.SearchResultXListAdapter;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
 
 public class SearchFragment extends Fragment {
 	// Looper.prepare

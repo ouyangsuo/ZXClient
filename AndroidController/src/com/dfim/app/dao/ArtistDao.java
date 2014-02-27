@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.dfim.app.db.DBHelper;
-import com.union.cellremote.domain.Artist;
+import com.dfim.app.domain.Artist;
 
 public class ArtistDao {
 

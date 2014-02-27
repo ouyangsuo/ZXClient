@@ -22,13 +22,13 @@ import com.dfim.app.common.Constant;
 import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.PackDao;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.Pack;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.PowerfulBigMan;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.MusicListAdapter;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.Pack;
 
 public class MymusicThemeDetailFragment extends BaseFragment {
 	private final String TAG = MymusicThemeDetailFragment.class.getSimpleName();

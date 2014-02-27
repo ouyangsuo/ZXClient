@@ -12,11 +12,11 @@ import android.widget.ImageButton;
 import com.dfim.app.bean.LocalAlbums;
 import com.dfim.app.bean.LocalThemes;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.util.ExitApplication;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
 
 /**
  * 应用程序UI工具包：封装UI相关的一些操作

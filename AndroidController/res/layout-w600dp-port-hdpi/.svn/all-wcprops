@@ -3,11 +3,11 @@ svn:wc:ra_dav:version-url
 V 163
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi
 END
-settings_fragment.xml
+themes_item_4_web.xml
 K 25
 svn:wc:ra_dav:version-url
 V 185
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/settings_fragment.xml
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/themes_item_4_web.xml
 END
 drop_list_hover1.xml
 K 25
@@ -15,11 +15,11 @@ svn:wc:ra_dav:version-url
 V 184
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/drop_list_hover1.xml
 END
-themes_item_4_web.xml
+settings_fragment.xml
 K 25
 svn:wc:ra_dav:version-url
 V 185
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/themes_item_4_web.xml
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/settings_fragment.xml
 END
 pull_down_head.xml
 K 25
@@ -31,13 +31,7 @@ singles_fragment.xml
 K 25
 svn:wc:ra_dav:version-url
 V 184
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/singles_fragment.xml
-END
-albums_item_for_cloud.xml
-K 25
-svn:wc:ra_dav:version-url
-V 189
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/albums_item_for_cloud.xml
+/svn/hdmusic/!svn/ver/12791/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/singles_fragment.xml
 END
 file_item.xml
 K 25
@@ -45,11 +39,11 @@ svn:wc:ra_dav:version-url
 V 177
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/file_item.xml
 END
-search_no_result.xml
+albums_item_for_cloud.xml
 K 25
 svn:wc:ra_dav:version-url
-V 184
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_no_result.xml
+V 189
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/albums_item_for_cloud.xml
 END
 purchased_product1.xml
 K 25
@@ -57,23 +51,29 @@ svn:wc:ra_dav:version-url
 V 186
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/purchased_product1.xml
 END
+search_no_result.xml
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_no_result.xml
+END
 common_dialog_content.xml
 K 25
 svn:wc:ra_dav:version-url
 V 189
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/common_dialog_content.xml
 END
-search_result.xml
-K 25
-svn:wc:ra_dav:version-url
-V 181
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_result.xml
-END
 nofinddevice_exption.xml
 K 25
 svn:wc:ra_dav:version-url
 V 188
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/nofinddevice_exption.xml
+END
+search_result.xml
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_result.xml
 END
 genres_fragment.xml
 K 25
@@ -213,17 +213,17 @@ svn:wc:ra_dav:version-url
 V 184
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/artists_fragment.xml
 END
-albums_group_item.xml
-K 25
-svn:wc:ra_dav:version-url
-V 185
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/albums_group_item.xml
-END
 musics_item_for_cloud.xml
 K 25
 svn:wc:ra_dav:version-url
 V 189
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/musics_item_for_cloud.xml
+END
+albums_group_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/albums_group_item.xml
 END
 sling_menu_item.xml
 K 25
@@ -243,17 +243,17 @@ svn:wc:ra_dav:version-url
 V 176
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/web_root.xml
 END
-search_artist_listview.xml
-K 25
-svn:wc:ra_dav:version-url
-V 190
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_artist_listview.xml
-END
 overlay.xml
 K 25
 svn:wc:ra_dav:version-url
 V 175
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/overlay.xml
+END
+search_artist_listview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_artist_listview.xml
 END
 main.xml
 K 25
@@ -261,17 +261,17 @@ svn:wc:ra_dav:version-url
 V 172
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/main.xml
 END
-search_device_anim.xml
-K 25
-svn:wc:ra_dav:version-url
-V 186
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_device_anim.xml
-END
 artist_detail.xml
 K 25
 svn:wc:ra_dav:version-url
 V 181
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/artist_detail.xml
+END
+search_device_anim.xml
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_device_anim.xml
 END
 usb.xml
 K 25
@@ -297,23 +297,23 @@ svn:wc:ra_dav:version-url
 V 174
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/musics.xml
 END
-artists_item.xml
-K 25
-svn:wc:ra_dav:version-url
-V 180
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/artists_item.xml
-END
-layout_tab_main.xml
-K 25
-svn:wc:ra_dav:version-url
-V 183
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/layout_tab_main.xml
-END
 mymusic_albums_item.xml
 K 25
 svn:wc:ra_dav:version-url
 V 187
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/mymusic_albums_item.xml
+END
+layout_tab_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/svn/hdmusic/!svn/ver/12791/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/layout_tab_main.xml
+END
+artists_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/artists_item.xml
 END
 themes_fragment.xml
 K 25
@@ -327,17 +327,23 @@ svn:wc:ra_dav:version-url
 V 188
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_all_xlistview.xml
 END
-column_detail.xml
+album_list_fragment.xml
 K 25
 svn:wc:ra_dav:version-url
-V 181
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/column_detail.xml
+V 187
+/svn/hdmusic/!svn/ver/12791/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/album_list_fragment.xml
 END
 thumb_player_progress.xml
 K 25
 svn:wc:ra_dav:version-url
 V 189
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/thumb_player_progress.xml
+END
+column_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/column_detail.xml
 END
 musics_item.xml
 K 25
@@ -369,17 +375,17 @@ svn:wc:ra_dav:version-url
 V 190
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/sticky_grid_gridheader.xml
 END
-search_music_listview.xml
-K 25
-svn:wc:ra_dav:version-url
-V 189
-/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_music_listview.xml
-END
 clear_cache_translucent.xml
 K 25
 svn:wc:ra_dav:version-url
 V 191
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/clear_cache_translucent.xml
+END
+search_music_listview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/search_music_listview.xml
 END
 common_root.xml
 K 25
@@ -458,4 +464,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 183
 /svn/hdmusic/!svn/ver/12776/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/web_musics_item.xml
+END
+mymusic_themes_fragment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/svn/hdmusic/!svn/ver/12791/trunk/%E4%BA%8C%E6%9C%9F/%E6%99%BA%E8%83%BD%E9%81%A5%E6%8E%A7%E5%99%A8/branches/guestDfim/AndroidController/res/layout-w600dp-port-hdpi/mymusic_themes_fragment.xml
 END

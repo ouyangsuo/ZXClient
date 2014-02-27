@@ -1,0 +1,47 @@
+package com.dfim.app.util;
+
+import java.util.HashMap;
+
+import com.dfim.app.common.Constant;
+import com.dfim.app.common.WatchDog;
+
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+
+public class MediaUtil {
+
+	private Context context;
+
+	public MediaUtil(Context context) {
+		this.context = context;
+	}
+
+	public void playAudio(String audioPath) {
+		audioPath=processUrl(audioPath);
+		final String url = audioPath;
+
+//		Intent intent = new Intent(Intent.ACTION_VIEW);
+//		intent.setDataAndType(Uri.parse(url), "audio/*");
+//		intent.setComponent(new ComponentName("com.android.music", "com.android.music.MediaPlaybackActivity"));
+//		context.startActivity(intent);
+
+		 Intent it = new Intent(Intent.ACTION_VIEW);
+		 it.setDataAndType(Uri.parse(url), "audio/*");
+		 context.startActivity(it);
+	}
+	
+	private String processUrl(String mediaurl) {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("terminaltype", 0);
+		paramMap.put("apikey", Constant.DEVICE_NUMBER);
+		paramMap.put("timestamp", System.currentTimeMillis());
+		paramMap.put("protocolver", "zx/1.1");		
+		String playurl = SignaturGenUtil.createurl(mediaurl, paramMap, Constant.DEVICE_KEY);
+		System.out.println("playurl="+playurl);
+		
+		return playurl;
+	}
+	
+}

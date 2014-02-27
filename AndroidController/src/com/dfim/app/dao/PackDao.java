@@ -10,8 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.dfim.app.db.DBHelper;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.Pack;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.Pack;
 
 public class PackDao {
    /**

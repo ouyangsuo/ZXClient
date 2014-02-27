@@ -30,6 +30,12 @@ import com.dfim.app.common.Constant;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.SearchHistoryDao;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.ColumnDetail;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.store.ArtistDetailFragment;
 import com.dfim.app.fragment.store.ArtistsFragment;
 import com.dfim.app.fragment.store.BotiquesFragment;
@@ -48,13 +54,6 @@ import com.dfim.app.http.HttpPoster;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.util.JsonUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.ColumnDetail;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
-//import com.stickygridheaders.test.ItemListFragment;
 
 //import com.union.cellremote.store.WebAlbumDetailFragment;getChildFragment,getFragmentManager,TabMusicFragment.current
 

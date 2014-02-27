@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -36,6 +37,8 @@ import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.AlbumDao;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.upnp.BoxControl;
 import com.dfim.app.upnp.Player;
@@ -43,8 +46,6 @@ import com.dfim.app.util.PowerfulBigMan;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.SinglesAdapter;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Music;
 
 @SuppressLint("HandlerLeak")
 public class SinglesFragment extends BaseFragment {
@@ -137,6 +138,8 @@ public class SinglesFragment extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = LayoutInflater.from(UpnpApp.context).inflate(R.layout.singles_fragment, null);
+		view.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+		
 		initComponents();
 		Log.i(TAG, "SinglesFragment缓存-onCreateView");
 		initArguments();

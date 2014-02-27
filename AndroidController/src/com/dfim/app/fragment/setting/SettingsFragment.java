@@ -21,9 +21,9 @@ import com.dfim.app.activity.MainActivity;
 import com.dfim.app.common.Constant;
 import com.dfim.app.common.MymusicManager;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
 
 public class SettingsFragment extends Fragment {
 	

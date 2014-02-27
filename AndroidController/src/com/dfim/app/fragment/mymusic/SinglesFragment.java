@@ -37,6 +37,8 @@ import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.AlbumDao;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.upnp.BoxControl;
 import com.dfim.app.upnp.Player;
@@ -44,8 +46,6 @@ import com.dfim.app.util.PowerfulBigMan;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.SinglesAdapter;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Music;
 
 @SuppressLint("HandlerLeak")
 public class SinglesFragment extends BaseFragment {

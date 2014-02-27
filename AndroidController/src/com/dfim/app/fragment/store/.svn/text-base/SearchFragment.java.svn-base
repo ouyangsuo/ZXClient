@@ -38,17 +38,17 @@ import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.MusicDao;
 import com.dfim.app.dao.SearchHistoryDao;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.TabWebFragment;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
+import com.dfim.app.http.HttpPoster;
 import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.ListviewDataPositionRecorder;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
-import com.union.cellremote.http.HttpPoster;
 
 public class SearchFragment extends Fragment implements TitlebarUpdateFragment,SelfReloader {
 	// Looper.prepare
@@ -409,6 +409,7 @@ public class SearchFragment extends Fragment implements TitlebarUpdateFragment,S
 	public void onResume() {
 		Log.e("BUG913", TAG+" onResume");
 		WatchDog.tabWebFragment.useTitleStyle(TabWebFragment.TITLE_STYLE_SEARCH);
+		WatchDog.tabWebFragment.etSearch.requestFocus();
 
 		/* 由详情页返回时拿取原来的数据和位置 */
 		if (WatchDog.flagInSearchResult) {

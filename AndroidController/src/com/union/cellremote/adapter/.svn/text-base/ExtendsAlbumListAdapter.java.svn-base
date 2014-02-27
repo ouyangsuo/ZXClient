@@ -2,12 +2,12 @@ package com.union.cellremote.adapter;
 
 import java.util.List;
 
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
 import com.dfim.app.upnp.BoxControl;
 import com.dfim.app.util.PowerfulBigMan;
 import com.dfim.app.util.SingletonUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
 import com.union.cellremote.store.PurchasedFragment;
 
 import android.content.Context;

@@ -2,7 +2,7 @@ package com.union.cellremote.service;
 
 import java.util.List;
 
-import com.union.cellremote.domain.Album;
+import com.dfim.app.domain.Album;
 
 public interface IAlbumService {
 

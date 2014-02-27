@@ -1,6 +1,6 @@
 package com.union.cellremote.service;
 
-import com.union.cellremote.domain.AlbumDetail;
+import com.dfim.app.domain.AlbumDetail;
 
 public interface IAlbumDetailService {
 

@@ -19,6 +19,11 @@ import android.os.IBinder;
 
 import com.dfim.app.activity.LoginActivity;
 import com.dfim.app.activity.WebListenActivity;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Column;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.MainFragment;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.fragment.TabWebFragment;
@@ -26,23 +31,19 @@ import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.models.StateModel;
 import com.dfim.app.util.ListviewDataPositionRecorder;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Column;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
 
 public class WatchDog {
 
 	// 用户名和密码
-	public static String currentUserId = "0";// WatchDog.currentUserId=,WatchDog.currentUserId =
-	public static String currentPassword = "";
+	public static String currentUserId = "244987";// WatchDog.currentUserId=,WatchDog.currentUserId =
+	public static String currentPassword = "123456";
 		
 	public static boolean getDataFinished = false;
 	public static String sd = "0";
 	public static String musicIndex = "";
 	public static String currentDevice = "";
-	public static String currentHost = "http://192.168.1.230/";// 后台服务器地址
+//	public static String currentHost = "http://192.168.1.230/";// 后台服务器地址
+	public static String currentHost = "http://music1.zhenxian.fm/";// 后台服务器地址
 //	public static String currentHostTemp = "http://192.168.1.120/";// 后台服务器地址测试版
 	public static String macAddress = "";// 物理地址
 	public static int buySubState = 0;// 用户表示第一次订阅主动请求盒子

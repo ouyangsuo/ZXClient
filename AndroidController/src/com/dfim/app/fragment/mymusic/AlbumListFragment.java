@@ -25,13 +25,13 @@ import com.dfim.app.bean.LocalAlbums;
 import com.dfim.app.common.BroadcastManager;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
 import com.dfim.app.fragment.TabMusicFragment;
 import com.dfim.app.util.LoadImageAysnc;
 import com.dfim.app.util.SingletonUtil;
 import com.dfim.app.widget.ScrollOverListView;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
 import com.union.cellremote.service.impl.AlbumDetailServiceImpl;
 
 public class AlbumListFragment extends BaseFragment {

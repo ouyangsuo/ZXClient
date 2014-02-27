@@ -26,16 +26,16 @@ ouyangsuo
 
 c8230be9-3edb-3643-80e8-5cec95bb32d7
 
-settings_fragment.xml
+themes_item_4_web.xml
 file
 
 
 
 
-2014-02-26T01:58:56.905027Z
-cd266f96c040aa9d1c19f882488606b4
-2014-01-26T07:45:59.886250Z
-12598
+2014-02-26T01:58:56.889427Z
+a4d034952dc361853dd31bda4419f1a7
+2013-10-19T04:48:13.712500Z
+11365
 ouyangsuo
 
 
@@ -58,7 +58,7 @@ ouyangsuo
 
 
 
-4794
+2275
 
 drop_list_hover1.xml
 file
@@ -94,16 +94,16 @@ xuzuyi
 
 771
 
-themes_item_4_web.xml
+settings_fragment.xml
 file
 
 
 
 
-2014-02-26T01:58:56.889427Z
-a4d034952dc361853dd31bda4419f1a7
-2013-10-19T04:48:13.712500Z
-11365
+2014-02-26T01:58:56.905027Z
+cd266f96c040aa9d1c19f882488606b4
+2014-01-26T07:45:59.886250Z
+12598
 ouyangsuo
 
 
@@ -126,7 +126,7 @@ ouyangsuo
 
 
 
-2275
+4794
 
 pull_down_head.xml
 file
@@ -164,48 +164,14 @@ fangyishuai
 
 singles_fragment.xml
 file
+12791
 
 
 
-
-2014-02-26T01:58:56.905027Z
-fc1022565e18a90b506ec217a204465b
-2014-01-15T07:47:27.328250Z
-12432
-fangyishuai
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7615
-
-albums_item_for_cloud.xml
-file
-
-
-
-
-2014-02-26T01:58:56.905027Z
-5f5f10a5691440a79304b03f617dbbbb
-2014-01-07T08:42:04.106625Z
-12318
+2014-02-26T05:51:20.492891Z
+7b13aea9b06bcc5b1b2474ba3ee8602a
+2014-02-27T06:47:07.359375Z
+12791
 ouyangsuo
 
 
@@ -228,7 +194,7 @@ ouyangsuo
 
 
 
-2722
+7826
 
 file_item.xml
 file
@@ -264,16 +230,16 @@ fangyishuai
 
 2874
 
-search_no_result.xml
+albums_item_for_cloud.xml
 file
 
 
 
 
 2014-02-26T01:58:56.905027Z
-8a7ffea7fb6ac4c842a9a11417e23484
-2013-12-11T08:27:25.911500Z
-11891
+5f5f10a5691440a79304b03f617dbbbb
+2014-01-07T08:42:04.106625Z
+12318
 ouyangsuo
 
 
@@ -296,7 +262,7 @@ ouyangsuo
 
 
 
-885
+2722
 
 purchased_product1.xml
 file
@@ -332,6 +298,40 @@ ouyangsuo
 
 4595
 
+search_no_result.xml
+file
+
+
+
+
+2014-02-26T01:58:56.905027Z
+8a7ffea7fb6ac4c842a9a11417e23484
+2013-12-11T08:27:25.911500Z
+11891
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+885
+
 common_dialog_content.xml
 file
 
@@ -366,40 +366,6 @@ linjiawen
 
 804
 
-search_result.xml
-file
-
-
-
-
-2014-02-26T01:58:56.905027Z
-7291ff10cb881cee2c199342f38939fb
-2014-01-11T10:30:53.250125Z
-12368
-ouyangsuo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8206
-
 nofinddevice_exption.xml
 file
 
@@ -433,6 +399,40 @@ ouyangsuo
 
 
 1046
+
+search_result.xml
+file
+
+
+
+
+2014-02-26T01:58:56.905027Z
+7291ff10cb881cee2c199342f38939fb
+2014-01-11T10:30:53.250125Z
+12368
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8206
 
 genres_fragment.xml
 file
@@ -1216,40 +1216,6 @@ ouyangsuo
 
 4294
 
-albums_group_item.xml
-file
-
-
-
-
-2014-02-26T01:58:56.951827Z
-db0088518a042634dfa9e148877c1d47
-2013-12-14T04:54:54.859375Z
-11938
-ouyangsuo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-699
-
 musics_item_for_cloud.xml
 file
 
@@ -1283,6 +1249,40 @@ ouyangsuo
 
 
 2992
+
+albums_group_item.xml
+file
+
+
+
+
+2014-02-26T01:58:56.951827Z
+db0088518a042634dfa9e148877c1d47
+2013-12-14T04:54:54.859375Z
+11938
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+699
 
 sling_menu_item.xml
 file
@@ -1386,40 +1386,6 @@ ouyangsuo
 
 8594
 
-search_artist_listview.xml
-file
-
-
-
-
-2014-02-26T01:58:56.951827Z
-19cf22ce264d939fc74b6db51f8ed639
-2013-12-11T08:27:25.911500Z
-11891
-ouyangsuo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-341
-
 overlay.xml
 file
 
@@ -1453,6 +1419,40 @@ fangyishuai
 
 
 386
+
+search_artist_listview.xml
+file
+
+
+
+
+2014-02-26T01:58:56.951827Z
+19cf22ce264d939fc74b6db51f8ed639
+2013-12-11T08:27:25.911500Z
+11891
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+341
 
 main.xml
 file
@@ -1488,40 +1488,6 @@ ouyangsuo
 
 1059
 
-search_device_anim.xml
-file
-
-
-
-
-2014-02-26T01:58:56.967427Z
-50e79c1188962eea3a4baae7629ad671
-2013-10-08T06:58:15.103000Z
-11270
-ouyangsuo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1081
-
 artist_detail.xml
 file
 
@@ -1555,6 +1521,40 @@ ouyangsuo
 
 
 9663
+
+search_device_anim.xml
+file
+
+
+
+
+2014-02-26T01:58:56.967427Z
+50e79c1188962eea3a4baae7629ad671
+2013-10-08T06:58:15.103000Z
+11270
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1081
 
 usb.xml
 file
@@ -1692,74 +1692,6 @@ ouyangsuo
 
 6250
 
-artists_item.xml
-file
-
-
-
-
-2014-02-26T01:58:56.967427Z
-9ce252ed0a4a028a52ddc46ed320ad4f
-2014-01-07T08:42:04.106625Z
-12318
-ouyangsuo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2261
-
-layout_tab_main.xml
-file
-
-
-
-
-2014-02-26T01:58:56.967427Z
-fb2adbac1310c66076790ad73daac6dd
-2014-01-13T09:37:11.437625Z
-12392
-ouyangsuo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7092
-
 mymusic_albums_item.xml
 file
 
@@ -1793,6 +1725,74 @@ fangyishuai
 
 
 3379
+
+layout_tab_main.xml
+file
+12791
+
+
+
+2014-02-26T08:20:31.438873Z
+d0eb5ceddcc99d8c7420eb9e4779d72a
+2014-02-27T06:47:07.359375Z
+12791
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7170
+
+artists_item.xml
+file
+
+
+
+
+2014-02-26T01:58:56.967427Z
+9ce252ed0a4a028a52ddc46ed320ad4f
+2014-01-07T08:42:04.106625Z
+12318
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2261
 
 themes_fragment.xml
 file
@@ -1862,16 +1862,16 @@ ouyangsuo
 
 344
 
-column_detail.xml
+album_list_fragment.xml
 file
+12791
 
 
 
-
-2014-02-26T01:58:56.983027Z
-d30ddf2a3de2c8a54fbbf8039350a587
-2014-02-17T09:35:28.078125Z
-12706
+2014-02-26T05:55:40.634218Z
+2bd403949477fdd2166320cebfb23a4e
+2014-02-27T06:47:07.359375Z
+12791
 ouyangsuo
 
 
@@ -1894,7 +1894,7 @@ ouyangsuo
 
 
 
-4241
+1826
 
 thumb_player_progress.xml
 file
@@ -1929,6 +1929,40 @@ ouyangsuo
 
 
 224
+
+column_detail.xml
+file
+
+
+
+
+2014-02-26T01:58:56.983027Z
+d30ddf2a3de2c8a54fbbf8039350a587
+2014-02-17T09:35:28.078125Z
+12706
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4241
 
 musics_item.xml
 file
@@ -2609,4 +2643,38 @@ ouyangsuo
 
 
 3015
+
+mymusic_themes_fragment.xml
+file
+12791
+
+
+
+2014-02-26T05:53:41.475045Z
+3f2eab729d08492b14e2adfb4ffcc4e3
+2014-02-27T06:47:07.359375Z
+12791
+ouyangsuo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1813
 

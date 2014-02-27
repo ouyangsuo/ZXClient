@@ -2,7 +2,7 @@ package com.union.cellremote.service;
 
 import java.util.List;
 
-import com.union.cellremote.domain.Music;
+import com.dfim.app.domain.Music;
 
 public interface IMusicService {
 

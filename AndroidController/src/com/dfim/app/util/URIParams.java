@@ -10,9 +10,9 @@ import android.util.Log;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.usb.ExternalDeviceFragment;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
 
 public class URIParams {
 

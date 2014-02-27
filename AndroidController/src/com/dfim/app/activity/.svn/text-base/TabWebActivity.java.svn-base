@@ -31,18 +31,18 @@ import android.widget.TextView;
 
 import com.dfim.app.common.Constant;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.ColumnDetail;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.PlayerFragment;
+import com.dfim.app.http.HttpPoster;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.util.ExitApplication;
 import com.dfim.app.util.JsonUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.ColumnDetail;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
-import com.union.cellremote.http.HttpPoster;
 import com.union.cellremote.store.ArtistDetailFragment;
 import com.union.cellremote.store.BotiquesFragment;
 import com.union.cellremote.store.ColumnDetailFragment;
@@ -52,7 +52,7 @@ import com.union.cellremote.store.WebPackDetailFragment;
 
 public class TabWebActivity extends Activity {
 
-	// new Thread,bitmap
+	// new Thread,bitmap,etSearch
 	private final String TAG = "TabWebActivity: ";
 	public final static int TITLE_STYLE_NORMAL = 1;
 	public final static int TITLE_STYLE_SEARCH = 2;

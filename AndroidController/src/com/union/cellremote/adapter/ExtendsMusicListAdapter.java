@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
 import com.dfim.app.upnp.BoxControl;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
 
 public class ExtendsMusicListAdapter extends BaseAdapter {
 

@@ -28,15 +28,7 @@ c8230be9-3edb-3643-80e8-5cec95bb32d7
 
 HttpClientProducer.java
 file
-
-
-
-delete
-2014-02-26T01:58:54.986223Z
-f383622ea169fb6d10cba771429f872c
-2014-01-08T09:34:27.012875Z
-12338
-ouyangsuo
+12791
 
 
 
@@ -56,21 +48,11 @@ ouyangsuo
 
 
 
-
-
-581
+deleted
 
 HttpGetter.java
 file
-
-
-
-
-2014-02-26T01:58:54.986223Z
-f379067f803d552bdcf4ad96fea9341e
-2014-02-21T09:14:52.156250Z
-12753
-ouyangsuo
+12791
 
 
 
@@ -90,21 +72,11 @@ ouyangsuo
 
 
 
-
-
-11925
+deleted
 
 HttpPoster.java
 file
-
-
-
-delete
-2014-02-26T01:58:54.986223Z
-2a8c7789abef7d827748f6affe126412
-2014-02-21T09:14:52.156250Z
-12753
-ouyangsuo
+12791
 
 
 
@@ -124,7 +96,5 @@ ouyangsuo
 
 
 
-
-
-12472
+deleted
 

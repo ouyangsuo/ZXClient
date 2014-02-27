@@ -17,13 +17,13 @@ import android.widget.TextView;
 
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
 import com.dfim.app.fragment.store.ColumnDetailFragment;
 import com.dfim.app.util.BitmapUtil;
 import com.dfim.app.util.PowerfulBigMan;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
 
 public class CommonGridViewAdapter extends BaseAdapter {
 

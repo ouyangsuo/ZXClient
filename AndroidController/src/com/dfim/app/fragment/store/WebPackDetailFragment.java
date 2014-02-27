@@ -44,7 +44,10 @@ import com.dfim.app.common.Constant;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.PackDetail;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
+import com.dfim.app.http.HttpGetter;
 import com.dfim.app.http.HttpPoster;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.interfaces.SelfReloader;
@@ -57,9 +60,6 @@ import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
 import com.dfim.app.widget.CustomToast;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.PackDetail;
-import com.union.cellremote.http.HttpGetter;
 
 //notifyData,连接中断，确定，WebListenActivity
 public class WebPackDetailFragment extends Fragment implements NobleMan, TitlebarUpdateFragment,SelfReloader {

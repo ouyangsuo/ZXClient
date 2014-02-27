@@ -52,6 +52,7 @@ import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.usb.ExternalDeviceFragment;
 import com.dfim.app.upnp.Cacher;
 import com.dfim.app.upnp.Player;
@@ -62,7 +63,6 @@ import com.dfim.app.util.PowerfulBigMan;
 import com.dfim.app.util.URIParams;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.MusicListAdapter;
-import com.union.cellremote.domain.Music;
 
 public class PlayerFragment extends Fragment {
 
@@ -125,9 +125,7 @@ public class PlayerFragment extends Fragment {
 	private boolean isCaching = false;
 	private boolean shouldSayHello2Death = false;// 为真时叫停所有循环
 	private boolean hasEverPaused = false;// 屏幕是否曾休眠
-	// private boolean isLastClickFromBtnPrev = false;
 	private int countPrevClick = 0;
-	// private boolean transitioningCancel = false;
 	private Thread progressThread;
 	// 正在播放列表
 	private ArrayList<Music> playlist;
@@ -176,14 +174,6 @@ public class PlayerFragment extends Fragment {
 				if (PowerfulBigMan.testClickInterval() == false) {
 					return;
 				}
-				/*if (countPrevClick == 1) {
-					playThisAgain();
-					countPrevClick = 0;
-				} else if (countPrevClick > 1) {
-					WatchDog.latestOperation = "prev";
-					playPrev();
-					countPrevClick = 0;
-				}*/
 				playPrev();
 				
 				break;
@@ -379,10 +369,7 @@ public class PlayerFragment extends Fragment {
 				
 				initPic();				
 			}
-
-//			btnNext.setEnabled(true);
-//			btnPrev.setEnabled(true);
-			// getPositionInfo();
+			
 			checkIfCurrentListEmpty();
 
 			if (progressRunnable == null) {
@@ -398,17 +385,7 @@ public class PlayerFragment extends Fragment {
 		BitmapUtil.loadImageAysnc.loadImageForUsbMusic(imageKey, imageUrl, ivPicPlaying);
 	}
 	
-	protected void checkIfCurrentListEmpty() {
-		Log.e("BUG901", "checkIfCurrentPlayingEmpty()");
-		//播放列表不存在或者为空时屏蔽控制按钮
-		
-//		if("试听曲目".equals(WatchDog.currentPlayingName) || "未知曲目".equals(WatchDog.currentPlayingName)){
-//			setBtnsEnabled(false);
-//		}else{
-//			setBtnsEnabled(true);
-		
-//		}
-		
+	protected void checkIfCurrentListEmpty() {		
 		if (WatchDog.currentListType==0 || WatchDog.currentListType==-1 || WatchDog.currentList == null || WatchDog.currentList.size() == 0) {
 			setBtnsEnabled(false);
 			clearProgress();
@@ -465,11 +442,6 @@ public class PlayerFragment extends Fragment {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			String msg = intent.getStringExtra("msg");
-//			if ("".equals(msg) || msg == null) {
-//				System.out.println(">>>>>>>>>>>>>>>>>Empty Error Msg<<<<<<<<<<<<<<<<<");
-//			} else {
-//				CustomToast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-//			}
 			Log.e(TAG, msg);
 		}
 	};
@@ -479,24 +451,9 @@ public class PlayerFragment extends Fragment {
 		public void onReceive(Context context, Intent intent) {
 			if (adapter != null) {
 				adapter.notifyDataSetChanged();
-				// if (sx != -1) {
-				// lvPlaylist.setSelectionFromTop(sx, scrollTop);
-				// }
 			}
 		}
 	};
-
-//	private BroadcastReceiver babyNotMineReceiver = new BroadcastReceiver() {
-//		@Override
-//		public void onReceive(Context context, Intent intent) {
-//			Log.e("BUG896", TAG+"babyNotMineReceiver onReceive");
-////			UpnpApp.mainHandler.showAlert(R.string.device_occupated);
-//			
-//			Intent intent2 = new Intent(getActivity(), LoginActivity.class);
-//			intent2.putExtra("from", "babyNotMineReceiver");
-//			startActivity(intent2);
-//		}
-//	};
 
 	private BroadcastReceiver mediaOutOfServiceReceiver = new BroadcastReceiver() {
 		@Override
@@ -512,30 +469,13 @@ public class PlayerFragment extends Fragment {
 	}
 
 	private void mosExit() {
-//		finish();
-		//屏蔽提示“网络试听同步功能将在稍后开放”
-//		CustomToast.makeText(getActivity(), WatchDog.mediaOutOfServiceReson, Toast.LENGTH_SHORT).show();
+
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		Log.e("BUG901", "PlayerFragment onCreateView()");
-		
-		view = inflater.inflate(R.layout.player, null);
-//		initComponents();
-//		initArguments();
-//		initListeners();
-//		registerReceivers();
-//
-//		getPlayMode();
-//		getVolumn();
-//
-//		if (isCaching == false) {
-//			getMediaInfo();
-//			getTransportInfo();
-//		}
-		
+		super.onCreate(savedInstanceState);		
+		view = inflater.inflate(R.layout.player, null);	
 		return view;
 	}
 
@@ -1004,8 +944,6 @@ public class PlayerFragment extends Fragment {
 	}
 
 	private void getPositionInfo() {
-		// Player p=new Player();
-		// p.getPositionInfo();
 		UpnpApp.upnpService.getControlPoint().execute(new GetPositionInfo(new UnsignedIntegerFourBytes(0), UpnpApp.avTransportService) {
 
 			@Override
@@ -1233,39 +1171,11 @@ public class PlayerFragment extends Fragment {
 	}
 
 	private void setStateTransitioning() {
-		// if (transitioningCancel == true) {
-		// return;
-		// }
-
 		System.out.println("setStateTransitioning");
 		initPic();
 
 		isCaching = true;
 		currentState = TRANSITIONING;
-
-		// // 判断latestOperation是否为next或prev
-		// if (WatchDog.latestOperation.equals("next") ||
-		// WatchDog.latestOperation.equals("prev")) {
-		//
-		// // 开始暂停按钮不可用，替换为下载动画
-		// btnPlayPause.setEnabled(false);
-		// setBtnCachingAnim();
-		//
-		// // 播放进度消失
-		// flSbProgress.setVisibility(View.GONE);
-		// tvCurrentTime.setVisibility(View.GONE);
-		// tvTotalTime.setVisibility(View.GONE);
-		//
-		// // // 题头显示为曲目缓存中+请稍候
-		// // tvMusicName.setText("曲目缓存中");
-		// // tvArtistName.setText("请稍候");
-		//
-		// // 图像显示加载动画
-		// // setPicCachingAnim();
-		// initPic();
-		//
-		// }
-		// else {
 
 		// 当缓存来自用户在列表中点击未缓存歌曲时，显示缓存进度和媒体和媒体信息
 		long id = -1;
@@ -1288,8 +1198,6 @@ public class PlayerFragment extends Fragment {
 				getCacheProgress(id);
 			}
 		}
-
-		// }
 	}
 
 	private void setPicCachingAnim() {

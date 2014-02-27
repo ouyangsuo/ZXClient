@@ -7,8 +7,8 @@ import android.util.Log;
 
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.Pack;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.Pack;
 import com.union.cellremote.service.impl.PackServiceImpl;
 
 public class LocalThemes extends ArrayList<LocalTheme> {

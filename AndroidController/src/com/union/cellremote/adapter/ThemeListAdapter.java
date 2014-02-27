@@ -17,10 +17,10 @@ import com.dfim.app.bean.LocalTheme;
 import com.dfim.app.bean.LocalThemes;
 import com.dfim.app.common.Constant;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Pack;
 import com.dfim.app.util.BitmapUtil;
 import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Pack;
 
 public class ThemeListAdapter extends BaseAdapter {
 

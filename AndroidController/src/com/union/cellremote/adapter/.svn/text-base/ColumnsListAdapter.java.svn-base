@@ -20,13 +20,13 @@ import android.widget.TextView;
 import com.dfim.app.activity.TabWebActivity;
 import com.dfim.app.common.Constant;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Column;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.util.BitmapUtil;
 import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
 import com.dfim.app.util.PowerfulBigMan;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Column;
 
 public class ColumnsListAdapter extends BaseExpandableListAdapter {
 

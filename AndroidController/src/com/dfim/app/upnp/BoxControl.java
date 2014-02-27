@@ -32,17 +32,17 @@ import com.dfim.app.dao.PackDao;
 import com.dfim.app.dao.ProductArtistDao;
 import com.dfim.app.data.VirtualData;
 import com.dfim.app.db.DBHelper;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.Pack;
+import com.dfim.app.domain.ProductArtist;
 import com.dfim.app.thread.SyncAsyncTask;
 import com.dfim.app.util.JsonUtil;
 import com.dfim.app.util.LoadImageAysnc;
 import com.dfim.app.util.SingletonUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.Pack;
-import com.union.cellremote.domain.ProductArtist;
 
 public class BoxControl {
 	// 000,new ActionInvocation(

@@ -13,15 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dfim.app.common.Constant;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Music;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.util.BitmapUtil;
 import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Music;
 import com.union.cellremote.store.SearchFragment;
 
 public class SearchResultListAdapter extends BaseAdapter {

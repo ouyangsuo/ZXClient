@@ -3,7 +3,7 @@ package com.union.cellremote.service.impl;
 import java.util.List;
 
 import com.dfim.app.dao.MusicDao;
-import com.union.cellremote.domain.Music;
+import com.dfim.app.domain.Music;
 import com.union.cellremote.service.IMusicService;
 
 public class MusicServiceImpl implements IMusicService {

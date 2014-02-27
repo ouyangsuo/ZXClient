@@ -10,8 +10,8 @@ import android.database.Cursor;
 import android.util.Log;
 
 import com.dfim.app.db.DBHelper;
+import com.dfim.app.domain.Music;
 import com.dfim.app.util.UniqueId;
-import com.union.cellremote.domain.Music;
 
 public class MusicDao {
 	/**

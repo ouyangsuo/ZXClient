@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.dfim.app.bean.LocalAlbum;
 import com.dfim.app.bean.LocalCache;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
 import com.dfim.app.util.SingletonUtil;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
@@ -24,8 +26,6 @@ import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
 
 //Toast
 public class AlbumListAdapter extends BaseAdapter {

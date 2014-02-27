@@ -5,7 +5,7 @@ import java.util.List;
 
 import android.util.Log;
 
-import com.union.cellremote.domain.Music;
+import com.dfim.app.domain.Music;
 
 public class LocalSingles extends ArrayList<LocalSingle> {
 

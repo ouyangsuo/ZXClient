@@ -2,7 +2,7 @@ package com.dfim.app.bean;
 
 import java.util.List;
 
-import com.union.cellremote.domain.Pack;
+import com.dfim.app.domain.Pack;
 
 /**
  * 【我的音乐-主题】模型

@@ -44,9 +44,11 @@ import com.dfim.app.common.Constant;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
-import com.dfim.app.dao.PackDao;
-import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.PackDetail;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
+import com.dfim.app.http.HttpGetter;
+import com.dfim.app.http.HttpPoster;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.thread.Pools;
@@ -58,10 +60,6 @@ import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
 import com.dfim.app.widget.CustomToast;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.PackDetail;
-import com.union.cellremote.http.HttpGetter;
-import com.union.cellremote.http.HttpPoster;
 
 //notifyData,连接中断，确定，WebListenActivity
 public class WebPackDetailFragment extends Fragment implements NobleMan, TitlebarUpdateFragment,SelfReloader {
@@ -143,14 +141,14 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 				break;
 
 			case MSG_PURCHASE_SUCCESS:
-				// notifyBoxToSyn();// 通知盒子更新数据
-				WatchDog.hasNewBought = true;// 本地数据更新标记
-				packBought = true;
-				setPackLocationStateInTransit();//在数据库中标记该主题的位置状态为“在途（3=购买中）”
-
-				btnBuy.setText(getResources().getString(R.string.willCache));
-				btnBuy.setEnabled(false);
-				adapter.notifyDataSetChanged();
+//				// notifyBoxToSyn();// 通知盒子更新数据
+//				WatchDog.hasNewBought = true;// 本地数据更新标记
+//				packBought = true;
+//				setPackLocationStateInTransit();//在数据库中标记该主题的位置状态为“在途（3=购买中）”
+//
+//				btnBuy.setText(getResources().getString(R.string.willCache));
+//				btnBuy.setEnabled(false);
+//				adapter.notifyDataSetChanged();
 				break;
 
 			case MSG_PURCHASE_SUCCESS_MUSIC:
@@ -193,7 +191,7 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 	private BroadcastReceiver webDetailPageUpdateUIReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			initBtnBuy();
+//			initBtnBuy();
 			adapter.notifyDataSetChanged();
 		}
 	};
@@ -425,13 +423,13 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 		btnBuy.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (packDetail != null) {
-					getBalanceNLanunchBuy();
-				} else {
-//					CustomToast.makeText(context, "未能获取专辑信息", Toast.LENGTH_SHORT).show();
-					UpnpApp.mainHandler.showAlert(R.string.album_data_error);
-					Log.e(TAG, UpnpApp.mainHandler.getString(R.string.album_data_error));
-				}
+//				if (packDetail != null) {
+//					getBalanceNLanunchBuy();
+//				} else {
+////					CustomToast.makeText(context, "未能获取专辑信息", Toast.LENGTH_SHORT).show();
+//					UpnpApp.mainHandler.showAlert(R.string.album_data_error);
+//					Log.e(TAG, UpnpApp.mainHandler.getString(R.string.album_data_error));
+//				}
 			}
 		});
 
@@ -468,13 +466,13 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 	}
 
 	private void initView() {
-		if (new PackDao().checkPackId(packId)) {
-			packBought = true;
-		} else {
-			packBought = false;
-		}
+//		if (new PackDao().checkPackId(packId)) {
+//			packBought = true;
+//		} else {
+//			packBought = false;
+//		}
 
-		initBtnBuy();
+//		initBtnBuy();
 		initListView();
 	}
 
@@ -530,65 +528,65 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 				holder.tvArtist.setText(packMusics.get(position).getArtistName());
 
 				// 整张专辑为缓存中，或缓存中的单曲包含该单曲时，显示缓存中
-				if (WatchDog.purchasingPacks.containsKey(packId) || WatchDog.purchasingMusics.containsKey(musicId)) {
-					btnBuyText = getResources().getString(R.string.willCache);
-					btnBuyEnabled = false;
-					holder.btnBuy.setText(btnBuyText);
-					holder.btnBuy.setEnabled(btnBuyEnabled);
-				}
+//				if (WatchDog.purchasingPacks.containsKey(packId) || WatchDog.purchasingMusics.containsKey(musicId)) {
+//					btnBuyText = getResources().getString(R.string.willCache);
+//					btnBuyEnabled = false;
+//					holder.btnBuy.setText(btnBuyText);
+//					holder.btnBuy.setEnabled(btnBuyEnabled);
+//				}
 
-				// 整张主题为已购买时分类讨论
-				else if (packBought == true
-				// || "已购买".equals(packMusics.get(position).getPurchaseState())
-				) {
-					if (VirtualData.musics.contains(packMusics.get(position))) {
-						btnBuyText = "在本地";
-					} else {
-						btnBuyText = "在云端";
-					}
+//				// 整张主题为已购买时分类讨论
+//				else if (packBought == true
+//				// || "已购买".equals(packMusics.get(position).getPurchaseState())
+//				) {
+//					if (VirtualData.musics.contains(packMusics.get(position))) {
+//						btnBuyText = "在本地";
+//					} else {
+//						btnBuyText = "在云端";
+//					}
+//
+//					btnBuyEnabled = false;
+//					// packMusics.get(position).setPurchaseState("已购买");
+//				}
 
-					btnBuyEnabled = false;
-					// packMusics.get(position).setPurchaseState("已购买");
-				}
+//				// 本地音乐中包含该单曲时显示为在本地
+//				else if (VirtualData.musics!=null && VirtualData.musics.contains(packMusics.get(position))) { //
+//					packMusics.get(position).setPurchaseState("已购买");
+//					btnBuyText = "在本地";
+//					btnBuyEnabled = false;
+//				}
 
-				// 本地音乐中包含该单曲时显示为在本地
-				else if (VirtualData.musics!=null && VirtualData.musics.contains(packMusics.get(position))) { //
-					packMusics.get(position).setPurchaseState("已购买");
-					btnBuyText = "在本地";
-					btnBuyEnabled = false;
-				}
+//				// json数据中的状态值为45时显示为不单卖
+//				else if ("45".equals(packMusics.get(position).getPurchaseState())) {
+//					btnBuyText = "不单卖";
+//					btnBuyEnabled = false;
+//
+//					holder.btnBuy.setText(btnBuyText);
+//					holder.btnBuy.setEnabled(false);
+//				}
 
-				// json数据中的状态值为45时显示为不单卖
-				else if ("45".equals(packMusics.get(position).getPurchaseState())) {
-					btnBuyText = "不单卖";
-					btnBuyEnabled = false;
+//				// 即将上架
+//				else if ("10".equals(packMusics.get(position).getPurchaseState()) || "30".equals(packMusics.get(position).getPurchaseState()) || "35".equals(packMusics.get(position).getPurchaseState()) || "40".equals(packMusics.get(position).getPurchaseState())) {
+//					btnBuyText = "即将上架";
+//					holder.btnBuy.setText(btnBuyText);
+//					holder.btnBuy.setEnabled(false);
+//					btnBuyEnabled = false;
+//					// li.get(childPosition).setPurchaseState("不单卖");
+//				}
 
-					holder.btnBuy.setText(btnBuyText);
-					holder.btnBuy.setEnabled(false);
-				}
+//				// 其它状态显示价格
+//				else {
+//					if (!packMusics.get(position).getPrice().equals("0.0")) {
+//						btnBuyText = "￥ " + packMusics.get(position).getPrice() + "0";
+//					} else {
+//						btnBuyText = getResources().getString(R.string.freeBtnText);
+//					}
+//					// packMusics.get(position).setPurchaseState("未购买");
+//					btnBuyEnabled = true;
+//				}
 
-				// 即将上架
-				else if ("10".equals(packMusics.get(position).getPurchaseState()) || "30".equals(packMusics.get(position).getPurchaseState()) || "35".equals(packMusics.get(position).getPurchaseState()) || "40".equals(packMusics.get(position).getPurchaseState())) {
-					btnBuyText = "即将上架";
-					holder.btnBuy.setText(btnBuyText);
-					holder.btnBuy.setEnabled(false);
-					btnBuyEnabled = false;
-					// li.get(childPosition).setPurchaseState("不单卖");
-				}
-
-				// 其它状态显示价格
-				else {
-					if (!packMusics.get(position).getPrice().equals("0.0")) {
-						btnBuyText = "￥ " + packMusics.get(position).getPrice() + "0";
-					} else {
-						btnBuyText = getResources().getString(R.string.freeBtnText);
-					}
-					// packMusics.get(position).setPurchaseState("未购买");
-					btnBuyEnabled = true;
-				}
-
-				holder.btnBuy.setText(btnBuyText);
-				holder.btnBuy.setEnabled(btnBuyEnabled);
+//				holder.btnBuy.setText(btnBuyText);
+//				holder.btnBuy.setEnabled(btnBuyEnabled);
 				final String btnBuyText2 = btnBuyText;
 				final boolean btnBuyEnabled2 = btnBuyEnabled;
 
@@ -596,8 +594,8 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 				holder.llListen.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						itemPositionInListen = position;
-						launchWebListen(position, btnBuyText2, btnBuyEnabled2);
+//						itemPositionInListen = position;
+//						launchWebListen(position, btnBuyText2, btnBuyEnabled2);
 					}
 				});
 
@@ -605,7 +603,7 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 				holder.btnBuy.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						getBalanceNLanunchBuy(position);
+//						getBalanceNLanunchBuy(position);
 					}
 				});
 
@@ -617,47 +615,47 @@ public class WebPackDetailFragment extends Fragment implements NobleMan, Titleba
 		lvMusics.setAdapter(adapter);
 	}
 
-	private void initBtnBuy() {
-
-		// 判断是否缓存中（购买中）
-		if (WatchDog.purchasingPacks.containsKey(packId)) {
-			btnBuy.setText(getResources().getString(R.string.willCache));
-			btnBuy.setEnabled(false);
-		}
-
-		// 判断是否在本地
-		else if (packBought == true) {
-			int packLocation = -1;
-			try {
-				packLocation = new PackDao().getPackDetailById(packId).getIsCloud();// nullPointer,db_muisc
-			} catch (Exception e) {
-//				Log.e(TAG, "exception caught:e=" + e);
-//				Log.e(TAG, "packId=" + packId);
-//				Log.e(TAG, "new PackDao().getPackDetailById(packId)=" + new PackDao().getPackDetailById(packId));
-				packLocation = -1;
-			}
-			if (packLocation == 5) {
-				btnBuy.setText("在本地");
-			} else if (packLocation == 0) {
-				btnBuy.setText("在云端");
-			} else {
-				btnBuy.setText("已购买");
-			}
-			btnBuy.setEnabled(false);
-
-		}
-
-		// 默认显示价格
-		else {
-//			btnBuy.setText("￥ " + packDetail.getPrice() + "0");// nullpointer
-			if (packDetail!=null && packDetail.getPrice() != 0) {
-				btnBuy.setText("￥ " + packDetail.getPrice() + "0");
-			} else {
-				btnBuy.setText(getResources().getString(R.string.freeBtnText));
-			}
-		}
-		
-	}
+//	private void initBtnBuy() {
+//
+//		// 判断是否缓存中（购买中）
+//		if (WatchDog.purchasingPacks.containsKey(packId)) {
+//			btnBuy.setText(getResources().getString(R.string.willCache));
+//			btnBuy.setEnabled(false);
+//		}
+//
+//		// 判断是否在本地
+//		else if (packBought == true) {
+//			int packLocation = -1;
+//			try {
+//				packLocation = new PackDao().getPackDetailById(packId).getIsCloud();// nullPointer,db_muisc
+//			} catch (Exception e) {
+////				Log.e(TAG, "exception caught:e=" + e);
+////				Log.e(TAG, "packId=" + packId);
+////				Log.e(TAG, "new PackDao().getPackDetailById(packId)=" + new PackDao().getPackDetailById(packId));
+//				packLocation = -1;
+//			}
+//			if (packLocation == 5) {
+//				btnBuy.setText("在本地");
+//			} else if (packLocation == 0) {
+//				btnBuy.setText("在云端");
+//			} else {
+//				btnBuy.setText("已购买");
+//			}
+//			btnBuy.setEnabled(false);
+//
+//		}
+//
+//		// 默认显示价格
+//		else {
+////			btnBuy.setText("￥ " + packDetail.getPrice() + "0");// nullpointer
+//			if (packDetail!=null && packDetail.getPrice() != 0) {
+//				btnBuy.setText("￥ " + packDetail.getPrice() + "0");
+//			} else {
+//				btnBuy.setText(getResources().getString(R.string.freeBtnText));
+//			}
+//		}
+//		
+//	}
 
 	/*
 	 * private void checkIfPackBought() { // 本地包含同ID主题且曲目总数相等时，判断该专辑状态为已购买

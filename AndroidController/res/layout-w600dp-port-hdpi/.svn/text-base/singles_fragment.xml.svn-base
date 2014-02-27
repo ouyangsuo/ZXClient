@@ -13,6 +13,7 @@
         android:visibility="gone" >
 
         <!-- 随机播放、单曲管理 -->
+
         <LinearLayout
             android:id="@+id/play_and_manage"
             android:layout_width="fill_parent"
@@ -23,6 +24,7 @@
             android:orientation="horizontal" >
 
             <!-- 随机播放 -->
+
             <LinearLayout
                 android:id="@+id/ll_playmode"
                 android:layout_width="fill_parent"
@@ -47,6 +49,7 @@
             </LinearLayout>
 
             <!-- 单曲管理 -->
+
             <LinearLayout
                 android:id="@+id/ll_clearcache"
                 android:layout_width="fill_parent"
@@ -73,95 +76,97 @@
                     android:text="管理" />
             </LinearLayout>
         </LinearLayout>
-        
-        <!-- 取消、清除缓存 -->
-	    <LinearLayout
-	        android:id="@+id/cancel_and_clearcache"
-	        android:layout_width="fill_parent"
-	        android:layout_height="80dp"
-	        android:layout_margin="25dp"
-	        android:orientation="horizontal"
-	        android:baselineAligned="false"
-	        android:visibility="gone"
-	        android:gravity="center" >
-			
-			<!-- 取消 -->
-	        <LinearLayout
-	            android:id="@+id/cancelcache"
-	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="10dp"
-	            android:layout_weight="1"
-	            android:gravity="center"
-	            android:orientation="horizontal"
-	            android:visibility="visible" >
-	
-	            <TextView
-	                android:id="@+id/tv_cancel_cache"
-	                style="@style/PlayModeText"
-	                android:layout_width="fill_parent"
-	                android:layout_height="80dp"
-	                android:background="@drawable/cancel_cache_selector"
-	                android:gravity="center"
-	                android:text="取消"
-	                android:textColor="@color/white" />
-	        </LinearLayout>
-	        
-			<!-- 清除缓存 -->
-	        <LinearLayout
-	            android:id="@+id/sure_clearcache"
-	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="20dp"
-	            android:layout_marginRight="10dp"
-	            android:layout_weight="1"
-	            android:gravity="center"
-	            android:orientation="horizontal"
-	            android:visibility="visible" >
-	
-	            <TextView
-	                android:id="@+id/tv_sureclear_cache"
-	                style="@style/PlayModeText"
-	                android:layout_width="fill_parent"
-	                android:layout_height="80dp"
-	                android:background="@drawable/delect_clear_cache_selector"
-	                android:gravity="center"
-	                android:text="清除缓存"
-	                android:textColor="@color/white" />
-	        </LinearLayout>
-	    </LinearLayout>
-	    
-	    <!-- 全选 -->
-	    <LinearLayout
-	        android:id="@+id/circle_btn"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginBottom="5dp"
-	        android:layout_marginTop="5dp"
-	        android:background="@drawable/common_transparent_bg_selector"
-	        android:orientation="horizontal"
-	        android:visibility="visible" >
-			
-	        <CheckBox
-	            android:id="@+id/checkbox_all"
-	            style="@style/customerCheckbox"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="10dp"
-	            android:enabled="false"
-	            android:focusable="false" 
-	             />
 
-	
-	        <TextView
-	            android:id="@+id/tv_circle_selectAll"
-	            style="@style/PlayModeText"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_gravity="center"
-	            android:layout_marginLeft="10dp"
-	            android:text="全选" />
-	    </LinearLayout>
+        <!-- 取消、清除缓存 -->
+
+        <LinearLayout
+            android:id="@+id/cancel_and_clearcache"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_margin="25dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <!-- 取消 -->
+
+            <LinearLayout
+                android:id="@+id/cancelcache"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/tv_cancel_cache"
+                    style="@style/PlayModeText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/cancel_cache_selector"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <!-- 清除缓存 -->
+
+            <LinearLayout
+                android:id="@+id/sure_clearcache"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/tv_sureclear_cache"
+                    style="@style/PlayModeText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/delect_clear_cache_selector"
+                    android:gravity="center"
+                    android:text="清除缓存"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 全选 -->
+
+        <LinearLayout
+            android:id="@+id/circle_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/common_transparent_bg_selector"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <CheckBox
+                android:id="@+id/checkbox_all"
+                style="@style/customerCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:enabled="false"
+                android:focusable="false" />
+
+            <TextView
+                android:id="@+id/tv_circle_selectAll"
+                style="@style/PlayModeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="全选" />
+        </LinearLayout>
 
         <ImageView
             android:layout_width="fill_parent"
@@ -188,7 +193,7 @@
         style="@style/NoDataText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
         android:text="暂无数据！"
         android:visibility="visible" />

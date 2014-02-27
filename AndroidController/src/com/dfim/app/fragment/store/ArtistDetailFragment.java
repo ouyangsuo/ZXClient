@@ -30,6 +30,12 @@ import android.widget.TextView;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.ColumnDetail;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
 import com.dfim.app.http.HttpGetter;
 import com.dfim.app.interfaces.NobleMan;
@@ -43,12 +49,6 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.ArtistAlbumListAdapter;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.ColumnDetail;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
 
 //notifyData,连接中断，确定
 public class ArtistDetailFragment extends Fragment implements NobleMan,TitlebarUpdateFragment,SelfReloader {

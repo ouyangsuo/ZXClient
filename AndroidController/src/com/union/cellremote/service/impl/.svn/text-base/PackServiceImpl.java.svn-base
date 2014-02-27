@@ -7,7 +7,7 @@ import android.util.Log;
 import com.dfim.app.bean.LocalThemes;
 import com.dfim.app.dao.PackDao;
 import com.dfim.app.data.VirtualData;
-import com.union.cellremote.domain.Pack;
+import com.dfim.app.domain.Pack;
 import com.union.cellremote.service.IPackService;
 
 public class PackServiceImpl implements IPackService {

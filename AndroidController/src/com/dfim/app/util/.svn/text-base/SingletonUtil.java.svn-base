@@ -6,8 +6,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
 
 /**
  * 

@@ -30,8 +30,15 @@ import com.dfim.app.common.Constant;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.SearchHistoryDao;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.ColumnDetail;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.store.ArtistDetailFragment;
 import com.dfim.app.fragment.store.ArtistsFragment;
+import com.dfim.app.fragment.store.BotiquesFragment;
 import com.dfim.app.fragment.store.ColumnDetailFragment;
 import com.dfim.app.fragment.store.GenresFragment;
 import com.dfim.app.fragment.store.PurchasedFragment;
@@ -43,18 +50,10 @@ import com.dfim.app.fragment.store.TopDetailFragment;
 import com.dfim.app.fragment.store.TopsFragment139;
 import com.dfim.app.fragment.store.WebAlbumDetailFragment;
 import com.dfim.app.fragment.store.WebPackDetailFragment;
+import com.dfim.app.http.HttpPoster;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.util.JsonUtil;
-import com.dfim.app.widget.stickygridheader.NewBotiquesFragment;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.ColumnDetail;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
-import com.union.cellremote.http.HttpPoster;
-//import com.stickygridheaders.test.ItemListFragment;
 
 //import com.union.cellremote.store.WebAlbumDetailFragment;getChildFragment,getFragmentManager,TabMusicFragment.current
 
@@ -311,8 +310,7 @@ public class TabWebFragment extends TabFragment {
 
 	private Fragment getBotiquesFragment() {
 		if (null == botiquesFragment) {
-//			botiquesFragment = new BotiquesFragment();    --旧
-			botiquesFragment = new NewBotiquesFragment(); //from 20140217
+			botiquesFragment = new BotiquesFragment(); 
 		} else {
 
 		}
@@ -552,6 +550,8 @@ public class TabWebFragment extends TabFragment {
 
 			@Override
 			public void run() {
+				System.out.println("search(...):inputStr="+inputStr);
+				
 				String json1 = new HttpPoster().search(inputStr, Constant.SEARCH_TYPE_ALBUMS);
 				String json5 = new HttpPoster().search(inputStr, Constant.SEARCH_TYPE_MUSICS);
 				String json10 = new HttpPoster().search(inputStr, Constant.SEARCH_TYPE_ARTISTS);

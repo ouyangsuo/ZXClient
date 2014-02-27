@@ -16,10 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dfim.app.activity.TabWebActivity;
+import com.dfim.app.http.HttpGetter;
 import com.dfim.app.thread.Pools;
 import com.dfim.app.util.JsonUtil;
 import com.union.cellremote.R;
-import com.union.cellremote.http.HttpGetter;
 
 public class PurseFragment extends Fragment {
 	// Looper.prepare

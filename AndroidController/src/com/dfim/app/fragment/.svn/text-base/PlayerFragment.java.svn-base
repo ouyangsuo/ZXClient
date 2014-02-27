@@ -52,6 +52,7 @@ import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.usb.ExternalDeviceFragment;
 import com.dfim.app.upnp.Cacher;
 import com.dfim.app.upnp.Player;
@@ -62,7 +63,6 @@ import com.dfim.app.util.PowerfulBigMan;
 import com.dfim.app.util.URIParams;
 import com.union.cellremote.R;
 import com.union.cellremote.adapter.MusicListAdapter;
-import com.union.cellremote.domain.Music;
 
 public class PlayerFragment extends Fragment {
 
@@ -521,25 +521,20 @@ public class PlayerFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.e("BUG901", "PlayerFragment onCreateView()");
-//		System.gc();
-//		ExitApplication.getInstance().addActivity(this);
-//		requestWindowFeature(Window.FEATURE_NO_TITLE);
-//		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 设置全屏
-//		getWindow().getDecorView().setSystemUiVisibility(4);
-//		setContentView(R.layout.player);
+		
 		view = inflater.inflate(R.layout.player, null);
-		initComponents();
-		initArguments();
-		initListeners();
-		registerReceivers();
-
-		getPlayMode();
-		getVolumn();
-
-		if (isCaching == false) {
-			getMediaInfo();
-			getTransportInfo();
-		}
+//		initComponents();
+//		initArguments();
+//		initListeners();
+//		registerReceivers();
+//
+//		getPlayMode();
+//		getVolumn();
+//
+//		if (isCaching == false) {
+//			getMediaInfo();
+//			getTransportInfo();
+//		}
 		
 		return view;
 	}

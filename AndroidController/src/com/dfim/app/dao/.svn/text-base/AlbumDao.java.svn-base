@@ -10,11 +10,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.dfim.app.db.DBHelper;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
 
 public class AlbumDao {
 	

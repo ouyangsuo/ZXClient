@@ -35,6 +35,7 @@ import com.dfim.app.adapter.ArtistsListAdapter;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.ViewFactory;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Artist;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
 import com.dfim.app.http.HttpGetter;
 import com.dfim.app.interfaces.NobleMan;
@@ -45,7 +46,6 @@ import com.dfim.app.util.JsonUtil;
 import com.dfim.app.widget.MyLetterListView;
 import com.dfim.app.widget.MyLetterListView.OnTouchingLetterChangedListener;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Artist;
 
 public class ArtistsFragment extends Fragment implements NobleMan, TitlebarUpdateFragment,SelfReloader {
 

@@ -47,7 +47,13 @@ import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.AlbumDao;
 import com.dfim.app.dao.MusicDao;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.MusicDetail;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
+import com.dfim.app.http.HttpGetter;
+import com.dfim.app.http.HttpPoster;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.thread.Pools;
@@ -56,16 +62,12 @@ import com.dfim.app.upnp.Player;
 import com.dfim.app.util.BitmapUtil;
 import com.dfim.app.util.JsonUtil;
 import com.dfim.app.util.LoadImageAysnc.ImageCallBack;
+import com.dfim.app.util.MediaUtil;
 import com.dfim.app.widget.CustomToast;
 import com.dfim.app.widget.StandardCustomDialog;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.http.HttpGetter;
-import com.union.cellremote.http.HttpPoster;
 
 //notifyData,连接中断，确定，getResources().getString(R.string.freeBtnText),divider,getView，完成购买，购买成功
 public class WebAlbumDetailFragment extends Fragment implements NobleMan, TitlebarUpdateFragment,SelfReloader {
@@ -99,12 +101,12 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 	 */
 	private long albumId = -1L;
 	private AlbumDetail albumdetail;
-	private AlbumDetail localAlbumdetail;
+//	private AlbumDetail localAlbumdetail;
 	private String albumName = "";
 	private List<Disk> diskli;
-	private List<Disk> localDisks;
-	private int location = -1;// 0=在云端，5=在本地
-	private int albumLocationState = -1;
+//	private List<Disk> localDisks;
+//	private int location = -1;// 0=在云端，5=在本地
+//	private int albumLocationState = -1;
 	private List<HashMap<Long, Integer>> musicsStateList;
 	private Map<String, Music> refetchingMusicMap = new HashMap<String, Music>();
 	// private Bitmap bitmap;
@@ -131,6 +133,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 	private final int MSG_PURCHASE_SUCCESS_MUSIC = 4;
 	private final int MSG_DATA_GOT_ALBUMDETAIL = 5;
 	private final int MSG_DATA_LOAD_FAILD = 6;
+	private final int MSG_MUSIC_DETAIL_GOT = 7;
 	
 	private Handler handler = new Handler() {
 		@Override
@@ -193,6 +196,12 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 				
 			case MSG_DATA_LOAD_FAILD:
 				uiShowDataLoadFailed();
+				break;
+				
+			case MSG_MUSIC_DETAIL_GOT:
+				String json=(String) msg.obj;
+				MusicDetail mDetail=new JsonUtil().getMusicDetail(json);
+				new MediaUtil(getActivity()).playAudio(mDetail.getListenUrl());
 				break;
 			}
 			super.handleMessage(msg);
@@ -257,7 +266,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		this.context = context;
 		// this.bitmap = bitmap;
 		this.imgUrl = imgUrl;
-		this.location = location;
+//		this.location = location;
 		this.albumId = albumId;
 		this.albumName = albumName;
 		this.albumdetail = albumDetail;
@@ -309,11 +318,12 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 	}
 
 	private void getData() {
-		if (location == -1) {
-			getDataFromWeb();
-		} else {
-			getDataFromLocal();
-		}
+//		if (location == -1) {
+//			getDataFromWeb();
+//		} else {
+//			getDataFromLocal();
+//		}
+		getDataFromWeb();
 	}
 
 	private void getDataFromWeb() {
@@ -434,27 +444,27 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 
 	private void initListeners() {
 
-		btnBuy.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				//缓存云端音乐				
-				if(btnBuyIsActuallyBtnRefetch){
-					refetchThisAlbum();
-				}
-				
-				// 购买（缓存）该专辑
-				else if (albumdetail != null) {
-					getBalanceNLanunchBuy();
-					btnBuy.setText(getResources().getString(R.string.willCache));
-				}
-				
-				// 显示未能获取专辑信息
-				else {
-					UpnpApp.mainHandler.showAlert(R.string.album_data_error);
-					Log.e(TAG, UpnpApp.mainHandler.getString(R.string.album_data_error));
-				}
-			}
-		});
+//		btnBuy.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				//缓存云端音乐				
+//				if(btnBuyIsActuallyBtnRefetch){
+//					refetchThisAlbum();
+//				}
+//				
+//				// 购买（缓存）该专辑
+//				else if (albumdetail != null) {
+//					getBalanceNLanunchBuy();
+//					btnBuy.setText(getResources().getString(R.string.willCache));
+//				}
+//				
+//				// 显示未能获取专辑信息
+//				else {
+//					UpnpApp.mainHandler.showAlert(R.string.album_data_error);
+//					Log.e(TAG, UpnpApp.mainHandler.getString(R.string.album_data_error));
+//				}
+//			}
+//		});
 
 		btnIntroduction.setOnClickListener(new OnClickListener() {
 			@Override
@@ -494,7 +504,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 	private void initView() {
 
 		diskli = albumdetail.getDisklist();
-		localAlbumdetail = new AlbumDao().getAlbumDetailData(albumId);
+//		localAlbumdetail = new AlbumDao().getAlbumDetailData(albumId);
 
 		// 显示图片、名称、演出者
 		// ivAlbumCover.setImageBitmap(bitmap);
@@ -507,7 +517,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		 */
 
 		initBackgroundImg();
-		initBtnBuy();
+//		initBtnBuy();
 		initMusicsListView();
 		initIntroduction();
 	}
@@ -653,26 +663,26 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 				holder.tvArtist.setText("null".equals(li.get(childPosition).getArtistName()) ? "未知演出者" : li.get(childPosition).getArtistName());
 
 				/* 判断本地单曲状态 */
-				if (location != -1) {
-
-					music.setPurchaseState("已购买");
-					if (music.getIscloud() == 0) {
-						btnBuyText = "在云端";
-					} else if (music.getIscloud() == 5) {
-						btnBuyText = "在本地";
-					}
-					btnBuyEnabled = false;
-
-					holder.btnBuy.setText(btnBuyText);
-					holder.btnBuy.setEnabled(btnBuyEnabled);
-				}
+//				if (location != -1) {
+//
+//					music.setPurchaseState("已购买");
+//					if (music.getIscloud() == 0) {
+//						btnBuyText = "在云端";
+//					} else if (music.getIscloud() == 5) {
+//						btnBuyText = "在本地";
+//					}
+//					btnBuyEnabled = false;
+//
+//					holder.btnBuy.setText(btnBuyText);
+//					holder.btnBuy.setEnabled(btnBuyEnabled);
+//				}
 
 				/* 判断网络单曲状态 */
-				else {
-					String[] textAndState = setMusicLocationStateII(musicId, btnBuyText, btnBuyEnabled, holder, groupPosition, childPosition, li);
-					btnBuyText = textAndState[0];
-					btnBuyEnabled = Boolean.parseBoolean(textAndState[1]);
-				}
+//				else {
+//					String[] textAndState = setMusicLocationStateII(musicId, btnBuyText, btnBuyEnabled, holder, groupPosition, childPosition, li);
+//					btnBuyText = textAndState[0];
+//					btnBuyEnabled = Boolean.parseBoolean(textAndState[1]);
+//				}
 
 				final String btnBuyText2 = btnBuyText;
 				final boolean btnBuyEnabled2 = btnBuyEnabled;
@@ -681,9 +691,9 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 				holder.llListen.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						groupPositionInListen = groupPosition;
-						childPositionInListen = childPosition;
-						launchWebListen(groupPosition, childPosition, btnBuyText2, btnBuyEnabled2);
+//						groupPositionInListen = groupPosition;
+//						childPositionInListen = childPosition;
+//						launchWebListen(groupPosition, childPosition, btnBuyText2, btnBuyEnabled2);
 					}
 				});
 
@@ -691,22 +701,26 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 				holder.btnBuy.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						if (childBtnBuyFuncitonMap.get(groupPosition + childPosition + "") == -1) {
-							// 同步云音乐
-							Log.e(TAG, "item按钮功能：同步云音乐");
-							refetchRemoteMusic(groupPosition, childPosition);
-						} else {
-							// 发起购买
-							Log.e(TAG, "item按钮功能：发起购买");
-							getBalanceNLanunchBuy(groupPosition, childPosition);
-						}
+//						if (childBtnBuyFuncitonMap.get(groupPosition + childPosition + "") == -1) {
+//							// 同步云音乐
+//							Log.e(TAG, "item按钮功能：同步云音乐");
+//							refetchRemoteMusic(groupPosition, childPosition);
+//						} else {
+//							// 发起购买
+//							Log.e(TAG, "item按钮功能：发起购买");
+//							getBalanceNLanunchBuy(groupPosition, childPosition);
+//						}
+						
+						musicToBuy = (Music) diskli.get(groupPosition).getMusicList().get(childPosition);
+						playLocally(musicToBuy.getId(),musicToBuy.getMediaurl());
+						
 					}
 
 				});
 
 				return convertView;
 			}
-
+					
 			private String[] setMusicLocationStateII(Long musicId, String btnBuyText, boolean btnBuyEnabled, ChildHolder holder, int groupPosition, int childPosition, List<Music> li) {
 				int locationState = new MusicDao().getMusicStateById(musicId);
 
@@ -933,102 +947,102 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		}
 	}
 
-	private void initBtnBuy() {
-
-		/* 直接由已购音乐传值判断购买状态 */
-		if (location != -1) {
-			// 显示本地专辑状态
-			if (location == 0) {
-				btnBuy.setText("在云端");
-				btnBuy.setEnabled(true);
-				btnBuyIsActuallyBtnRefetch = true;
-			} else if (location == 5) {
-				btnBuy.setText("在本地");
-				btnBuy.setEnabled(false);
-			}
-//			btnBuy.setEnabled(false);
-		}
-
-		/* 网络专辑通过查询本地数据库接口查询是否已购买和位置信息 */
-		else {
-			System.out.println("albumdetail.getState()=" + albumdetail.getState());
-
-			albumIsForSale = true;
-			albumLocationState = new AlbumDao().getAlbumStateById(albumId, albumdetail.getMusicCount());
-			switch (albumLocationState) {
-
-			case 5:
-				albumIsBought = true;
-				btnBuy.setText("在本地");
-				localDisks = new AlbumDao().getAlbumDetailForPurchased(albumId).getDisklist();
-				btnBuy.setEnabled(false);
-				break;
-
-			case 0:
-				albumIsBought = true;
-				btnBuy.setText("在云端");
-				btnBuy.setEnabled(true);
-				btnBuyIsActuallyBtnRefetch = true;
-				break;
-
-			default:
-				albumIsBought = false;
-
-				if (WatchDog.purchasingAlbums.containsKey(albumId)) {
-					albumIsForSale = true;
-					btnBuy.setText(getResources().getString(R.string.willCache));
-					btnBuy.setEnabled(false);
-				}
-
-				else if ("20".equals(albumdetail.getState())) {
-					albumIsForSale = true;
-					double price = albumdetail.getPrice();
-					if (price != 0d) {
-						btnBuy.setText("￥ " + albumdetail.getPrice() + "0");
-					} else {
-						try {
-							btnBuy.setText(getResources().getString(R.string.freeBtnText));
-						} catch (IllegalStateException e) {
-							btnBuy.setText("缓存");
-							// e.printStackTrace();
-						}
-					}
-
-					btnBuy.setEnabled(true);
-				}
-
-				else if ("10".equals(albumdetail.getState()) || "30".equals(albumdetail.getState()) || "35".equals(albumdetail.getState()) || "40".equals(albumdetail.getState())) {
-					albumIsForSale = false;
-					btnBuy.setText("即将上架");
-					btnBuy.setEnabled(false);
-				}
-
-				else {
-					albumIsForSale = true;
-					double price = albumdetail.getPrice();
-					if (price != 0d) {
-						btnBuy.setText("￥ " + albumdetail.getPrice() + "0");
-					} else {
-						btnBuy.setText(getResources().getString(R.string.freeBtnText));
-					}
-
-					btnBuy.setEnabled(true);
-				}
-
-				break;
-			}
-
-			/*
-			 * else if ( "10".equals(albumdetail.getState())
-			 * ||"30".equals(albumdetail.getState())
-			 * ||"35".equals(albumdetail.getState())
-			 * ||"40".equals(albumdetail.getState()) ) { albumIsForSale = false;
-			 * btnBuy.setText("即将上架"); btnBuy.setEnabled(false); }
-			 */
-
-		}
-
-	}
+//	private void initBtnBuy() {
+//
+//		/* 直接由已购音乐传值判断购买状态 */
+//		if (location != -1) {
+//			// 显示本地专辑状态
+//			if (location == 0) {
+//				btnBuy.setText("在云端");
+//				btnBuy.setEnabled(true);
+//				btnBuyIsActuallyBtnRefetch = true;
+//			} else if (location == 5) {
+//				btnBuy.setText("在本地");
+//				btnBuy.setEnabled(false);
+//			}
+////			btnBuy.setEnabled(false);
+//		}
+//
+//		/* 网络专辑通过查询本地数据库接口查询是否已购买和位置信息 */
+//		else {
+//			System.out.println("albumdetail.getState()=" + albumdetail.getState());
+//
+//			albumIsForSale = true;
+//			albumLocationState = new AlbumDao().getAlbumStateById(albumId, albumdetail.getMusicCount());
+//			switch (albumLocationState) {
+//
+//			case 5:
+//				albumIsBought = true;
+//				btnBuy.setText("在本地");
+//				localDisks = new AlbumDao().getAlbumDetailForPurchased(albumId).getDisklist();
+//				btnBuy.setEnabled(false);
+//				break;
+//
+//			case 0:
+//				albumIsBought = true;
+//				btnBuy.setText("在云端");
+//				btnBuy.setEnabled(true);
+//				btnBuyIsActuallyBtnRefetch = true;
+//				break;
+//
+//			default:
+//				albumIsBought = false;
+//
+//				if (WatchDog.purchasingAlbums.containsKey(albumId)) {
+//					albumIsForSale = true;
+//					btnBuy.setText(getResources().getString(R.string.willCache));
+//					btnBuy.setEnabled(false);
+//				}
+//
+//				else if ("20".equals(albumdetail.getState())) {
+//					albumIsForSale = true;
+//					double price = albumdetail.getPrice();
+//					if (price != 0d) {
+//						btnBuy.setText("￥ " + albumdetail.getPrice() + "0");
+//					} else {
+//						try {
+//							btnBuy.setText(getResources().getString(R.string.freeBtnText));
+//						} catch (IllegalStateException e) {
+//							btnBuy.setText("缓存");
+//							// e.printStackTrace();
+//						}
+//					}
+//
+//					btnBuy.setEnabled(true);
+//				}
+//
+//				else if ("10".equals(albumdetail.getState()) || "30".equals(albumdetail.getState()) || "35".equals(albumdetail.getState()) || "40".equals(albumdetail.getState())) {
+//					albumIsForSale = false;
+//					btnBuy.setText("即将上架");
+//					btnBuy.setEnabled(false);
+//				}
+//
+//				else {
+//					albumIsForSale = true;
+//					double price = albumdetail.getPrice();
+//					if (price != 0d) {
+//						btnBuy.setText("￥ " + albumdetail.getPrice() + "0");
+//					} else {
+//						btnBuy.setText(getResources().getString(R.string.freeBtnText));
+//					}
+//
+//					btnBuy.setEnabled(true);
+//				}
+//
+//				break;
+//			}
+//
+//			/*
+//			 * else if ( "10".equals(albumdetail.getState())
+//			 * ||"30".equals(albumdetail.getState())
+//			 * ||"35".equals(albumdetail.getState())
+//			 * ||"40".equals(albumdetail.getState()) ) { albumIsForSale = false;
+//			 * btnBuy.setText("即将上架"); btnBuy.setEnabled(false); }
+//			 */
+//
+//		}
+//
+//	}
 
 	protected void downloadImage() {
 		Pools.executorService2.submit(new Runnable() {
@@ -1169,18 +1183,18 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 	}
 
 	/*缓存云专辑*/
-	protected void refetchThisAlbum() {
-		// 将数据库中该专辑和其下单曲的状态全部设置为本地
-		new AlbumDao().updateCloudState(albumId, Constant.LOCATION_STATE_LOCAL);
-		showBuyResultDialog("操作成功\n\n即将为您缓存曲目");
-		
-		// 修改专辑和单曲状态
-		initBtnBuy();
-		adapter.notifyDataSetChanged();
-		
-		// 通知本地音乐更新
-		new BoxControl().notifyBoxUpdateCloud(albumId+"",1);
-	}
+//	protected void refetchThisAlbum() {
+//		// 将数据库中该专辑和其下单曲的状态全部设置为本地
+//		new AlbumDao().updateCloudState(albumId, Constant.LOCATION_STATE_LOCAL);
+//		showBuyResultDialog("操作成功\n\n即将为您缓存曲目");
+//		
+//		// 修改专辑和单曲状态
+//		initBtnBuy();
+//		adapter.notifyDataSetChanged();
+//		
+//		// 通知本地音乐更新
+//		new BoxControl().notifyBoxUpdateCloud(albumId+"",1);
+//	}
 	
 	private void getBalanceNLanunchBuy() {
 		Pools.executorService1.submit(new Runnable() {
@@ -1432,5 +1446,21 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		startLoading();
 		getData();
 	}
-
+	
+	private void playLocally(final Long musicId,String mediaurl) {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				String json=new HttpGetter(context).getMusicDetail(musicId);
+				System.out.println("jsonMusicDetail="+json);
+				
+				Message msg=handler.obtainMessage(MSG_MUSIC_DETAIL_GOT);
+				msg.obj=json;
+				handler.sendMessage(msg);
+			}
+		}).start();
+		
+	}
+	
 }

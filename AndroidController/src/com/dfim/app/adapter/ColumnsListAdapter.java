@@ -18,13 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Column;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.util.PowerfulBigMan;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Column;
 
 public class ColumnsListAdapter extends BaseExpandableListAdapter {
 

@@ -5,7 +5,7 @@ import java.util.List;
 import com.dfim.app.bean.LocalAlbums;
 import com.dfim.app.dao.AlbumDao;
 import com.dfim.app.data.VirtualData;
-import com.union.cellremote.domain.Album;
+import com.dfim.app.domain.Album;
 import com.union.cellremote.service.IAlbumService;
 
 public class AlbumServiceImpl implements IAlbumService {

@@ -7,10 +7,10 @@ import android.util.Log;
 
 import com.dfim.app.common.WatchDog;
 import com.dfim.app.data.VirtualData;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
 import com.union.cellremote.service.impl.AlbumDetailServiceImpl;
 
 public class LocalAlbums extends ArrayList<LocalAlbum> {

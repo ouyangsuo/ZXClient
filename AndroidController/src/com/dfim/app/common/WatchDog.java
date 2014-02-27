@@ -19,6 +19,11 @@ import android.os.IBinder;
 
 import com.dfim.app.activity.LoginActivity;
 import com.dfim.app.activity.WebListenActivity;
+import com.dfim.app.domain.Album;
+import com.dfim.app.domain.Artist;
+import com.dfim.app.domain.Column;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.SearchDataObject;
 import com.dfim.app.fragment.MainFragment;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.fragment.TabWebFragment;
@@ -26,11 +31,6 @@ import com.dfim.app.interfaces.SelfReloader;
 import com.dfim.app.models.StateModel;
 import com.dfim.app.util.ListviewDataPositionRecorder;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
-import com.union.cellremote.domain.Artist;
-import com.union.cellremote.domain.Column;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.domain.SearchDataObject;
 
 public class WatchDog {
 
@@ -215,6 +215,9 @@ public class WatchDog {
 	public static boolean researchFlag = false;// 是否有重搜需求
 	public static ComponentName researchComponentName;
 	public static IBinder researchIBinder;
+	
+	// 本地播放相关
+	public static Intent runningMusicPlayServiceIntent = null;
 
 	private WatchDog() {
 

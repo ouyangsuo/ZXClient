@@ -11,8 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dfim.app.domain.Album;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Album;
 
 //Toast
 public class ArtistAlbumListAdapter extends BaseAdapter {

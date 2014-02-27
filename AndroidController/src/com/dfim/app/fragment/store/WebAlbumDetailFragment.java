@@ -47,7 +47,12 @@ import com.dfim.app.common.WatchDog;
 import com.dfim.app.dao.AlbumDao;
 import com.dfim.app.dao.MusicDao;
 import com.dfim.app.data.VirtualData;
+import com.dfim.app.domain.AlbumDetail;
+import com.dfim.app.domain.Disk;
+import com.dfim.app.domain.Music;
+import com.dfim.app.domain.MusicDetail;
 import com.dfim.app.fragment.TabWebFragment.TitlebarUpdateFragment;
+import com.dfim.app.http.HttpGetter;
 import com.dfim.app.http.HttpPoster;
 import com.dfim.app.interfaces.NobleMan;
 import com.dfim.app.interfaces.SelfReloader;
@@ -63,10 +68,6 @@ import com.dfim.app.widget.StandardCustomDialog;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.AlbumDetail;
-import com.union.cellremote.domain.Disk;
-import com.union.cellremote.domain.Music;
-import com.union.cellremote.http.HttpGetter;
 
 //notifyData,连接中断，确定，getResources().getString(R.string.freeBtnText),divider,getView，完成购买，购买成功
 public class WebAlbumDetailFragment extends Fragment implements NobleMan, TitlebarUpdateFragment,SelfReloader {
@@ -132,6 +133,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 	private final int MSG_PURCHASE_SUCCESS_MUSIC = 4;
 	private final int MSG_DATA_GOT_ALBUMDETAIL = 5;
 	private final int MSG_DATA_LOAD_FAILD = 6;
+	private final int MSG_MUSIC_DETAIL_GOT = 7;
 	
 	private Handler handler = new Handler() {
 		@Override
@@ -194,6 +196,12 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 				
 			case MSG_DATA_LOAD_FAILD:
 				uiShowDataLoadFailed();
+				break;
+				
+			case MSG_MUSIC_DETAIL_GOT:
+				String json=(String) msg.obj;
+				MusicDetail mDetail=new JsonUtil().getMusicDetail(json);
+				new MediaUtil(getActivity()).playAudio(mDetail.getListenUrl());
 				break;
 			}
 			super.handleMessage(msg);
@@ -704,7 +712,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 //						}
 						
 						musicToBuy = (Music) diskli.get(groupPosition).getMusicList().get(childPosition);
-						playLocally(musicToBuy.getMediaurl());
+						playLocally(musicToBuy.getId());
 						
 					}
 
@@ -1439,8 +1447,22 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		getData();
 	}
 	
-	private void playLocally(String mediaurl) {
-		new MediaUtil(getActivity()).playAudio(mediaurl);
+	private void playLocally(Long musicId) {
+//		new Thread(new Runnable() {			
+//			@Override
+//			public void run() {
+//				String json=new HttpGetter(context).getMusicDetail(musicId);
+//				System.out.println("jsonMusicDetail="+json);
+//				MusicDetail mDetail=new JsonUtil().getMusicDetail(json);
+//				new MediaUtil(getActivity()).playAudio(mDetail.getListenUrl());
+//				
+////				Message msg=handler.obtainMessage(MSG_MUSIC_DETAIL_GOT);
+////				msg.obj=json;
+////				handler.sendMessage(msg);
+//			}
+//		}).start();		
+		
+		new MediaUtil(context).playLocally(musicId);
 	}
 	
 }

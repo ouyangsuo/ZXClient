@@ -40,13 +40,13 @@ import com.dfim.app.common.MymusicManager;
 import com.dfim.app.common.UIHelper;
 import com.dfim.app.common.UpnpApp;
 import com.dfim.app.common.WatchDog;
+import com.dfim.app.domain.Music;
 import com.dfim.app.fragment.PlayerFragment;
 import com.dfim.app.fragment.TabFragment;
 import com.dfim.app.upnp.Player;
 import com.dfim.app.util.UsbFileUtil;
 import com.dfim.app.widget.CustomToast;
 import com.union.cellremote.R;
-import com.union.cellremote.domain.Music;
 
 @SuppressLint("ValidFragment")
 public class ExternalDeviceFragment extends TabFragment {
