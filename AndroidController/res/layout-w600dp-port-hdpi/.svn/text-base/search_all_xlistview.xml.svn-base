@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ExpandableListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/xlv_result"
-    android:layout_width="fill_parent"
-    android:layout_height="940dp"
-    android:divider="@color/divider_common"
-    android:dividerHeight="1dp"
-    android:visibility="visible" />
