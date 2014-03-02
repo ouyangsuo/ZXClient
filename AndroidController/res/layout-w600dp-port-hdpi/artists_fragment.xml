@@ -99,7 +99,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp">
 
-                    <com.dfim.app.widget.MyLetterListView
+                    <com.kitty.poclient.widget.MyLetterListView
                         android:id="@+id/mllv"
                         android:layout_width="70dp"
                         android:layout_height="fill_parent"

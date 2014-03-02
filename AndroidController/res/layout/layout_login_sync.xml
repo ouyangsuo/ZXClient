@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.dfim.app.widget.SyncView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kitty.poclient.widget.SyncView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/login_sync_all_height"
     android:orientation="vertical" >
@@ -63,4 +63,4 @@
 	    style="@style/login_hint_style"
 	    android:text="0%"
 	    />
-</com.dfim.app.widget.SyncView>
+</com.kitty.poclient.widget.SyncView>

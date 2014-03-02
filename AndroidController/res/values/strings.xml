@@ -2,7 +2,7 @@
 <resources>
 
     <!-- <string name="hello">Hello World, layout!</string> -->
-    <string name="app_name">dFiM</string>
+    <string name="app_name">POClient</string>
     <!-- 两版本发布修改处 7-5-->
     <!-- <string name="app_name">dFiM</string> -->
 	<!-- <string name="app_name">真现BOX</string> -->

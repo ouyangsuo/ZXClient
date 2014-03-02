@@ -98,7 +98,7 @@
                     android:paddingRight="8dp"
                     android:paddingTop="8dp" >
 
-                    <com.dfim.app.widget.MyLetterListView
+                    <com.kitty.poclient.widget.MyLetterListView
                         android:id="@+id/mllv"
                         android:layout_width="40dp"
                         android:layout_height="fill_parent"
