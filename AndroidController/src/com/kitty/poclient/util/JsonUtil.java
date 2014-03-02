@@ -892,6 +892,10 @@ public class JsonUtil {
 		try {
 			JSONObject object=new JSONObject(json);
 			mDetail=new MusicDetail();
+			mDetail.setName(object.getString("name"));
+			mDetail.setArtist(object.getString("artistname"));
+			mDetail.setImgUrl(object.getString("albumimg"));
+			mDetail.setDuration(object.getString("playtimes"));
 			mDetail.setListenUrl(object.getString("listenurl"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

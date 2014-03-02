@@ -68,7 +68,7 @@
             android:layout_height="50dp"
             android:background="@drawable/buy_music_selector"
             android:gravity="center"
-            android:text="读取中..." 
+            android:text="收藏" 
             android:visibility="visible"/>
         
         <Button

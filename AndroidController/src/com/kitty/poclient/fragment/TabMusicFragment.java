@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.kitty.poclient.R;
 import com.kitty.poclient.common.MymusicManager;
 import com.kitty.poclient.common.UIHelper;
+import com.kitty.poclient.common.WatchDog;
 import com.kitty.poclient.fragment.mymusic.AlbumDetailFragment;
 import com.kitty.poclient.fragment.mymusic.AlbumListFragment;
 import com.kitty.poclient.fragment.mymusic.BaseFragment;
@@ -27,8 +29,9 @@ import com.kitty.poclient.fragment.mymusic.CacheAlbumDetailFragment;
 import com.kitty.poclient.fragment.mymusic.MymusicThemeDetailFragment;
 import com.kitty.poclient.fragment.mymusic.MymusicThemesFragment;
 import com.kitty.poclient.fragment.mymusic.SinglesFragment;
+import com.kitty.poclient.interfaces.OnCurrentPlayingStateChangedListener;
 
-public class TabMusicFragment extends TabFragment {
+public class TabMusicFragment extends TabFragment implements OnCurrentPlayingStateChangedListener {
 
 	private static final String TAG = TabMusicFragment.class.getSimpleName();
 	public static boolean IS_ALIVE = false;
@@ -105,6 +108,8 @@ public class TabMusicFragment extends TabFragment {
 
 		MymusicManager.tabMusicFragment = this;
 //		MymusicManager.receiveCacheSub();
+		WatchDog.cpsListeners.add(this);
+		
 		return view;
 	}
 
@@ -117,6 +122,7 @@ public class TabMusicFragment extends TabFragment {
 	public void onResume() {
 		IS_ALIVE = true;
 		super.onResume();
+		onCurrentPlayingStateChanged();
 	}
 
 	@Override
@@ -312,5 +318,16 @@ public class TabMusicFragment extends TabFragment {
 	
 	public static int getCurrentPosition(){
 		return currentPosition;
+	}
+
+	@Override
+	public void onCurrentPlayingStateChanged() {
+		if(PlayerFragment.PLAYING.equals(WatchDog.currentState)){
+			AnimationDrawable animationDrawable = (AnimationDrawable) getResources().getDrawable(R.anim.playing);
+			btnPlayer.setImageDrawable(animationDrawable);
+			animationDrawable.start();
+		}else{
+			btnPlayer.setImageDrawable(getResources().getDrawable(R.drawable.btn_player));
+		}
 	}
 }

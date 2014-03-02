@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class MusicPlayService extends Service {
 
 	private static String TAG = "MusicService";
-	private MediaPlayer mPlayer;
+	public static MediaPlayer mPlayer;
 
 	// 该服务不存在需要被创建时被调用，不管startService()还是bindService()都会启动时调用该方法
 	@Override

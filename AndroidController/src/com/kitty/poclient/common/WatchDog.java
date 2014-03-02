@@ -28,23 +28,28 @@ import com.kitty.poclient.domain.SearchDataObject;
 import com.kitty.poclient.fragment.MainFragment;
 import com.kitty.poclient.fragment.PlayerFragment;
 import com.kitty.poclient.fragment.TabWebFragment;
+import com.kitty.poclient.interfaces.OnCurrentPlayingInfoChangedListener;
+import com.kitty.poclient.interfaces.OnCurrentPlayingStateChangedListener;
 import com.kitty.poclient.interfaces.SelfReloader;
+import com.kitty.poclient.models.PlayingInfo;
 import com.kitty.poclient.models.StateModel;
 import com.kitty.poclient.util.ListviewDataPositionRecorder;
 
 public class WatchDog {
 
 	// 用户名和密码
-	public static String currentUserId = "244987";// WatchDog.currentUserId=,WatchDog.currentUserId =
+	public static String currentUserId = "244987";// WatchDog.currentUserId=,WatchDog.currentUserId
+													// =
 	public static String currentPassword = "123456";
-		
+
 	public static boolean getDataFinished = false;
 	public static String sd = "0";
 	public static String musicIndex = "";
 	public static String currentDevice = "";
-//	public static String currentHost = "http://192.168.1.230/";// 后台服务器地址
+	// public static String currentHost = "http://192.168.1.230/";// 后台服务器地址
 	public static String currentHost = "http://music1.zhenxian.fm/";// 后台服务器地址
-//	public static String currentHostTemp = "http://192.168.1.120/";// 后台服务器地址测试版
+	// public static String currentHostTemp = "http://192.168.1.120/";//
+	// 后台服务器地址测试版
 	public static String macAddress = "";// 物理地址
 	public static int buySubState = 0;// 用户表示第一次订阅主动请求盒子
 	public static Object builder;// 对话框builder对象
@@ -64,7 +69,6 @@ public class WatchDog {
 	public static List<Activity> currentActivities = new ArrayList<Activity>();
 
 	public static String currentUri = "";
-	public static String currentState = PlayerFragment.STOPPED;
 	public static int currentPlaymode = PlayerFragment.MODE_ORDER;
 
 	public static ArrayList<Music> currentList;// WatchDog.currentList=,WatchDog.currentList
@@ -118,23 +122,23 @@ public class WatchDog {
 	public static int lvipInColumnDetail = -1;
 	public static int stInColumnDetail = -1;
 	public static boolean flagInColumnDetail = false;
-	
+
 	/* 记录榜单详情在跳转前的数据和位置 */
 	public static List<Album> albumsInTopDetail = null;
 	public static int fvipInTopDetail = -1;
 	public static int lvipInTopDetail = -1;
 	public static int stInTopDetail = -1;
 	public static boolean flagInTopDetail = false;
-	
-	public static HashMap<String, ListviewDataPositionRecorder>listviewPositionMap=new HashMap<String, ListviewDataPositionRecorder>();		
-	
+
+	public static HashMap<String, ListviewDataPositionRecorder> listviewPositionMap = new HashMap<String, ListviewDataPositionRecorder>();
+
 	/* 记录搜索结果在跳转前的数据和位置 */
 	public static SearchDataObject sdoInSearchResult = null;
 	public static String selectedSearchResultTabText = "全部";
-//	public static Integer fvipInSearchResult = -1;
-//	public static Integer stInSearchResult = -1;
+	// public static Integer fvipInSearchResult = -1;
+	// public static Integer stInSearchResult = -1;
 	public static boolean flagInSearchResult = false;
-	public static String keywordInSearchResult="请输入搜索关键字";
+	public static String keywordInSearchResult = "请输入搜索关键字";
 
 	/* 记录精品聚焦在跳转前的数据和位置 */
 	public static List<Column> columnsInBotiques = null;
@@ -164,12 +168,11 @@ public class WatchDog {
 	public static int lvipInArtists = -1;
 	public static int stInArtists = -1;
 	public static boolean flagInArtists = false;
-	
 
 	public static boolean isWebListenActivityRunning = false;// 用于结束网络试听
 	public static WebListenActivity runningWebListenActivity = null;
 	public static boolean searchResultFragmentRunning = false;
-	
+
 	public static boolean webListenActivityRunning = false;// 用于结束网络试听
 
 	// public static boolean localMusicUILoadOK = false;
@@ -181,7 +184,7 @@ public class WatchDog {
 	// public static Bitmap albumBitmap2send=null;
 	// public static String albumImgurl2send="";
 	// public static int albumLayout2send=-1;
-	
+
 	/* 正在缓存中的数据 */
 	public static HashMap<Long, Integer> purchasingAlbums = new HashMap<Long, Integer>();
 	public static HashMap<Long, Integer> purchasingPacks = new HashMap<Long, Integer>();
@@ -190,34 +193,59 @@ public class WatchDog {
 	public static Long currentScrollMillis = 0L;
 	// public static Long formerScrollMillis = 0L;
 	public static int formerCacheSubSerialNumber = -1;
-	
-	public static int avSubFailCount=0;
-	public static int cacheSubFailCount=0;
-	public static int boxSubFailCount=0;
+
+	public static int avSubFailCount = 0;
+	public static int cacheSubFailCount = 0;
+	public static int boxSubFailCount = 0;
 	public static TabWebFragment tabWebFragment;
-	
-	public static SelfReloader currentSelfReloader = null;//超时或异常出现时可重新加载的网络界面
-	
-	public static BitmapDrawable albumDetailBgBitmapDrawable;//商店专辑详情页虚化背景图
-	
+
+	public static SelfReloader currentSelfReloader = null;// 超时或异常出现时可重新加载的网络界面
+
+	public static BitmapDrawable albumDetailBgBitmapDrawable;// 商店专辑详情页虚化背景图
+
 	public static String boxVersionName = "未知设备版本";// 盒子版本号
 	public static int boxVersionCode = -1;
-	
+
 	// 控制端版本相关
-	public static String currentControllerVersion= "未知当前版本";
+	public static String currentControllerVersion = "未知当前版本";
 	public static String latestControllerVersion = "未知最新版本";
 	public static String forcingUpdateCode = "-1";
 	public static String latestVersionDescription = "暂无描述";
 	public static String latestVersionapkDownloadUrl = "未知路径";
-	public static boolean versionsUpdateNotificationShown=false;// 每次启动只提示一次
-	
-	//重搜相关
+	public static boolean versionsUpdateNotificationShown = false;// 每次启动只提示一次
+
+	// 重搜相关
 	public static boolean researchFlag = false;// 是否有重搜需求
 	public static ComponentName researchComponentName;
 	public static IBinder researchIBinder;
-	
-	// 本地播放相关
+
+	/*本地播放相关*/
 	public static Intent runningMusicPlayServiceIntent = null;
+	private static PlayingInfo currentPlayingInfo = null;
+	public static List<OnCurrentPlayingInfoChangedListener> cpiListeners=new ArrayList<OnCurrentPlayingInfoChangedListener>();
+
+	public static void setCurrentPlayingInfo(PlayingInfo playingInfo) {
+		currentPlayingInfo = playingInfo;
+		for(OnCurrentPlayingInfoChangedListener listener:cpiListeners){
+			listener.onCurrentPlayingInfoChanged();
+		}
+	}
+	
+	
+	
+	/*播放状态监听*/
+	public static String currentState = PlayerFragment.STOPPED;
+	public static List<OnCurrentPlayingStateChangedListener> cpsListeners=new ArrayList<OnCurrentPlayingStateChangedListener>();
+	public static void setCurrentPlayingState(String playingState) {
+		currentState = playingState;
+		for(OnCurrentPlayingStateChangedListener listener:cpsListeners){
+			listener.onCurrentPlayingStateChanged();
+		}
+	}
+	
+	public static PlayingInfo getCurrentPlayingInfo() {
+		return currentPlayingInfo;
+	}
 
 	private WatchDog() {
 
@@ -247,7 +275,7 @@ public class WatchDog {
 		WatchDog.currentArtistName = "";
 		WatchDog.currentState = PlayerFragment.STOPPED;// 先改为停止以停止播放器图标的跳动
 		WatchDog.cacheStateMap.clear();
-		
+
 		UpnpApp.context.sendBroadcast(new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED));
 	}
 
@@ -286,7 +314,7 @@ public class WatchDog {
 			}
 		}
 	}
-	
+
 	public static void clearFormerCachingNospace(long id) {
 		if (cacheStateMap == null || !cacheStateMap.containsKey(id)) {
 			return;
@@ -315,7 +343,7 @@ public class WatchDog {
 			edi.putString(dbname + "*", "false");
 			edi.commit();
 		}
-		
+
 		clearPurchasingMaps();
 
 		/*
@@ -335,19 +363,24 @@ public class WatchDog {
 	/* 判断播放器是否可以进入 */
 	public static boolean checkMediaReady() {
 		if (PlayerFragment.STOPPED.equals(WatchDog.currentState)) {
-//			CustomToast.makeText(UpnpApp.context, UpnpApp.context.getResources().getString(R.string.noMusicPlaying), Toast.LENGTH_SHORT).show();
+			// CustomToast.makeText(UpnpApp.context,
+			// UpnpApp.context.getResources().getString(R.string.noMusicPlaying),
+			// Toast.LENGTH_SHORT).show();
 			UpnpApp.mainHandler.showInfo(R.string.player_no_playingmusic_info);
 			return false;
 		}
 
 		if (WatchDog.mediaOutOfService == true) {
-			//屏蔽提示“网络试听同步功能将在稍后开放”
-//			CustomToast.makeText(UpnpApp.context, WatchDog.mediaOutOfServiceReson, Toast.LENGTH_SHORT).show();
+			// 屏蔽提示“网络试听同步功能将在稍后开放”
+			// CustomToast.makeText(UpnpApp.context,
+			// WatchDog.mediaOutOfServiceReson, Toast.LENGTH_SHORT).show();
 			return false;
 		}
 
 		if (WatchDog.babyNotMine == true) {
-//			CustomToast.makeText(UpnpApp.context, UpnpApp.context.getResources().getString(R.string.playlistNotInitiated), Toast.LENGTH_SHORT).show();
+			// CustomToast.makeText(UpnpApp.context,
+			// UpnpApp.context.getResources().getString(R.string.playlistNotInitiated),
+			// Toast.LENGTH_SHORT).show();
 			UpnpApp.mainHandler.showInfo(R.string.player_isused_info);
 			return false;
 		}
@@ -364,4 +397,5 @@ public class WatchDog {
 		purchasingPacks.clear();
 		purchasingMusics.clear();
 	}
+
 }

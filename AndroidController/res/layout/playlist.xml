@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/player_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/title_bar_bg"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="88dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_transparent_bg_selector"
+            android:gravity="center"
+            android:src="@drawable/btn_back"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3.5"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_music_name"
+                style="@style/SlidingItemText"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="center_horizontal|bottom"
+                android:paddingBottom="2dp"
+                android:singleLine="true"
+                android:text="正在播放曲目"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_artist_name"
+                style="@style/SlidingItemText"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:gravity="center_horizontal|top"
+                android:singleLine="true"
+                android:text="WHOEVER U SAY"
+                android:textColor="#b4a091"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent" />
+
+        <ImageButton
+            android:id="@+id/btn_playlist"
+            android:layout_width="0dp"
+            android:layout_height="88dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_transparent_bg_selector"
+            android:gravity="center"
+            android:src="@drawable/btn_playlist"
+            android:textColor="#fff" 
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_lv_playlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/icecream_bg"
+        android:visibility="visible" >
+
+        <ListView
+            android:id="@+id/lv_playlist"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@color/divider_common"
+            android:dividerHeight="2dp" />
+    </LinearLayout>
+
+</LinearLayout>

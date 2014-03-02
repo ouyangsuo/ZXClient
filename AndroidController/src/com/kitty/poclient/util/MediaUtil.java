@@ -14,6 +14,7 @@ import com.kitty.poclient.common.UpnpApp;
 import com.kitty.poclient.common.WatchDog;
 import com.kitty.poclient.domain.MusicDetail;
 import com.kitty.poclient.http.HttpGetter;
+import com.kitty.poclient.models.PlayingInfo;
 import com.kitty.poclient.test.MusicPlayService;
 import com.kitty.poclient.test.MusicServiceActivity;
 
@@ -40,6 +41,7 @@ public class MediaUtil {
 				
 				try {
 					MusicDetail mDetail=new JsonUtil().getMusicDetail(json);
+					initPlayingInfo(mDetail);
 					playAudio(mDetail.getListenUrl());
 					pd.dismiss();
 				} catch (Exception e) {
@@ -48,9 +50,18 @@ public class MediaUtil {
 					e.printStackTrace();
 				}
 			}
-		}).start();		
+		}).start();	
 	}
 	
+	protected void initPlayingInfo(MusicDetail mDetail) {
+		String name=mDetail.getName();
+		String artist=mDetail.getArtist();
+		String imgUrl=mDetail.getImgUrl();
+		String duration=mDetail.getDuration();
+		
+		WatchDog.setCurrentPlayingInfo(new PlayingInfo(name, artist, imgUrl, duration));
+	}
+
 	public void playAudio(String audioPath) {
 		audioPath = processUrl(audioPath);
 		final String url = audioPath;
@@ -72,6 +83,7 @@ public class MediaUtil {
 		Intent intent = new Intent(context, MusicPlayService.class);
 		intent.putExtra("url", url);
 		context.startService(intent);
+		
 		WatchDog.runningMusicPlayServiceIntent = intent;
 	}
 

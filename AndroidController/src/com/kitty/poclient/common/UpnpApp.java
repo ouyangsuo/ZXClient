@@ -11,22 +11,20 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.kitty.poclient.R;
 import com.kitty.poclient.activity.LoginActivity;
 import com.kitty.poclient.activity.MainActivity;
 import com.kitty.poclient.db.DBHelper;
 import com.kitty.poclient.models.StateModel;
-import com.kitty.poclient.upnp.AVTransportSubscriptionCallback;
 import com.kitty.poclient.upnp.BoxSubscription;
 import com.kitty.poclient.upnp.CacheControlSubscriptionCallback;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 public class UpnpApp extends Application {
 
@@ -45,7 +43,7 @@ public class UpnpApp extends Application {
 	public static Service connectionManagerService;
 	public static UDN BOXUDN;
 	public static CacheControlSubscriptionCallback myCacheSub;
-	public static AVTransportSubscriptionCallback myAVSub;
+//	public static AVTransportSubscriptionCallback myAVSub;
 	public static BoxSubscription myBoxSub;
 
 	public static MainHandler mainHandler = new MainHandler();

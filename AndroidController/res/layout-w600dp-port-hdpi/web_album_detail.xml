@@ -208,7 +208,7 @@
                                 android:layout_height="50dp"
                                 android:background="@drawable/buy_album_selector"
                                 android:gravity="center"
-                                android:text="读取中..." />
+                                android:text="收藏" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

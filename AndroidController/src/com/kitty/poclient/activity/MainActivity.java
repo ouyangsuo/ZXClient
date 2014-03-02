@@ -3,12 +3,10 @@ package com.kitty.poclient.activity;
 import java.io.File;
 import java.util.ArrayList;
 
-import org.fourthline.cling.android.AndroidUpnpService;
 import org.fourthline.cling.controlpoint.ActionCallback;
 import org.fourthline.cling.model.action.ActionInvocation;
 import org.fourthline.cling.model.gena.CancelReason;
 import org.fourthline.cling.model.message.UpnpResponse;
-import org.fourthline.cling.model.meta.Device;
 
 import android.app.DownloadManager;
 import android.app.DownloadManager.Request;
@@ -16,17 +14,14 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -36,7 +31,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.kitty.poclient.R;
@@ -48,23 +42,20 @@ import com.kitty.poclient.common.UIHelper;
 import com.kitty.poclient.common.UpnpApp;
 import com.kitty.poclient.common.WatchDog;
 import com.kitty.poclient.fragment.MainFragment;
+import com.kitty.poclient.fragment.MenuFragment.OnMenuChangedListener;
+import com.kitty.poclient.fragment.MenuFragment.OnSearchViewClickListener;
 import com.kitty.poclient.fragment.PlayerFragment;
 import com.kitty.poclient.fragment.PlaylistFragment;
 import com.kitty.poclient.fragment.TabMusicFragment;
 import com.kitty.poclient.fragment.TabWebFragment;
-import com.kitty.poclient.fragment.MenuFragment.OnMenuChangedListener;
-import com.kitty.poclient.fragment.MenuFragment.OnSearchViewClickListener;
 import com.kitty.poclient.fragment.setting.SettingsFragment;
 import com.kitty.poclient.fragment.usb.ExternalDeviceFragment;
 import com.kitty.poclient.models.StateModel;
-import com.kitty.poclient.upnp.AVTransportSubscriptionCallback;
 import com.kitty.poclient.upnp.BoxSubscription;
 import com.kitty.poclient.upnp.CacheControlSubscriptionCallback;
-import com.kitty.poclient.upnp.MyUpnpServiceImpl;
 import com.kitty.poclient.util.DialogUtil;
 import com.kitty.poclient.util.ExitApplication;
 import com.kitty.poclient.util.FileUtil;
-import com.kitty.poclient.util.UpdateUtil;
 import com.kitty.poclient.widget.StandardCustomDialog;
 
 public class MainActivity extends SlidingBaseActivity implements
@@ -96,7 +87,7 @@ public class MainActivity extends SlidingBaseActivity implements
 	private CustomViewPager mainViewPager;
 	private MainFragment mainFragment;
 	private boolean canSliding = true;
-	private AVTransportSubscriptionCallback avTransportSubscriptionCallback;
+//	private AVTransportSubscriptionCallback avTransportSubscriptionCallback;
 	private BoxSubscription boxSub;
 	private CacheControlSubscriptionCallback cacheSub;
 	public ImageButton btnPlayer;
@@ -246,7 +237,7 @@ public class MainActivity extends SlidingBaseActivity implements
 		mainFragment.setOnMainChangedListener(this);
 
 		fragments.add(mainFragment);
-		fragments.add(new PlayerFragment(this));
+		fragments.add(new PlayerFragment(this));	
 		fragments.add(new PlaylistFragment(this));
 
 		BasePagerAdapter mainAdapter = new BasePagerAdapter(getSupportFragmentManager(), fragments);
@@ -264,13 +255,13 @@ public class MainActivity extends SlidingBaseActivity implements
 			@Override
 			public void onPageSelected(int position) {
 				
-				if (position == PLAYER_PAGE_ITEM_NUM) {
-					if (!WatchDog.checkMediaReady()) {
-						Log.i(TAG, "当前没有正在播放的音乐，onPageSelected, position=" + position);
-//						mainViewPager.setScrollable(false);
-						//TODO BUG #805 【AndroidController】无正在播放音乐时，取消向左滑动滑出正在播放页面和无正在播放音乐的提示。
-					}
-				}
+//				if (position == PLAYER_PAGE_ITEM_NUM) {
+//					if (!WatchDog.checkMediaReady()) {
+//						Log.i(TAG, "当前没有正在播放的音乐，onPageSelected, position=" + position);
+////						mainViewPager.setScrollable(false);
+//						//TODO BUG #805 【AndroidController】无正在播放音乐时，取消向左滑动滑出正在播放页面和无正在播放音乐的提示。
+//					}
+//				}
 
 				setSlidingMode(position);
 			}
@@ -413,7 +404,7 @@ public class MainActivity extends SlidingBaseActivity implements
 	@Override
 	protected void onDestroy() {
 		unregisterReceivers();
-		unbindService(serviceConnection);
+//		unbindService(serviceConnection);
 		super.onDestroy();
 	}
 
@@ -549,35 +540,35 @@ public class MainActivity extends SlidingBaseActivity implements
 		startActivity(loginIntent);
 	}*/
 
-	private ServiceConnection serviceConnection = new ServiceConnection() {
+//	private ServiceConnection serviceConnection = new ServiceConnection() {
+//
+//		@Override
+//		public void onServiceDisconnected(ComponentName name) {
+//			UpnpApp.upnpService = null;
+//		}
+//
+//		@Override
+//		public void onServiceConnected(ComponentName name, IBinder service) {
+//			UpnpApp.upnpService = (AndroidUpnpService) service;
+//			initAllService();
+//		}
+//	};
 
-		@Override
-		public void onServiceDisconnected(ComponentName name) {
-			UpnpApp.upnpService = null;
-		}
-
-		@Override
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			UpnpApp.upnpService = (AndroidUpnpService) service;
-			initAllService();
-		}
-	};
-
-	protected void initAllService() {
-		Device device = UpnpApp.upnpService.getRegistry().getDevice(UpnpApp.BOXUDN, true);
-		UpnpApp.initAllServices(device);
-
-		callIsFirstControlAction();
-
-		avTransportSubscriptionCallback = new AVTransportSubscriptionCallback(UpnpApp.avTransportService);
-		UpnpApp.upnpService.getControlPoint().execute(avTransportSubscriptionCallback);
-
-		cacheSub = new CacheControlSubscriptionCallback(UpnpApp.cacheControlService);
-		UpnpApp.upnpService.getControlPoint().execute(cacheSub);
-
-		boxSub = new BoxSubscription(UpnpApp.boxControlService);
-		UpnpApp.upnpService.getControlPoint().execute(boxSub);
-	}
+//	protected void initAllService() {
+//		Device device = UpnpApp.upnpService.getRegistry().getDevice(UpnpApp.BOXUDN, true);
+//		UpnpApp.initAllServices(device);
+//
+//		callIsFirstControlAction();
+//
+//		avTransportSubscriptionCallback = new AVTransportSubscriptionCallback(UpnpApp.avTransportService);
+//		UpnpApp.upnpService.getControlPoint().execute(avTransportSubscriptionCallback);
+//
+//		cacheSub = new CacheControlSubscriptionCallback(UpnpApp.cacheControlService);
+//		UpnpApp.upnpService.getControlPoint().execute(cacheSub);
+//
+//		boxSub = new BoxSubscription(UpnpApp.boxControlService);
+//		UpnpApp.upnpService.getControlPoint().execute(boxSub);
+//	}
 
 	private void callIsFirstControlAction() {
 		ActionInvocation ai = new ActionInvocation(UpnpApp.boxControlService.getAction("IsFirstControl"));// IsFirstControl
@@ -679,10 +670,12 @@ public class MainActivity extends SlidingBaseActivity implements
 	private void setSlidingMode(int position) {
 		switch (position) {
 		case 0:
-			if (canSliding)
+			if (canSliding){
 				setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-			else
+			}else{
 				setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+			}
+				
 			break;
 		default:
 			setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);

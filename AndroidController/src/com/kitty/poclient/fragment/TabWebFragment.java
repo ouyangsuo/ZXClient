@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -29,6 +30,8 @@ import android.widget.TextView;
 
 
 
+
+
 import com.kitty.poclient.R;
 import com.kitty.poclient.activity.MainActivity;
 import com.kitty.poclient.common.Constant;
@@ -42,6 +45,7 @@ import com.kitty.poclient.domain.ColumnDetail;
 import com.kitty.poclient.domain.Music;
 import com.kitty.poclient.domain.SearchDataObject;
 import com.kitty.poclient.http.HttpPoster;
+import com.kitty.poclient.interfaces.OnCurrentPlayingStateChangedListener;
 import com.kitty.poclient.store.ArtistDetailFragment;
 import com.kitty.poclient.store.ArtistsFragment;
 import com.kitty.poclient.store.BotiquesFragmentII;
@@ -58,16 +62,7 @@ import com.kitty.poclient.store.WebPackDetailFragment;
 import com.kitty.poclient.thread.Pools;
 import com.kitty.poclient.util.JsonUtil;
 
-//import com.union.cellremote.store.WebAlbumDetailFragment;getChildFragment,getFragmentManager,TabMusicFragment.current
-
-/**
- * <string-array name="sliding_menu_web"> <item>精品聚焦</item> <item>TOP100</item>
- * <item>类型</item> <item>音乐主题</item> <item>我的钱包</item> <item>已购音乐</item>
- * </string-array>
- * 
- */
-
-public class TabWebFragment extends TabFragment {
+public class TabWebFragment extends TabFragment implements OnCurrentPlayingStateChangedListener{
 
 	private static final String TAG = TabWebFragment.class.getSimpleName() + " ";
 	public static boolean IS_ALIVE = false;
@@ -139,6 +134,7 @@ public class TabWebFragment extends TabFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.e(TAG,"onCreateView");
 		view = inflater.inflate(R.layout.layout_tab_main, null);
 
 		initComponents();
@@ -151,6 +147,7 @@ public class TabWebFragment extends TabFragment {
 		registerReceivers();
 
 		WatchDog.tabWebFragment = this;
+		WatchDog.cpsListeners.add(this);
 
 		return view;
 	}
@@ -180,6 +177,7 @@ public class TabWebFragment extends TabFragment {
 	public void onResume() {
 		IS_ALIVE = true;
 		super.onResume();
+		onCurrentPlayingStateChanged();
 	}
 
 	@Override
@@ -641,6 +639,17 @@ public class TabWebFragment extends TabFragment {
 	public void setEtText(String str) {
 		etSearch.setText(str);
 		etSearch.setSelection(str.length());
+	}
+
+	@Override
+	public void onCurrentPlayingStateChanged() {
+		if(PlayerFragment.PLAYING.equals(WatchDog.currentState)){
+			AnimationDrawable animationDrawable = (AnimationDrawable) getResources().getDrawable(R.anim.playing);
+			btnPlayer.setImageDrawable(animationDrawable);
+			animationDrawable.start();
+		}else{
+			btnPlayer.setImageDrawable(getResources().getDrawable(R.drawable.btn_player));
+		}	
 	}
 
 }

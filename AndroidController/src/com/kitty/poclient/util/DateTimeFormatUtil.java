@@ -72,4 +72,15 @@ public class DateTimeFormatUtil {
         }
 	}
 
+	/*以毫秒为单位计算播放进度*/
+	public static int getPlayingProgress(long elapsedMills, long totalMillis) {
+		// TODO Auto-generated method stub
+		return (int) (Double.parseDouble(elapsedMills+"")/Double.parseDouble(totalMillis+"")*100);
+	}
+	
+	/*转换毫秒值为时长字符串00：00*/
+	public static String parseMills2Time(long elapsedMills) {
+		return parseInt2Time(Integer.parseInt(elapsedMills+""));		
+	}
+	
 }

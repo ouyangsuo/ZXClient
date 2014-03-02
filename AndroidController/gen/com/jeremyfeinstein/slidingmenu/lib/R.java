@@ -355,9 +355,9 @@ public final class R {
 		public static final int abs__search_dropdown_item_icons_2line = 0x7f030012;
 		public static final int abs__search_view = 0x7f030013;
 		public static final int abs__simple_dropdown_hint = 0x7f030014;
-		public static final int sherlock_spinner_dropdown_item = 0x7f030069;
-		public static final int sherlock_spinner_item = 0x7f03006a;
-		public static final int slidingmenumain = 0x7f03006e;
+		public static final int sherlock_spinner_dropdown_item = 0x7f03006a;
+		public static final int sherlock_spinner_item = 0x7f03006b;
+		public static final int slidingmenumain = 0x7f03006f;
 	}
 	public static final class string {
 		public static final int abs__action_bar_home_description = 0x7f0a0000;
