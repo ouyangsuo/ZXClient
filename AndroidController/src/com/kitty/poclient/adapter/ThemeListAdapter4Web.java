@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.kitty.poclient.R;
 import com.kitty.poclient.domain.Pack;
-import com.kitty.poclient.store.ThemesFragment;
+import com.kitty.poclient.fragment.store.ThemesFragment;
 import com.kitty.poclient.thread.Pools;
 import com.kitty.poclient.util.BitmapUtil;
 import com.kitty.poclient.util.LoadImageAysnc.ImageCallBack;

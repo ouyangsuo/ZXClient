@@ -101,9 +101,9 @@ public class AlbumDao {
 			addcv.put("id", album.getId());
 			addcv.put("name", album.getName());
 			addcv.put("img_url", album.getImgUrl());
-			addcv.put("buytime", album.getBuytime());
-			addcv.put("orderType", album.getOrderType());
-			addcv.put("isclearcache", album.getIsCloud());
+//			addcv.put("buytime", album.getBuytime());
+//			addcv.put("orderType", album.getOrderType());
+//			addcv.put("isclearcache", album.getIsCloud());
 			DBHelper.getSqLitedatabase().insert("db_album", null, addcv);
 		} else {
 			DBHelper.getSqLitedatabase().execSQL("update db_album set isclearcache =" + album.getIsCloud() + " where id =" + album.getId());

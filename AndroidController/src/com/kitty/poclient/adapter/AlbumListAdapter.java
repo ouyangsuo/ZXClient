@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
@@ -22,6 +23,7 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.kitty.poclient.R;
 import com.kitty.poclient.bean.LocalAlbum;
 import com.kitty.poclient.bean.LocalCache;
+import com.kitty.poclient.common.UpnpApp;
 import com.kitty.poclient.data.VirtualData;
 import com.kitty.poclient.domain.Album;
 import com.kitty.poclient.domain.Artist;
@@ -30,6 +32,7 @@ import com.kitty.poclient.util.SingletonUtil;
 //Toast
 public class AlbumListAdapter extends BaseAdapter {
 	private ImageLoadingListener animateFirstListener =new AnimateFirstDisplayListener();
+	private ImageLoader loader;
     private DisplayImageOptions options;
 	private Context context;
 	private ListView listview;
@@ -39,6 +42,7 @@ public class AlbumListAdapter extends BaseAdapter {
 	public AlbumListAdapter(Context context, ListView listview) {
 		this.context = context;
 		this.listview = listview;
+		loader = ImageLoader.getInstance();
 		options=new DisplayImageOptions.Builder()
 		   .showImageOnLoading(R.drawable.pic1)
 		   .cacheInMemory(true)
@@ -50,7 +54,6 @@ public class AlbumListAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		return VirtualData.albums != null ? VirtualData.albums.size() : 0;
-
 	}
 
 	@Override
@@ -79,66 +82,12 @@ public class AlbumListAdapter extends BaseAdapter {
 			return convertView;
 		}
 		
-		LocalAlbum currentAlbum = VirtualData.localAlbums.get(position);
-		int totalMusicNum = currentAlbum.getTotalMusicNum();
-		int resourseId = R.drawable.wait;
-//		Log.i("AlbumListCache", "currentAlbum.getCacheStatus()=" + currentAlbum.getCacheStatus());
-		switch(currentAlbum.getCacheStatus()){
-			case LocalCache.CACHE_STATUS_DOWNLOADED:
-				resourseId = R.drawable.downloaded;
-				break;
-			case LocalCache.CACHE_STATUS_DOWNLOADING:
-				resourseId = R.drawable.downloading;
-				break;
-			case LocalCache.CACHE_STATUS_WAIT:
-				resourseId = R.drawable.wait;
-				break;
-			case LocalCache.CACHE_STATUS_FAILURE_NOSPACE:
-//				resourseId = R.drawable.alert;
-				resourseId = R.drawable.wait;
-				break;
-			default:
-				resourseId = R.drawable.wait;
-				break;
-		}
-		holder.cacheStatusImageView.setImageDrawable(context.getResources().getDrawable(resourseId)); //2-3缓存状态图标
-		
-		String subTitle = "";
-		if(currentAlbum.getCacheStatus()==LocalCache.CACHE_STATUS_DOWNLOADED){
-//			subTitle = totalMusicNum + "首音乐";
-			
-			List<Artist> artistLi = VirtualData.albums.get(position).getArtistli();
-			String artistName = "";
-			if (artistLi != null&&artistLi.size()>0) {
-				for (Artist ar : artistLi) {
-					if( ar.getName().equals("未知")){
-						ar.setName("未知演出者");
-					}
-				 	artistName += ar.getName() + ",";
-				}
-				subTitle = artistName.substring(0, artistName.length() - 1);
-			}else{
-//				holder.subTitleTextView.setText("未知演出者");
-				subTitle = "未知演出者";
-				
-			}
-		}else{
-			subTitle = "已缓存" + currentAlbum.getDownloadedMusicNum() + "/" + totalMusicNum;
-		}
-		
-		// 副标题
-		holder.subTitleTextView.setText(subTitle); 	
+		Album album = VirtualData.albums.get(position);	
 		
 		// 主标题
-		Album album = VirtualData.albums.get(position);
-//		holder.mainTitleTextView.setText(album.getName());
-		holder.mainTitleTextView.setText(currentAlbum.getName());
-		
-		holder.albumCoverImageView.setTag(album.getImgUrl());
-		if(SingletonUtil.imagflag){
-		holder.albumCoverImageView.setBackgroundResource(R.drawable.pic);
-		}
-		SingletonUtil.getSingletonUtil().loadAlbumImage(album, listview,holder.albumCoverImageView);
+		holder.mainTitleTextView.setText(album.getName());		
+		loader.displayImage(album.getImgUrl(), holder.albumCoverImageView, options);
+
 		return convertView;
 	}
 

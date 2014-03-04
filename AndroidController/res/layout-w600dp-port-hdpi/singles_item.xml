@@ -11,7 +11,8 @@
         android:layout_width="10dp"
         android:layout_height="@dimen/common_item_height"
         android:background="@color/current_playing"
-        android:contentDescription="@string/app_name" />
+        android:contentDescription="@string/app_name" 
+        android:visibility="invisible"/>
     
     <!-- 标记为删除 -->
     <LinearLayout
@@ -31,15 +32,6 @@
 	</LinearLayout>
 	
 	<!-- 单曲序号 -->
-    <TextView
-        android:id="@+id/single_position"
-        android:layout_width="80dp"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        style="@style/BigBlackTitle"
-        android:text="0000"
-        android:textColor="@color/album_single_no"
-        android:visibility="visible"/>
         
     <!-- 主、副标题 -->
     <LinearLayout
@@ -98,7 +90,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="加载中"
+            android:background="@drawable/headphone"
             android:textColor="#3d3d3d"
             android:visibility="visible"/>
     </LinearLayout>

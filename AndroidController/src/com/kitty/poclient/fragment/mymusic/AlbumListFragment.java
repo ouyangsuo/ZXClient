@@ -71,7 +71,7 @@ public class AlbumListFragment extends BaseFragment {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		Log.i(TAG, "onCreate");
+		Log.e(TAG, "onCreate");
 		super.onCreate(savedInstanceState);
 	}
 	@Override
@@ -80,8 +80,8 @@ public class AlbumListFragment extends BaseFragment {
 		view = LayoutInflater.from(attachedActivity).inflate(R.layout.album_list_fragment, null);
 		initComponents();
 		initArguments();
-		initListeners();
-		registerReceivers();
+//		initListeners();
+//		registerReceivers();
 		return view;
 	}
 	
@@ -92,7 +92,9 @@ public class AlbumListFragment extends BaseFragment {
 	private void initComponents() {
 		llLvAlbums = (LinearLayout) view.findViewById(R.id.ll_lv_album);
 		tvNoData = (TextView) view.findViewById(R.id.tv_no_data);
-		albumsListView = new ScrollOverListView(attachedActivity);
+		albumsListView = new ListView(attachedActivity);
+		albumsListView.setDivider(getResources().getDrawable(R.color.divider_common));
+		albumsListView.setDividerHeight(1);
 		llLvAlbums.addView(albumsListView, 0);
 
 	}
@@ -215,36 +217,16 @@ public class AlbumListFragment extends BaseFragment {
 	}
 
 	private void initArguments() {
-		// initBtnPlayer();
 		tabMusicFragment.refreshPlayStatus();
 
 //		if (VirtualData.albums == null || VirtualData.albums.size() == 0) {
-		if (VirtualData.localAlbums == null || VirtualData.localAlbums.size()==0){
+		if (VirtualData.albums == null || VirtualData.albums.size()==0){
 			showNoData();
 		} else {
 			showListData();
 			
-			//translate localAlbums
-//			localAlbums = LocalAlbums.translateAlbumList( VirtualData.albums);
-//			localAlbums = VirtualData.localAlbums;
-			
 			adapter = new AlbumListAdapter(attachedActivity, albumsListView);
 			albumsListView.setAdapter(adapter);
-			LinearLayout li = (LinearLayout) albumsListView.findViewById(R.id.pulldown_footer_li);
-			if (adapter.getCount() > 20) {
-				if (li != null) {
-					li.findViewById(R.id.pulldown_footer_loading).setVisibility(View.GONE);
-					TextView tv = (TextView) li.findViewById(R.id.pulldown_footer_text);
-					tv.setText("已加载完成");
-
-				}
-			} else {
-				li.setVisibility(View.GONE);
-				li.findViewById(R.id.pulldown_footer_loading).setVisibility(View.GONE);
-				TextView tv = (TextView) li.findViewById(R.id.pulldown_footer_text);
-				tv.setVisibility(View.GONE);
-			}
-			// lvAlbums.findViewById(R.id.pulldown_footer_li).setVisibility(View.GONE);
 		}
 	}
 

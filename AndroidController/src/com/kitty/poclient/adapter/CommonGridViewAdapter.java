@@ -21,7 +21,7 @@ import com.kitty.poclient.R;
 import com.kitty.poclient.common.UpnpApp;
 import com.kitty.poclient.common.WatchDog;
 import com.kitty.poclient.domain.Album;
-import com.kitty.poclient.store.ColumnDetailFragment;
+import com.kitty.poclient.fragment.store.ColumnDetailFragment;
 import com.kitty.poclient.util.BitmapUtil;
 import com.kitty.poclient.util.PowerfulBigMan;
 

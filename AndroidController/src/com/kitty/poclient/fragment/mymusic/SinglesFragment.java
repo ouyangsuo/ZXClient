@@ -17,8 +17,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
@@ -44,7 +42,7 @@ import com.kitty.poclient.domain.Music;
 import com.kitty.poclient.fragment.PlayerFragment;
 import com.kitty.poclient.upnp.BoxControl;
 import com.kitty.poclient.upnp.Player;
-import com.kitty.poclient.util.PowerfulBigMan;
+import com.kitty.poclient.util.MediaUtil;
 import com.kitty.poclient.widget.StandardCustomDialog;
 
 @SuppressLint("HandlerLeak")
@@ -58,7 +56,7 @@ public class SinglesFragment extends BaseFragment {
 	private int scrollTop;
 	private boolean dontChangeCurrentPosition = false;// 随机播放时使用
 
-	private ListView singlesListView;
+	private ListView lvMusics;
 	private SinglesAdapter adapter;
 	private View view;
 	
@@ -137,14 +135,15 @@ public class SinglesFragment extends BaseFragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.e(TAG, "onCreateView");
+		
 		view = LayoutInflater.from(UpnpApp.context).inflate(R.layout.singles_fragment, null);
 		view.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		
 		initComponents();
-		Log.i(TAG, "SinglesFragment缓存-onCreateView");
 		initArguments();
 		initListeners();
-		registerReceivers();
+//		registerReceivers();
 		return view;
 	}
 	
@@ -154,24 +153,8 @@ public class SinglesFragment extends BaseFragment {
 
 	private void initComponents() {
 		llLvMusics = (LinearLayout) view.findViewById(R.id.ll_lv_music);
-		tvNoData = (TextView) view.findViewById(R.id.tv_no_data);
-
-		playAndManage =  (LinearLayout) view.findViewById(R.id.play_and_manage); 
-		llPlaymode = (LinearLayout) view.findViewById(R.id.ll_playmode);          //随机播放
-		cacheManage = (LinearLayout) view.findViewById(R.id.ll_clearcache);       //“管理”
-		
-		cancelAndClearcache = (LinearLayout) view.findViewById(R.id.cancel_and_clearcache); 
-		cancelClearCache = (LinearLayout) view.findViewById(R.id.cancelcache);		  //取消
-		clearCache = (LinearLayout) view.findViewById(R.id.sure_clearcache); //清除缓存
-		selectAllBtn = (LinearLayout) view.findViewById(R.id.circle_btn);          //全选
-		selectAllCheckBox = (CheckBox) view.findViewById(R.id.checkbox_all);
-		
-		cancelAndClearcache.setVisibility(View.GONE);
-		selectAllBtn.setVisibility(View.GONE);
-		
-		singlesListView = (ListView) view.findViewById(R.id.lv_music);
-		
-		setSingleMode(SINGLE_MODE_PLAY);
+		tvNoData = (TextView) view.findViewById(R.id.tv_no_data);		
+		lvMusics = (ListView) view.findViewById(R.id.lv_music);
 	}
 
 	private void initArguments() {
@@ -181,134 +164,20 @@ public class SinglesFragment extends BaseFragment {
 			llLvMusics.setVisibility(View.GONE);
 			tvNoData.setVisibility(View.VISIBLE);
 		} else {
-			Log.i("SinglesCache", "initArguments--------------");
 			llLvMusics.setVisibility(View.VISIBLE);
 			tvNoData.setVisibility(View.GONE);
 			
 			adapter = new SinglesAdapter(UpnpApp.context, VirtualData.musics);
-			singlesListView.setAdapter(adapter);
+			lvMusics.setAdapter(adapter);
 		}
 	}
 
 	private void initListeners() {
-
-		llPlaymode.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (PowerfulBigMan.testClickInterval() == false) {
-					return;
-				}
-
-				// 设置当前播放模式为随机
-				if (WatchDog.currentPlaymode != PlayerFragment.MODE_SHUFFLE) {
-					Player p = new Player();
-					p.sendBoxPlayMode(PlayerFragment.MODE_SHUFFLE);
-				}
-
-				if (VirtualData.musics == null || VirtualData.musics.size() == 0 || adapter == null) {
-//					CustomToast.makeText(getActivity(), "单曲列表尚未初始化", Toast.LENGTH_SHORT).show();
-					Log.e(TAG, UpnpApp.mainHandler.getString(R.string.playlist_not_init_error));
-					return;
-				}
-
-				// 随机点击并定位至某单曲
-				int _r = (int) Math.floor(Math.random() * (VirtualData.musics.size()));
-				onSingleItemClick_PlayMode(_r);
-				singlesListView.setSelection(_r > 3 ? _r - 3 : _r);
-				dontChangeCurrentPosition = true;
-			}
-		});
-		
-		// 取消缓存
-		cancelClearListener = new CancelClearListener();
-		cancelClearCache.setOnClickListener(cancelClearListener);
-		
-		// 清除缓存
-		cacheManage.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				//切换到状态：manage
-				setSingleMode(SINGLE_MODE_MANAGE);
-				
-			}
-
-		});
-		
-		// 全选
-		selectAllBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-				VirtualData.localSingles.switchAllSelectStatus();
-				adapter.notifyDataSetChanged();
-				boolean isChecked = VirtualData.localSingles.isSelectAll();
-				Log.i("SinglesCache", "VirtualData.localSingles.isSelectAll():"+isChecked);
-				selectAllCheckBox.setChecked(isChecked);
-			}
-
-		});
-		
-		// 清除缓存
-		clearCache.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (VirtualData.localSingles.getSelectedItemNum() == 0) {
-					//没先中任何ITEM
-					UpnpApp.mainHandler.showAlert(R.string.mymusic_cache_select_empty_alert);
-				} else {
-					showDeleteSinglesDialog();
-				}
-			}
-
-		});
-
-		singlesListView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
-				switch(SINGLE_MODE){
-				
-					case SINGLE_MODE_PLAY:
-						//播放模式
-						if (PowerfulBigMan.testClickInterval() == false) {
-							return;
-						}
-						onSingleItemClick_PlayMode(position);
-						break;
-						
-					case SINGLE_MODE_MANAGE:
-						//管理模式
-						VirtualData.localSingles.get(position).switchSelectStatus();
-						boolean isItemSelected = VirtualData.localSingles.get(position).isSelected();
-						if(!isItemSelected){
-							selectAllCheckBox.setChecked(isItemSelected);
-							VirtualData.localSingles.cancelSelectAll();
-						}
-						adapter.notifyDataSetChanged();
-						
-						break;
-				}
-			}
-		});
-
-		singlesListView.setOnScrollListener(new OnScrollListener() {
+		lvMusics.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				// 不滚动时保存当前滚动到的位置
-				if (scrollState == OnScrollListener.SCROLL_STATE_IDLE) {
-					firstVisiblePosition = singlesListView.getFirstVisiblePosition();
-					System.out.println("sx=" + firstVisiblePosition);
-					View v = singlesListView.getChildAt(0);
-					scrollTop = (v == null) ? 0 : v.getTop();
-
-					dontChangeCurrentPosition = false;// 用户主动滑动后默认的刷新锚记为滑动锚记
-				}
-			}
-
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-				// noting to do
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+				new MediaUtil(getActivity()).playLocally(VirtualData.musics.get(position).getId());
 			}
 		});
 	}
@@ -435,7 +304,7 @@ public class SinglesFragment extends BaseFragment {
 		if (!WatchDog.currentPlayingId.equals(0L)) {
 			for (int i = 0; i < VirtualData.musics.size(); i++) {
 				if (VirtualData.musics.get(i).getId().equals(WatchDog.currentPlayingId)) {
-					singlesListView.setSelection(i > 3 ? i - 3 : i);
+					lvMusics.setSelection(i > 3 ? i - 3 : i);
 				}
 			}
 		} else {
@@ -523,7 +392,7 @@ public class SinglesFragment extends BaseFragment {
 		System.out.println("sx=" + firstVisiblePosition);
 		// 恢复listview的卷动位置
 		if (firstVisiblePosition != -1 && dontChangeCurrentPosition == false) {
-			singlesListView.setSelectionFromTop(firstVisiblePosition, scrollTop);
+			lvMusics.setSelectionFromTop(firstVisiblePosition, scrollTop);
 		}
 		super.onResume();
 	}
@@ -550,7 +419,7 @@ public class SinglesFragment extends BaseFragment {
 			System.out.println("sx=" + firstVisiblePosition);
 			// 恢复listview的卷动位置
 			if (firstVisiblePosition != -1 && dontChangeCurrentPosition == false) {
-				singlesListView.setSelectionFromTop(firstVisiblePosition, scrollTop);
+				lvMusics.setSelectionFromTop(firstVisiblePosition, scrollTop);
 			}
 		}
 	};

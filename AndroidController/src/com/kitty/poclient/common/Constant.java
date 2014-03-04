@@ -30,6 +30,7 @@ public class Constant {
 	// public static final String APK_DOWNLOAD_ADDRESS =
 	// "http://m.dfim.com.cn/app/zhenxianRemote.apk";
 	public static final String APK_DOWNLOAD_PATH = "/mnt/sdcard/cellremote/zhenxianRemote.apk";
+	public static final String MUSIC_DOWNLOAD_PATH = "/mnt/sdcard/poclient/music/";
 	public static final String P_KEY = "8920f3346d2da84d49e73b9612655c36";
 	
 	// 盒子设备号、KEY

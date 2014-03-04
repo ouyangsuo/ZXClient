@@ -19,7 +19,7 @@ import com.kitty.poclient.common.Constant;
 import com.kitty.poclient.domain.Album;
 import com.kitty.poclient.domain.Artist;
 import com.kitty.poclient.domain.Music;
-import com.kitty.poclient.store.SearchFragment;
+import com.kitty.poclient.fragment.store.SearchFragment;
 import com.kitty.poclient.thread.Pools;
 import com.kitty.poclient.util.BitmapUtil;
 import com.kitty.poclient.util.LoadImageAysnc.ImageCallBack;

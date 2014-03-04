@@ -1,4 +1,4 @@
-package com.kitty.poclient.store;
+package com.kitty.poclient.fragment.store;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;

@@ -31,6 +31,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.kitty.poclient.R;
@@ -183,6 +184,15 @@ public class MainActivity extends SlidingBaseActivity implements
     };
 	
     private BroadcastReceiver apkDownloadCompleteReceiver;
+    
+	private BroadcastReceiver musicDownloadCompleteReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+			Toast.makeText(context, "下载任务" + reference + "已完成", Toast.LENGTH_SHORT).show();
+			System.out.println("下载任务" + reference + "已完成");
+		}
+	};
 	
 	public void refreshPlayStatus() {
 		if (btnPlayer != null) {
@@ -399,6 +409,7 @@ public class MainActivity extends SlidingBaseActivity implements
 		registerReceiver(initBtnPlayerReceiver, new IntentFilter("initBtnPlayerReceiver"));
 		registerReceiver(endedReceiver, new IntentFilter("ended"));
 		registerReceiver(testReceiver, new IntentFilter("testReceiver"));
+		registerReceiver(musicDownloadCompleteReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 	}
 
 	@Override
@@ -416,6 +427,7 @@ public class MainActivity extends SlidingBaseActivity implements
 		unregisterReceiver(initBtnPlayerReceiver);
 		unregisterReceiver(endedReceiver);
 		unregisterReceiver(testReceiver);
+		unregisterReceiver(musicDownloadCompleteReceiver);
 	}
 
 	@Override

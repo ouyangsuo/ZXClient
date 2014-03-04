@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="@dimen/common_item_height"
-    android:orientation="horizontal" 
-    android:descendantFocusability="afterDescendants">
+    android:descendantFocusability="afterDescendants"
+    android:orientation="horizontal" >
 
     <TextView
         android:id="@+id/tv_num"
@@ -19,11 +19,11 @@
         android:id="@+id/ll_listen"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:background="@drawable/light_bg_selector"
         android:layout_weight="3"
+        android:background="@drawable/light_bg_selector"
+        android:focusable="true"
         android:gravity="center"
-        android:orientation="vertical" 
-        android:focusable="true">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/tv_music_name"
@@ -57,27 +57,27 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="@dimen/common_item_height"
-        android:layout_weight="1.3"
-        android:gravity="center" 
-        android:orientation="vertical">
+        android:layout_weight="1.4"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_listen"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/headphone"
+            android:gravity="center"
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/btn_buy"
             style="@style/BuyMusicText"
-            android:layout_width="145dp"
-            android:layout_height="50dp"
-            android:background="@drawable/buy_music_selector"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/download"
             android:gravity="center"
-            android:text="收藏" 
-            android:visibility="visible"/>
-        
-        <Button
-            android:id="@+id/btn_getback"
-            android:layout_width="110dp"
-            android:layout_height="90dp"
-            android:background="@drawable/cloud_selector"
-            android:gravity="center"
-            android:visibility="gone"/>
+            android:visibility="visible" />
     </LinearLayout>
 
 </LinearLayout>

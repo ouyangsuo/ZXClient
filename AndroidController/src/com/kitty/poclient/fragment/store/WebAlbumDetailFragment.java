@@ -1,11 +1,14 @@
-package com.kitty.poclient.store;
+package com.kitty.poclient.fragment.store;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Request;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -42,6 +46,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.kitty.poclient.R;
 import com.kitty.poclient.activity.AlbumInfoActivity;
 import com.kitty.poclient.activity.WebListenActivity;
+import com.kitty.poclient.bean.LocalAlbum;
 import com.kitty.poclient.common.Constant;
 import com.kitty.poclient.common.UpnpApp;
 import com.kitty.poclient.common.ViewFactory;
@@ -49,6 +54,7 @@ import com.kitty.poclient.common.WatchDog;
 import com.kitty.poclient.dao.AlbumDao;
 import com.kitty.poclient.dao.MusicDao;
 import com.kitty.poclient.data.VirtualData;
+import com.kitty.poclient.domain.Album;
 import com.kitty.poclient.domain.AlbumDetail;
 import com.kitty.poclient.domain.Disk;
 import com.kitty.poclient.domain.Music;
@@ -62,6 +68,7 @@ import com.kitty.poclient.thread.Pools;
 import com.kitty.poclient.upnp.BoxControl;
 import com.kitty.poclient.upnp.Player;
 import com.kitty.poclient.util.BitmapUtil;
+import com.kitty.poclient.util.Collector;
 import com.kitty.poclient.util.JsonUtil;
 import com.kitty.poclient.util.MediaUtil;
 import com.kitty.poclient.util.LoadImageAysnc.ImageCallBack;
@@ -69,7 +76,7 @@ import com.kitty.poclient.widget.CustomToast;
 import com.kitty.poclient.widget.StandardCustomDialog;
 
 //notifyData,连接中断，确定，getResources().getString(R.string.freeBtnText),divider,getView，完成购买，购买成功
-public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, TitlebarUpdateFragment, SelfReloader {
+public class WebAlbumDetailFragment extends Fragment implements NobleMan, TitlebarUpdateFragment, SelfReloader {
 
 	private final String TAG = "WebAlbumDetailFragment";
 	private Context context;
@@ -215,7 +222,7 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 		}
 	};
 
-	public WebAlbumDetailFragmentII() {
+	public WebAlbumDetailFragment() {
 
 	}
 
@@ -250,7 +257,7 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 		new BoxControl().notifyBoxToSyn();
 	}
 
-	public WebAlbumDetailFragmentII(Context context, long albumId, String albumName, String imgUrl, int location, AlbumDetail albumDetail) {
+	public WebAlbumDetailFragment(Context context, long albumId, String albumName, String imgUrl, int location, AlbumDetail albumDetail) {
 		this.context = context;
 		// this.bitmap = bitmap;
 		this.imgUrl = imgUrl;
@@ -423,27 +430,18 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 
 	private void initListeners() {
 
-		// btnBuy.setOnClickListener(new OnClickListener() {
-		// @Override
-		// public void onClick(View v) {
-		// //缓存云端音乐
-		// if(btnBuyIsActuallyBtnRefetch){
-		// refetchThisAlbum();
-		// }
-		//
-		// // 购买（缓存）该专辑
-		// else if (albumdetail != null) {
-		// getBalanceNLanunchBuy();
-		// btnBuy.setText(getResources().getString(R.string.willCache));
-		// }
-		//
-		// // 显示未能获取专辑信息
-		// else {
-		// UpnpApp.mainHandler.showAlert(R.string.album_data_error);
-		// Log.e(TAG, UpnpApp.mainHandler.getString(R.string.album_data_error));
-		// }
-		// }
-		// });
+		//收藏该专辑
+		btnBuy.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Album album=new Album();
+				album.setId(albumdetail.getAlbumId());
+				album.setName(albumName);
+				album.setImgUrl(imgUrl);
+				
+				new Collector().collectAlbum(album);
+			}
+		});
 
 		btnIntroduction.setOnClickListener(new OnClickListener() {
 			@Override
@@ -542,7 +540,7 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 
 			TextView getTextView() {
 				AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 64);
-				TextView textView = new TextView(WebAlbumDetailFragmentII.this.context);
+				TextView textView = new TextView(WebAlbumDetailFragment.this.context);
 				textView.setLayoutParams(lp);
 				textView.setBackgroundResource(R.color.groupview_bg);
 				textView.setGravity(Gravity.CENTER_VERTICAL);
@@ -646,13 +644,14 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 				final String btnBuyText2 = btnBuyText;
 				final boolean btnBuyEnabled2 = btnBuyEnabled;
 
-				// 点击文字区域试听
-				holder.llListen.setOnClickListener(new OnClickListener() {
+				// 收藏单曲
+				holder.btnListen.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						musicToBuy = (Music) diskli.get(groupPosition).getMusicList().get(childPosition);
 						playLocally(musicToBuy.getId());
 					}
+
 				});
 
 				// 收藏单曲
@@ -660,7 +659,7 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 					@Override
 					public void onClick(View v) {
 						musicToBuy = (Music) diskli.get(groupPosition).getMusicList().get(childPosition);
-						playLocally(musicToBuy.getId());
+						collectMusic(musicToBuy.getId());
 					}
 
 				});
@@ -1109,6 +1108,7 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 		private TextView tvName;
 		private TextView tvArtist;
 		private Button btnBuy;
+		private Button btnListen;
 		private LinearLayout llListen;
 		private boolean btnBuyFunctionB = false;
 
@@ -1117,6 +1117,7 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 			tvName = (TextView) convertView.findViewById(R.id.tv_music_name);
 			tvArtist = (TextView) convertView.findViewById(R.id.tv_music_artist);
 			btnBuy = (Button) convertView.findViewById(R.id.btn_buy);
+			btnListen = (Button) convertView.findViewById(R.id.btn_listen);
 			llListen = (LinearLayout) convertView.findViewById(R.id.ll_listen);
 		}
 	}
@@ -1177,6 +1178,53 @@ public class WebAlbumDetailFragmentII extends Fragment implements NobleMan, Titl
 
 	private void playLocally(Long musicId) {
 		new MediaUtil(context).playLocally(musicId);
+	}
+
+	private void collectMusic(final Long musicId) {
+		Toast.makeText(context, "collectMusic...", Toast.LENGTH_SHORT).show();
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// 拿到MusicDetail和下载地址
+				String json = new HttpGetter(context).getMusicDetail(musicId);
+				System.out.println("jsonMusicDetail=" + json);
+				MusicDetail mDetail = new JsonUtil().getMusicDetail(json);
+
+				// String fileName = mDetail.getName() + ".mp3";
+				// // DownloadManager从url中下载文件到指定文件夹
+				// downloadFile(url, fileName);
+				
+				Music music=new Music();
+				music.setId(musicId);
+				music.setName(mDetail.getName());
+				music.setArtistName(mDetail.getArtist());
+				music.setImgUrl(mDetail.getImgUrl());
+				music.setPlay_time(mDetail.getDuration());
+				music.setUri(mDetail.getListenUrl());
+				
+				VirtualData.musics.add(music);
+			}
+		}).start();
+	}
+
+	private void downloadFile(String url, String fileName) {
+		File destinationDir = new File(Constant.MUSIC_DOWNLOAD_PATH);
+		if (!destinationDir.exists()) {
+			System.out.println("create destinationDir");
+			destinationDir.mkdirs();
+		}
+		File destinationFile = new File(Constant.MUSIC_DOWNLOAD_PATH + fileName);
+
+		String serviceString = Context.DOWNLOAD_SERVICE;
+		DownloadManager downloadManager;
+		downloadManager = (DownloadManager) UpnpApp.context.getSystemService(serviceString);
+		DownloadManager.Request request = new Request(Uri.parse(url));
+		request.setDestinationUri(Uri.fromFile(destinationFile));
+		long originReference = downloadManager.enqueue(request);
+
+		System.out.println("task originReference=" + fileName);
 	}
 
 }

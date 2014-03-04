@@ -1,4 +1,4 @@
-package com.kitty.poclient.store;
+package com.kitty.poclient.fragment.store;
 
 import java.util.ArrayList;
 import java.util.HashSet;

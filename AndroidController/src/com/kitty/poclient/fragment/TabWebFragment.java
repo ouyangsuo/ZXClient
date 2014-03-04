@@ -3,8 +3,11 @@ package com.kitty.poclient.fragment;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,9 +31,7 @@ import android.widget.TextView;
 
 //import com.dfim.app.fragment.store.PurchasedFragment;
 
-
-
-
+import android.widget.Toast;
 
 import com.kitty.poclient.R;
 import com.kitty.poclient.activity.MainActivity;
@@ -44,25 +45,25 @@ import com.kitty.poclient.domain.Artist;
 import com.kitty.poclient.domain.ColumnDetail;
 import com.kitty.poclient.domain.Music;
 import com.kitty.poclient.domain.SearchDataObject;
+import com.kitty.poclient.fragment.store.ArtistDetailFragment;
+import com.kitty.poclient.fragment.store.ArtistsFragment;
+import com.kitty.poclient.fragment.store.BotiquesFragmentII;
+import com.kitty.poclient.fragment.store.ColumnDetailFragment;
+import com.kitty.poclient.fragment.store.GenresFragment;
+import com.kitty.poclient.fragment.store.PurseFragment;
+import com.kitty.poclient.fragment.store.SearchFragment;
+import com.kitty.poclient.fragment.store.TestFragment;
+import com.kitty.poclient.fragment.store.ThemesFragment;
+import com.kitty.poclient.fragment.store.TopDetailFragment;
+import com.kitty.poclient.fragment.store.TopsFragment139;
+import com.kitty.poclient.fragment.store.WebAlbumDetailFragment;
+import com.kitty.poclient.fragment.store.WebPackDetailFragment;
 import com.kitty.poclient.http.HttpPoster;
 import com.kitty.poclient.interfaces.OnCurrentPlayingStateChangedListener;
-import com.kitty.poclient.store.ArtistDetailFragment;
-import com.kitty.poclient.store.ArtistsFragment;
-import com.kitty.poclient.store.BotiquesFragmentII;
-import com.kitty.poclient.store.ColumnDetailFragment;
-import com.kitty.poclient.store.GenresFragment;
-import com.kitty.poclient.store.PurseFragment;
-import com.kitty.poclient.store.SearchFragment;
-import com.kitty.poclient.store.TestFragment;
-import com.kitty.poclient.store.ThemesFragment;
-import com.kitty.poclient.store.TopDetailFragment;
-import com.kitty.poclient.store.TopsFragment139;
-import com.kitty.poclient.store.WebAlbumDetailFragmentII;
-import com.kitty.poclient.store.WebPackDetailFragment;
 import com.kitty.poclient.thread.Pools;
 import com.kitty.poclient.util.JsonUtil;
 
-public class TabWebFragment extends TabFragment implements OnCurrentPlayingStateChangedListener{
+public class TabWebFragment extends TabFragment implements OnCurrentPlayingStateChangedListener {
 
 	private static final String TAG = TabWebFragment.class.getSimpleName() + " ";
 	public static boolean IS_ALIVE = false;
@@ -84,10 +85,10 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 	private GenresFragment genresFragment;
 	private ThemesFragment themesFragment;
 	private PurseFragment purseFragment;
-//	private PurchasedFragment purchasedFragment;
+	// private PurchasedFragment purchasedFragment;
 	private TestFragment testFragment;
 	private SearchFragment searchFragment;
-	
+
 	private String[] menuItems;
 	private static int currentPosition = BOUTIQUES;
 
@@ -123,18 +124,16 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 	};
 
 	private void registerReceivers() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void unregisterReceivers() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		Log.e(TAG,"onCreateView");
+		Log.e(TAG, "onCreateView");
 		view = inflater.inflate(R.layout.layout_tab_main, null);
 
 		initComponents();
@@ -268,9 +267,9 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 		case MYPURSE:
 			setContentFragment(getPurseFragment());
 			break;
-//		case PURCHASED:
-//			setContentFragment(getPurchasedFragment());
-//			break;
+		// case PURCHASED:
+		// setContentFragment(getPurchasedFragment());
+		// break;
 		case TEST:
 			setContentFragment(getTestFragment());
 			break;
@@ -311,7 +310,7 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 
 	private Fragment getBotiquesFragment() {
 		if (null == botiquesFragment) {
-			botiquesFragment = new BotiquesFragmentII(); 
+			botiquesFragment = new BotiquesFragmentII();
 		} else {
 
 		}
@@ -353,13 +352,13 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 		return purseFragment;
 	}
 
-//	private PurchasedFragment getPurchasedFragment() {
-//		if (null == purchasedFragment) {
-//		}
-//		purchasedFragment = new PurchasedFragment(getActivity());
-//		return purchasedFragment;
-//	}
-	
+	// private PurchasedFragment getPurchasedFragment() {
+	// if (null == purchasedFragment) {
+	// }
+	// purchasedFragment = new PurchasedFragment(getActivity());
+	// return purchasedFragment;
+	// }
+
 	private TestFragment getTestFragment() {
 		if (null == testFragment) {
 		}
@@ -389,7 +388,7 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 	}
 
 	public void goAlbumDetail(long albumId, String albumName, String imgUrl, int location, AlbumDetail albumDetail) {// 须区分是在二级界面呈现，还是三级界面呈现
-		WebAlbumDetailFragmentII albumDetailFragment = new WebAlbumDetailFragmentII(getActivity(), albumId, albumName, imgUrl, location, albumDetail);
+		WebAlbumDetailFragment albumDetailFragment = new WebAlbumDetailFragment(getActivity(), albumId, albumName, imgUrl, location, albumDetail);
 		setContentFragment(albumDetailFragment, true, "WebAlbumDetailFragment");
 
 		setTitle(albumName);
@@ -413,20 +412,21 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 		String botiqueName = intent.getStringExtra("botiqueName");
 		showBotiqueContent(botiqueId, botiqueName);
 	}
-	
+
 	protected void showBotiqueContent(final long botiqueId, final String botiqueName) {
 		botiqueDetail = null;
 		if (botiqueId != -1) {
 			goColumnDetail(botiqueDetail, botiqueId, botiqueName);
 		}
 	}
+
 	public void goColumnDetail(ColumnDetail columnDetail, long columnId, String columnName) {
 		ColumnDetailFragment columnDetailFragment = new ColumnDetailFragment(getActivity(), columnDetail, columnId, columnName);
 		setContentFragment(columnDetailFragment, true, "ColumnDetailFragment");
 
 		setTitle(columnName);
 	}
-	
+
 	public void showTopContent(final long topId, final String topName) {
 		ColumnDetail columnDetail = null;
 		if (topId != -1) {
@@ -477,34 +477,36 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 		imm = (InputMethodManager) etSearch.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.showSoftInput(etSearch, InputMethodManager.SHOW_FORCED);
 
-		etSearch.setOnFocusChangeListener(new OnFocusChangeListener() {			
+		etSearch.setOnFocusChangeListener(new OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
-				if (hasFocus && "".equals(etSearch.getText().toString()) && !WatchDog.flagInSearchResult) {//由详情返回搜索列表时不要显示历史记录
-					Log.e("BUG959",TAG+"etSearch onFocusChange");
+				if (hasFocus && "".equals(etSearch.getText().toString()) && !WatchDog.flagInSearchResult) {// 由详情返回搜索列表时不要显示历史记录
+					Log.e("BUG959", TAG + "etSearch onFocusChange");
 					searchFragmentShowHistory();
 				}
 			}
 		});
-		
+
 		etSearch.addTextChangedListener(new TextWatcher() {
-			
+
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {}
-			
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-			
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
 			@Override
 			public void afterTextChanged(Editable s) {
-				//更新搜索记录
+				// 更新搜索记录
 				if (etSearch.hasFocus()) {
-					Log.e("BUG959",TAG+"etSearch afterTextChanged");					
+					Log.e("BUG959", TAG + "etSearch afterTextChanged");
 					searchFragmentShowHistory();
-				}			
+				}
 			}
 		});
-		
+
 		ibClear.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -518,7 +520,7 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 	}
 
 	protected void searchFragmentShowHistory() {
-		Log.e("BUG959",TAG+"searchFragmentShowHistory");
+		Log.e("BUG959", TAG + "searchFragmentShowHistory");
 		searchFragment.showHistory(etSearch.getText().toString());
 	}
 
@@ -540,7 +542,7 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 			search(etSearch.getText().toString());
 			saveSearchText(etSearch.getText().toString());
 		} else {
-//			UpnpApp.showToastMessage(getResources().getString(R.string.inputShouldntBeEmpty));
+			// UpnpApp.showToastMessage(getResources().getString(R.string.inputShouldntBeEmpty));
 			UpnpApp.mainHandler.showAlert(R.string.store_search_input_empty_alert);
 		}
 
@@ -551,17 +553,18 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 
 			@Override
 			public void run() {
-				System.out.println("search(...):inputStr="+inputStr);
-				
+				System.out.println("search(...):inputStr=" + inputStr);
+
 				String json1 = new HttpPoster().search(inputStr, Constant.SEARCH_TYPE_ALBUMS);
 				String json5 = new HttpPoster().search(inputStr, Constant.SEARCH_TYPE_MUSICS);
 				String json10 = new HttpPoster().search(inputStr, Constant.SEARCH_TYPE_ARTISTS);
-				
+
 				if (!(new JsonUtil().validate(json1)) && !(new JsonUtil().validate(json5)) && !(new JsonUtil().validate(json10))) {
-//					showNoData();
+					// showNoData();
 					return;
-				}else{
-					// SearchDataObject sdo = new JsonUtil().getSearchDataAll(json);
+				} else {
+					// SearchDataObject sdo = new
+					// JsonUtil().getSearchDataAll(json);
 					List<Album> albums = new JsonUtil().getSearchDataAlbums(json1);
 					List<Music> musics = new JsonUtil().getSearchDataMusics(json5);
 					List<Artist> artists = new JsonUtil().getSearchDataArtists(json10);
@@ -578,15 +581,14 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 			}
 		});
 	}
-	
 
 	private void saveSearchText(final String string) {
-		new Thread(new Runnable() {		
+		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				new SearchHistoryDao().insertSearchRecord(string);
 			}
-		}).start();		
+		}).start();
 	}
 
 	protected void showSearchLoading() {
@@ -595,7 +597,7 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 
 	protected void showSearchResult(SearchDataObject sdo) {
 		System.out.println("searchResultFragment.getSdo().getAlbums().size()=" + searchFragment.getSdo().getAlbums().size());
-		
+
 		if (searchFragment.getSdo().getAlbums().size() != 0 || searchFragment.getSdo().getMusics().size() != 0 || searchFragment.getSdo().getArtists().size() != 0) {
 			// 多次搜索时释放上一次搜索的图片
 			searchFragment.setSdo(sdo);// null pointer
@@ -606,13 +608,13 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 			searchFragment.setSdo(sdo);// null pointer
 			searchFragment.showSearchResult();
 		}
-		
+
 		focusOnContent();
 	}
 
 	public void focusOnContent() {
-		System.out.println(TAG+" focusOnContent");
-		((LinearLayout)view.findViewById(R.id.fragment_stub)).requestFocus();
+		System.out.println(TAG + " focusOnContent");
+		((LinearLayout) view.findViewById(R.id.fragment_stub)).requestFocus();
 	}
 
 	public void clearEtSearch() {
@@ -626,10 +628,10 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 			str = str.substring(0, str.length() - 1);
 			setEtText(str);
 		}
-		
-//		if(etSearch.getText().toString().equals("")){
-//			searchFragment.showHistory();
-//		}
+
+		// if(etSearch.getText().toString().equals("")){
+		// searchFragment.showHistory();
+		// }
 	}
 
 	public static int getCurrentPosition() {
@@ -643,13 +645,13 @@ public class TabWebFragment extends TabFragment implements OnCurrentPlayingState
 
 	@Override
 	public void onCurrentPlayingStateChanged() {
-		if(PlayerFragment.PLAYING.equals(WatchDog.currentState)){
+		if (PlayerFragment.PLAYING.equals(WatchDog.currentState)) {
 			AnimationDrawable animationDrawable = (AnimationDrawable) getResources().getDrawable(R.anim.playing);
 			btnPlayer.setImageDrawable(animationDrawable);
 			animationDrawable.start();
-		}else{
+		} else {
 			btnPlayer.setImageDrawable(getResources().getDrawable(R.drawable.btn_player));
-		}	
+		}
 	}
 
 }

@@ -1,13 +1,10 @@
-package com.kitty.poclient.store;
+package com.kitty.poclient.fragment.store;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -22,15 +19,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-
-//import com.dfim.app.activity.TabWebActivity;
-
-
-
-
-
-
-
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
@@ -51,72 +39,31 @@ import com.kitty.poclient.util.BitmapUtil;
 import com.kitty.poclient.util.JsonUtil;
 import com.kitty.poclient.util.LoadImageAysnc.ImageCallBack;
 
-public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFragment,SelfReloader {
+public class GenresFragment extends Fragment implements NobleMan, TitlebarUpdateFragment,SelfReloader {
 
-	// Looper.prepare,Pools.execut
+	// Looper.prepare
 
-	private final String TAG = "TopsFragment";
+	private final String TAG = "GenresFragment";
 	private Context context;
 
 	private View view;
-	private AnimationDrawable ad;
 	private LinearLayout llLoading;
-	private LinearLayout llContent;
 	private LinearLayout llNoData;
-	private ExpandableListView xlvTops;
+	private LinearLayout llContent;
+	private ExpandableListView xlvGenres;
 	private ColumnsListAdapter adapter;
-	private boolean fragmentIsActive = false;
-	private boolean loadingRunning = false;
+	private AnimationDrawable ad;
 
 	private int firstVisibleItemPosition = 0;// 记录停止卷动时第一个ITEM的序号
-	private int lastVisibleItemPosition = 5;//
+	private int lastVisibleItemPosition = 5;// 记录停止卷动时第一个ITEM的序号
 	private int scrollTop = 0;// 记录停止卷动时第一个ITEM距离顶端的偏移量
+	private boolean loadingRunning = false;
+	private boolean fragmentIsActive = false;
 
 	private String uri = "";
-	private List<Column> tops = new ArrayList<Column>();
+	private List<Column> genres = new ArrayList<Column>();
 
-	private final int MSG_TOPS_DATA_GOT = 0;
-	private final int MSG_NO_DATA = 1;
-	private final int MSG_LETS_GET_DATA = 2;
-	private final int MSG_ADAPTER_DATA_SET_CHANGED = 3;
-	private final int MSG_DATA_LOAD_FAILD = 4;
-
-	private Handler handler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case MSG_TOPS_DATA_GOT:
-				updateUI();
-				break;
-
-			case MSG_NO_DATA:
-				llNoData.setVisibility(View.VISIBLE);
-				llLoading.setVisibility(View.GONE);
-				llContent.setVisibility(View.GONE);
-				break;
-
-			case MSG_LETS_GET_DATA:
-//				if (WatchDog.flagInBotiques == true) {
-//					getSavedDataAndPosition();
-//				} else {
-//					getTopsList();
-//				}
-				getTopsList();
-				break;
-
-			case MSG_ADAPTER_DATA_SET_CHANGED:
-				adapter.notifyDataSetChanged();
-				break;
-				
-			case MSG_DATA_LOAD_FAILD:
-				uiShowNoData();
-			}
-
-			super.handleMessage(msg);
-		}
-	};
-
-//	private BroadcastReceiver fitTopsTitleReceier = new BroadcastReceiver() {
+//	private BroadcastReceiver fitGenresTitleReceier = new BroadcastReceiver() {
 //
 //		@Override
 //		public void onReceive(Context context, Intent intent) {
@@ -124,6 +71,57 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 //			parentActivityChangeButton();
 //		}
 //	};
+
+	private final int MSG_GENRES_DATA_GOT = 0;
+	private final int MSG_LETS_GET_DATA = 1;
+	private final int MSG_DATA_LOAD_FAILD = 2;
+	
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case MSG_GENRES_DATA_GOT:
+				updateUI();
+				break;
+
+			case MSG_LETS_GET_DATA:
+				// if (WatchDog.flagInBotiques == true) {
+				// getSavedDataAndPosition();
+				// } else {
+				// getColumnsList();
+				// }
+				getColumnsList();
+				break;
+				
+			case MSG_DATA_LOAD_FAILD:
+				uiShowNoData();
+			}
+			super.handleMessage(msg);
+		}
+	};
+
+	private void getColumnsList() {
+		Pools.executorService1.submit(new Runnable() {
+
+			@Override
+			public void run() {
+				genres = new HttpGetter(context).getGenresList();
+
+				if (genres != null && genres.size() != 0) {
+					adapter.setColumns(genres);
+					Log.e(TAG, "botiques.size()=" + genres.size());
+					handler.sendEmptyMessage(MSG_GENRES_DATA_GOT);
+
+					// 下载每个子栏目的专辑列表
+					for (Column genre : genres) {
+						getColumnAlbumsList(genre);
+					}
+
+					// WatchDog.genresDataGot = true;
+				}
+			}
+		});
+	}
 	
 	private void stopLoadingAnimation() {
 		if (ad != null && ad.isRunning()) {
@@ -147,56 +145,44 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 	
 	protected void updateUI() {
 		if (adapter != null) {
-
-			if (loadingRunning == true) {
-				endLoading();
-			}
+			endLoading();
 
 			adapter.notifyDataSetChanged();
 			for (int i = 0; i < adapter.getGroupCount(); i++) {
-				xlvTops.expandGroup(i);
+				xlvGenres.expandGroup(i);
 			}
 
-			xlvTops.setSelectionFromTop(firstVisibleItemPosition, scrollTop);
-			handler.sendMessageDelayed(handler.obtainMessage(MSG_ADAPTER_DATA_SET_CHANGED), 500);
+			xlvGenres.setSelectionFromTop(firstVisibleItemPosition, scrollTop);
 		}
 	}
 
-	public TopsFragment() {
+	public GenresFragment() {
 
 	}
 
-	public TopsFragment(Context context) {
+	public GenresFragment(Context context) {
 		this.context = context;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//		parentActivityChangeButton();
-//		parentActivityChangeTitle();
+
+		System.out.println("onCreateView");
+		// parentActivityChangeTitle();
+		// parentActivityChangeButton();
 		updateTitlebar();
-		view = LayoutInflater.from(context).inflate(R.layout.tops_fragment, null);
+		view = LayoutInflater.from(context).inflate(R.layout.genres_fragment, null);
 		view.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 
 		initComponents();
 		startLoading();
-		getTopListWhenActive();
-//		registerReceivers();
+		getColumnsWhenActive();
+		// registerReceivers();
 
 		return view;
 	}
 
-//	private void parentActivityChangeTitle() {
-//		TabWebActivity.tvTitle.setText("TOP100");
-//		TabWebActivity.currentMenuItem = "TOP100";
-//		((TabWebActivity) context).useTitleStyle(TabWebActivity.TITLE_STYLE_NORMAL);
-//	}
-//
-//	private void parentActivityChangeButton() {
-//		TabWebActivity.changeButton("btnMenu");
-//	}
-
-	private void getTopListWhenActive() {
+	private void getColumnsWhenActive() {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -213,13 +199,15 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 		}).start();
 	}
 
-	@Override
-	public void onResume() {
-		// listViewGetFormerPosition();
-		WatchDog.currentSelfReloader = this;
-		fragmentIsActive = true;
-		super.onResume();
-	}
+//	private void parentActivityChangeTitle() {
+//		TabWebActivity.tvTitle.setText("类型");
+//		TabWebActivity.currentMenuItem = "类型";
+//		((TabWebActivity) context).useTitleStyle(TabWebActivity.TITLE_STYLE_NORMAL);
+//	}
+//
+//	private void parentActivityChangeButton() {
+//		TabWebActivity.changeButton("btnMenu");
+//	}
 
 	private void startLoading() {
 		Log.e(TAG, "startLoading()");
@@ -248,15 +236,17 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 		loadingRunning = false;
 	}
 
-	private void listViewGetFormerPosition() {
-		if (firstVisibleItemPosition != -1) {
-			xlvTops.setSelectionFromTop(firstVisibleItemPosition, scrollTop);
-		}
+	@Override
+	public void onResume() {
+		super.onResume();
+		WatchDog.currentSelfReloader = this;
+		fragmentIsActive = true;
+		// ((TabWebActivity)context).checkSlidingHidden();
 	}
 
 	// private void parentActivityChangeTitle() {
-	// TabWebActivity.tvTitle.setText("TOP100");
-	// TabWebActivity.currentFragment = "TOP100";
+	// TabWebActivity.tvTitle.setText("类型");
+	// TabWebActivity.currentFragment = "类型";
 	// // TabWebActivity.slidingMenuInitOk = false;
 	// }
 	//
@@ -264,53 +254,27 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 	// TabWebActivity.changeButton("btnMenu");
 	// }
 
-	private void getTopsList() {
+	protected void getColumnAlbumsList(final Column column) {
 		Pools.executorService1.submit(new Runnable() {
-
 			@Override
 			public void run() {
-				tops = new HttpGetter(context).getTopsList();
+				String json = new HttpGetter(context).getColumnAlbumsList(column, Constant.COLUMN_ALBUMS_4_GENRES);
 
-				if (tops != null && tops.size() != 0) {
-					adapter.setColumns(tops);
-					// handler.sendEmptyMessage(MSG_TOPS_DATA_GOT);
+				ColumnDetail columnDetail = new JsonUtil().getColumnDetail(json);
+				column.setDetail(columnDetail);
 
-					// 下载每个子栏目的专辑列表
-					for (Column botique : tops) {
-						getTopAlbumList(botique);
-					}
+				// 拿到栏目专辑列表后刷新界面
+				handler.sendEmptyMessage(MSG_GENRES_DATA_GOT);
 
-					// WatchDog.topsDataGot = true;
-				}
-				// else {
-				// handler.sendEmptyMessage(MSG_NO_DATA);
+				// // 下载每张专辑的封面图片
+				// for (int i = 0; i < columnDetail.getAlbums().size(); i++) {
+				// //
+				// columnDetail.getAlbums().get(i).setCoverBitmap(Constant.albumCover);
+				// downloadImage(columnDetail.getAlbums().get(i));
 				// }
 			}
 		});
 
-	}
-
-	protected void getTopAlbumList(final Column botique) {
-		Pools.executorService1.submit(new Runnable() {
-			@Override
-			public void run() {
-				String json = new HttpGetter(context).getColumnAlbumsList(botique, Constant.COLUMN_ALBUMS_4_TOPS);
-
-				ColumnDetail botiqueDetail = new JsonUtil().getColumnDetail(json);
-				botique.setDetail(botiqueDetail);
-
-				// 拿到栏目专辑列表后刷新界面
-				handler.sendEmptyMessage(MSG_TOPS_DATA_GOT);
-
-				/*
-				 * // 下载每张专辑的封面图片 for (int i = 0; i <
-				 * botiqueDetail.getAlbums().size(); i++) { //
-				 * botiqueDetail.getAlbums
-				 * ().get(i).setCoverBitmap(Constant.albumCover);
-				 * downloadImage(botiqueDetail.getAlbums().get(i)); }
-				 */
-			}
-		});
 	}
 
 	protected void downloadImage(final Album album) {
@@ -323,10 +287,25 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 				Bitmap bitmap = BitmapUtil.loadImageAysnc.loadImageNohandler(imageKey, album.getImgUrl(), 150, false, new ImageCallBack() {
 					@Override
 					public void imageLoaded(Bitmap bitmap) {
+						// 得到专辑封面后刷新界面
+						// album.setCoverBitmap(new
+						// SoftReference<Bitmap>(bitmap));
+						// handler.post(new Runnable() {
+						// @Override
+						// public void run() {
+						// if (adapter != null) {
+						// // endLoading();
+						// adapter.notifyDataSetChanged();
+						// for (int i = 0; i < adapter.getGroupCount(); i++) {
+						// xlvGenres.expandGroup(i);
+						// }
+						// }
+						// }
+						// });
 
 						if (bitmap != null && !bitmap.isRecycled()) {
 							album.setBitmap(new SoftReference<Bitmap>(bitmap));
-							handler.sendEmptyMessage(MSG_TOPS_DATA_GOT);
+							handler.sendEmptyMessage(MSG_GENRES_DATA_GOT);
 						}
 
 					}
@@ -335,7 +314,7 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 				// 得到封面后刷新界面
 				if (bitmap != null && !bitmap.isRecycled()) {
 					album.setBitmap(new SoftReference<Bitmap>(bitmap));
-					handler.sendEmptyMessage(MSG_TOPS_DATA_GOT);
+					handler.sendEmptyMessage(MSG_GENRES_DATA_GOT);
 				}
 
 				bitmap = null;
@@ -348,24 +327,26 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 	private void initComponents() {
 		llLoading = (LinearLayout) view.findViewById(R.id.ll_loading);
 		llContent = (LinearLayout) view.findViewById(R.id.ll_content);
-		llNoData = (LinearLayout) view.findViewById(R.id.ll_no_data);
+		llNoData = (LinearLayout) view.findViewById(R.id.ll_no_data);//
 
 		// 初始化expandableListView
-		xlvTops = (ExpandableListView) view.findViewById(R.id.xlv_tops);
+		xlvGenres = (ExpandableListView) view.findViewById(R.id.xlv_genres);
 		initExpandableListView();
 	}
 
 	@Override
 	public void onDetach() {
-//		unregisterReceivers();
-		if (tops != null && tops.size() != 0) {
-			recycleBitmaps();
-		}
+		// unregisterReceivers();
+		// letsSeeHeaven();
+		/*
+		 * if (genres.size() != 0) { recycleBitmaps(); }
+		 */
+
 		super.onDetach();
 	}
 
 	private void registerReceivers() {
-//		context.registerReceiver(fitTopsTitleReceier, new IntentFilter("fitTopsTitleReceier"));
+//		context.registerReceiver(fitGenresTitleReceier, new IntentFilter("fitGenresTitleReceier"));
 	}
 
 	private void initArguments() {
@@ -373,47 +354,47 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 	}
 
 	private void initExpandableListView() {
-		xlvTops.setGroupIndicator(null);
-		xlvTops.setItemsCanFocus(true);
-		xlvTops.setOnGroupClickListener(null);
-		adapter = new ColumnsListAdapter(getActivity(), tops, xlvTops, this);
-		xlvTops.setAdapter(adapter);
+		xlvGenres.setGroupIndicator(null);
+		xlvGenres.setItemsCanFocus(true);
+		xlvGenres.setOnGroupClickListener(null);
+		adapter = new ColumnsListAdapter(getActivity(), genres, xlvGenres, this);
+		xlvGenres.setAdapter(adapter);
 
-		xlvTops.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true){
+		xlvGenres.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true) {
+
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				firstVisibleItemPosition = xlvTops.getFirstVisiblePosition();
-				lastVisibleItemPosition = xlvTops.getLastVisiblePosition();
+				firstVisibleItemPosition = xlvGenres.getFirstVisiblePosition();
+				lastVisibleItemPosition = xlvGenres.getLastVisiblePosition();
 				super.onScrollStateChanged(view, scrollState);
 			}
-			
+
 		});
-/*		xlvTops.setOnScrollListener(new OnScrollListener() {
-
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				firstVisibleItemPosition = xlvTops.getFirstVisiblePosition();
-				lastVisibleItemPosition = xlvTops.getLastVisiblePosition();
-				if (xlvTops.getChildAt(0) != null) {
-					scrollTop = xlvTops.getChildAt(0).getTop();
-				}
-
-				paintAlbumsWithinSightNFreeOthers();
-			}
-
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-			}
-		});*/
+		/*
+		 * xlvGenres.setOnScrollListener(new OnScrollListener() {
+		 * 
+		 * @Override public void onScrollStateChanged(AbsListView view, int
+		 * scrollState) { if (scrollState == OnScrollListener.SCROLL_STATE_IDLE)
+		 * { firstVisibleItemPosition = xlvGenres.getFirstVisiblePosition();
+		 * lastVisibleItemPosition = xlvGenres.getLastVisiblePosition(); if
+		 * (xlvGenres.getChildAt(0) != null) { scrollTop =
+		 * xlvGenres.getChildAt(0).getTop(); }
+		 * 
+		 * paintAlbumsWithinSightNFreeOthers(); } }
+		 * 
+		 * @Override public void onScroll(AbsListView view, int
+		 * firstVisibleItem, int visibleItemCount, int totalItemCount) {
+		 * 
+		 * } });
+		 */
 	}
 
 	protected void paintAlbumsWithinSightNFreeOthers() {
-		for (int i = 0; i < tops.size(); i++) {
+		for (int i = 0; i < genres.size(); i++) {
 			if (2 * i + 1 >= firstVisibleItemPosition && 2 * i - 1 <= lastVisibleItemPosition) {
-				downloadColumnImage(tops.get(i));
+				downloadColumnImage(genres.get(i));
 			} else {
-				FreeColumnImage(tops.get(i));
+				FreeColumnImage(genres.get(i));
 			}
 		}
 	}
@@ -422,7 +403,7 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 		if (column.getDetail() == null || column.getDetail().getAlbums() == null) {
 			return;
 		}
-		for (Album album : column.getDetail().getAlbums()) {// null pointer
+		for (Album album : column.getDetail().getAlbums()) {
 			freeImage(album);
 		}
 	}
@@ -436,42 +417,42 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 	}
 
 	private void downloadColumnImage(Column column) {
-		if (column.getDetail() == null || column.getDetail().getAlbums() == null) {
-			return;
-		}
 		for (Album album : column.getDetail().getAlbums()) {
 			downloadImage(album);
 		}
 	}
 
 	private void unregisterReceivers() {
-//		context.unregisterReceiver(fitTopsTitleReceier);
+//		context.unregisterReceiver(fitGenresTitleReceier);
 	}
 
 	@Override
 	public void letsSeeHeaven() {
-		// TODO Auto-generated method stub
-
+		for (Column column : genres) {
+			for (Album album : column.getDetail().getAlbums()) {
+				album.recyleBitmap();
+			}
+		}
 	}
 
 	@Override
 	public void recordCurrentDataAndPosition() {
-		WatchDog.columnsInTops = tops;
-		WatchDog.fvipInTops = firstVisibleItemPosition;
-		// WatchDog.lvipInBotiques = lastVisibleItemPosition;
-		WatchDog.stInTops = scrollTop;
-		WatchDog.flagInTops = true;
+		WatchDog.columnsInBotiques = genres;
+		WatchDog.fvipInGenres = firstVisibleItemPosition;
+		// WatchDog.lvipInBotiques = -1;
+		WatchDog.stInGenres = scrollTop;
+		WatchDog.flagInGenres = true;
 	}
 
 	@Override
 	public void getSavedDataAndPosition() {
-		tops = WatchDog.columnsInTops;
-		firstVisibleItemPosition = WatchDog.fvipInTops;
-		scrollTop = WatchDog.stInTops;
+		genres = WatchDog.columnsInGenres;
+		firstVisibleItemPosition = WatchDog.fvipInGenres;
+		scrollTop = WatchDog.stInGenres;
 
-		handler.sendEmptyMessage(MSG_TOPS_DATA_GOT);
-		WatchDog.flagInTops = false;
-		WatchDog.columnsInTops = null;
+		handler.sendEmptyMessage(MSG_GENRES_DATA_GOT);
+		WatchDog.flagInGenres = false;
+		WatchDog.columnsInGenres = null;
 	}
 
 	@Override
@@ -486,11 +467,11 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 
 	@Override
 	public void recycleBitmaps() {
-		for (Column column : tops) {
+		for (Column column : genres) {
 			if (column.getDetail() == null || column.getDetail().getAlbums() == null) {
 				continue;
 			}
-			for (Album album : column.getDetail().getAlbums()) {
+			for (Album album : column.getDetail().getAlbums()) {// null pointer
 				album.recyleBitmap();
 			}
 		}
@@ -499,20 +480,20 @@ public class TopsFragment extends Fragment implements NobleMan,TitlebarUpdateFra
 	@Override
 	public void updateTitlebar() {
 		WatchDog.tabWebFragment.setPopbackable(false);
-		WatchDog.tabWebFragment.setTitle("TOP100");
-		WatchDog.tabWebFragment.currentMenuItem = "TOP100";
+		WatchDog.tabWebFragment.setTitle("类型");
+		WatchDog.tabWebFragment.currentMenuItem = "类型";
 	}
 
 	@Override
 	public void reload() {
 		System.out.println(TAG+"reloading...");
 		startLoading();
-		getTopListWhenActive();
+		getColumnsWhenActive();
 	}
 
 	@Override
 	public void onDataLoadFailed() {
 		handler.sendEmptyMessage(MSG_DATA_LOAD_FAILD);
 	}
-
+	
 }
