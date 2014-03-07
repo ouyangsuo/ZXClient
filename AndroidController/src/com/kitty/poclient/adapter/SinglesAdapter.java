@@ -108,7 +108,7 @@ public class SinglesAdapter extends BaseAdapter {
 			itemSelectLayout = (LinearLayout) convertView.findViewById(R.id.item_select_layout);
 			itemSelectBox = (CheckBox) convertView.findViewById(R.id.item_select_box); //选择框
 			
-			singlePosition = (TextView) convertView.findViewById(R.id.single_position);	
+//			singlePosition = (TextView) convertView.findViewById(R.id.single_position);	
 			
 			tvName = (TextView) convertView.findViewById(R.id.tv_music_name);
 			tvArtist = (TextView) convertView.findViewById(R.id.tv_music_artist);

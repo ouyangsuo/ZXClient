@@ -8,7 +8,7 @@
     <!-- “选 中”标记 -->
     <ImageView
         android:id="@+id/iv_chosen"
-        android:layout_width="10dp"
+        android:layout_width="@dimen/si_iv_11_widght"
         android:layout_height="@dimen/common_item_height"
         android:background="@color/current_playing"
         android:contentDescription="@string/app_name" 
@@ -26,7 +26,7 @@
 		    style="@style/customerCheckbox"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="10dp"
+		    android:layout_marginLeft="@dimen/si_cb_29_margin_left"
 		    android:focusable="false"
 		    android:enabled="false" />
 	</LinearLayout>
@@ -47,8 +47,8 @@
             style="@style/BigBlackTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingLeft="30dp"
+            android:paddingTop="@dimen/si_tv_50_padding_top"
+            android:paddingLeft="@dimen/si_tv_50_padding_left"
             android:singleLine="true"
             android:text="music_name" />
         
@@ -56,8 +56,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="6dp"
-            android:paddingLeft="25dp"
+            android:paddingTop="@dimen/si_ll_59_padding_top"
+            android:paddingLeft="@dimen/si_ll_59_padding_left"
             android:orientation="horizontal" >
 			
             <ImageView
@@ -72,9 +72,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="@dimen/si_tv_75_padding_left"
                 android:singleLine="true"
-                android:textSize="25sp" />
+                android:textSize="@dimen/si_tv_75_textsize" />
         </LinearLayout>
     </LinearLayout>
 	
@@ -87,8 +87,8 @@
 
         <TextView
             android:id="@+id/iv_playing"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/si_tv_90_width_height"
+            android:layout_height="@dimen/si_tv_90_width_height"
             android:gravity="center"
             android:background="@drawable/headphone"
             android:textColor="#3d3d3d"

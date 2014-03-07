@@ -14,7 +14,7 @@
 
         <ImageView
             android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/common_divider_height"
             android:background="@color/divider_common"
             android:contentDescription="@string/app_name" />
 
@@ -23,11 +23,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:divider="@color/divider_common"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="@dimen/common_divider_height" />
 
         <ImageView
             android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/common_divider_height"
             android:background="@color/divider_common"
             android:contentDescription="@string/app_name" />
     </LinearLayout>
@@ -37,7 +37,7 @@
         style="@style/NoDataText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="@dimen/sf_tv_40_margin_top"
         android:gravity="center_horizontal"
         android:text="暂无数据！"
         android:visibility="gone" />

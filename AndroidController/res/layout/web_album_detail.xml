@@ -17,17 +17,17 @@
 
         <ImageView
             android:id="@+id/iv_loading"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="@dimen/iv_loading_width_height"
+            android:layout_height="@dimen/iv_loading_width_height" />
 
         <TextView
             style="@style/BigBlackTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/tv_loading_margin_top"
             android:text="加载中..."
             android:textColor="@color/dark_green1"
-            android:textSize="18sp"
+            android:textSize="@dimen/tv_loading_textsize"
             android:textStyle="italic" />
     </LinearLayout>
 
@@ -86,7 +86,7 @@
             <FrameLayout
                 android:id="@+id/fl_album_info"
                 android:layout_width="fill_parent"
-                android:layout_height="155dp"
+                android:layout_height="@dimen/fl_album_info_height"
                 android:background="@drawable/web_album_bg"
                 android:gravity="center" >
 
@@ -105,7 +105,7 @@
 
                     <ImageView
                         android:layout_width="fill_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="@dimen/fl_album_info_bg_divider_height"
                         android:background="@drawable/sliding_menu_divider" />
 
                     <ImageView
@@ -127,12 +127,12 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="0.9"
                         android:gravity="left|center_vertical"
-                        android:paddingLeft="20dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/ll_album_padding_left" >
 
                         <FrameLayout
-                            android:layout_width="120dp"
-                            android:layout_height="120dp" >
+                            android:layout_width="@dimen/fl_album_cover_width_height"
+                            android:layout_height="@dimen/fl_album_cover_width_height" >
 
                             <ImageView
                                 android:id="@+id/iv_album_cover"
@@ -152,7 +152,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:paddingRight="20dp" >
+                        android:paddingRight="@dimen/ll_155_padding_right" >
 
                         <LinearLayout
                             android:layout_width="fill_parent"
@@ -160,15 +160,15 @@
                             android:layout_weight="1.2"
                             android:gravity="right|bottom"
                             android:orientation="horizontal"
-                            android:paddingLeft="5dp" >
+                            android:paddingLeft="@dimen/ll_163_padding_left" >
 
                             <TextView
                                 android:id="@+id/tv_album_name"
                                 style="@style/BigBlackTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:singleLine="true"
                                 android:gravity="right"
+                                android:singleLine="true"
                                 android:text="专辑名称aaaaaaaaaaaaa"
                                 android:textColor="@android:color/white" />
                         </LinearLayout>
@@ -178,8 +178,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="right|center_vertical"
                             android:orientation="horizontal"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="5dp" >
+                            android:paddingBottom="@dimen/ll_181_padding_bottom"
+                            android:paddingTop="@dimen/ll_181_padding_top" >
 
                             <TextView
                                 android:id="@+id/tv_artist_name"
@@ -188,7 +188,7 @@
                                 android:singleLine="true"
                                 android:text="演出者"
                                 android:textColor="@color/icecream_bg"
-                                android:textSize="8sp"
+                                android:textSize="@dimen/tv_artist_name_textsize"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -204,18 +204,18 @@
                             <Button
                                 android:id="@+id/btn_buy"
                                 style="@style/AlreadyBoughtText"
-                                android:textSize="13sp"
-                                android:textColor="@color/white"
-                                android:layout_width="75dp"
-                                android:layout_height="25dp"
+                                android:layout_width="@dimen/btn_buy_width"
+                                android:layout_height="@dimen/btn_buy_height"
                                 android:background="@drawable/buy_album_selector"
                                 android:gravity="center"
-                                android:text="读取中..." />
+                                android:textSize="@dimen/wad_btn_211_textsize"
+                                android:text="收藏" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
+
         <!-- 专辑简介 -->
 
         <LinearLayout
@@ -229,10 +229,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
                 android:orientation="vertical"
-                android:paddingBottom="13dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="3dp"
-                android:paddingTop="13dp" >
+                android:paddingBottom="@dimen/ll_231_padding_bottom"
+                android:paddingLeft="@dimen/ll_231_padding_left"
+                android:paddingRight="@dimen/ll_231_padding_right"
+                android:paddingTop="@dimen/ll_231_padding_top" >
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -244,8 +244,8 @@
                         android:id="@+id/tv_language"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="left"
                         android:singleLine="true"
+                        android:gravity="left"
                         android:text="语种：中文" />
 
                     <TextView
@@ -253,8 +253,8 @@
                         android:id="@+id/tv_publishtime"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
                         android:singleLine="true"
+                        android:gravity="right"
                         android:text="发行时间：0000年00月00日" />
                 </LinearLayout>
 
@@ -263,26 +263,28 @@
                     android:id="@+id/tv_text"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:singleLine="true"
+                    android:layout_marginTop="@dimen/tv_266_margin_top"
                     android:text="阿百川的风格hi加快了美女哦跑去如上图vwxyz" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
                 android:gravity="center"
+                android:layout_weight="1"
                 android:orientation="vertical" >
 
                 <Button
                     android:id="@+id/btn_introduction"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/btn_279_width_height"
+                    android:layout_height="@dimen/btn_279_width_height"
                     android:background="@drawable/arrow_selector" />
             </LinearLayout>
         </LinearLayout>
+
         <!-- 音乐列表 -->
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -290,7 +292,7 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/common_divider_height"
                 android:background="@color/divider_common" />
 
             <ExpandableListView
@@ -299,11 +301,11 @@
                 android:layout_height="fill_parent"
                 android:background="@color/icecream_bg"
                 android:childDivider="@color/divider_common"
-                android:dividerHeight="1dp" />
+                android:dividerHeight="@dimen/xlv_divider_height" />
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/common_divider_height"
                 android:background="@color/divider_common" />
         </LinearLayout>
     </LinearLayout>

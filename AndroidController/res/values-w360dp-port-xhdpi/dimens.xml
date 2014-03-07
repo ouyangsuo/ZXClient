@@ -116,4 +116,53 @@
     <dimen  name="dialog_msg_minheight">65dp</dimen>
     <dimen  name="dialog_msg_line_spacing">5sp</dimen>
     
+    <!-- web album detail -->
+    <dimen  name="iv_loading_width_height">50dp</dimen>
+    <dimen  name="tv_loading_margin_top">15dp</dimen>
+    <dimen  name="tv_loading_textsize">18sp</dimen>
+    <dimen  name="fl_album_info_height">175dp</dimen>
+    <dimen  name="fl_album_info_bg_divider_height">2dp</dimen>
+    <dimen  name="ll_album_padding_left">20dp</dimen>
+    <dimen  name="fl_album_cover_width_height">140dp</dimen>
+    <dimen  name="ll_155_padding_right">20dp</dimen>
+    <dimen  name="ll_163_padding_left">5dp</dimen>
+    <dimen  name="ll_181_padding_bottom">10dp</dimen>
+    <dimen  name="ll_181_padding_top">5dp</dimen>
+    <dimen  name="tv_artist_name_textsize">8sp</dimen>
+    <dimen  name="btn_buy_width">75dp</dimen>
+    <dimen  name="btn_buy_height">25dp</dimen>
+    <dimen  name="ll_231_padding_bottom">13dp</dimen>
+    <dimen  name="ll_231_padding_top">13dp</dimen>
+    <dimen  name="ll_231_padding_left">20dp</dimen>
+    <dimen  name="ll_231_padding_right">8dp</dimen>
+    <dimen  name="tv_266_margin_top">5dp</dimen>
+    <dimen  name="btn_279_width_height">40dp</dimen>
+    <dimen  name="xlv_divider_height">1dp</dimen>
+    <dimen  name="wad_btn_211_textsize">10sp</dimen>
+    
+    <!-- web musics item -->
+    <dimen  name="wmi_tv_11_width">40dp</dimen>
+    <dimen  name="wmi_tv_33_padding_left">15dp</dimen>
+    <dimen  name="wmi_tv_33_padding_top">8dp</dimen>
+    <dimen  name="wmi_ll_42_padding_left">13dp</dimen>
+    <dimen  name="wmi_ll_42_padding_top">3dp</dimen>
+    <dimen  name="wmi_tv_50_padding_left">5dp</dimen>
+    <dimen  name="wmi_tv_50_textsize">13sp</dimen>
+    <dimen  name="wmi_btn_66_width_height">40dp</dimen>
+    <dimen  name="wmi_btn_70_width_height">35dp</dimen>
+    <dimen  name="wmi_btn_70_margin_left">10dp</dimen>
+    
+    <!-- singles item -->
+    <dimen  name="si_iv_11_widght">5dp</dimen>
+    <dimen  name="si_cb_29_margin_left">5dp</dimen>
+    <dimen  name="si_tv_50_padding_top">8dp</dimen>
+    <dimen  name="si_tv_50_padding_left">15dp</dimen>
+    <dimen  name="si_ll_59_padding_top">3dp</dimen>
+    <dimen  name="si_ll_59_padding_left">13dp</dimen>
+    <dimen  name="si_tv_75_padding_left">5dp</dimen>
+    <dimen  name="si_tv_75_textsize">13sp</dimen>
+    <dimen  name="si_tv_90_width_height">25dp</dimen>
+    
+    <!-- singles fragment -->
+    <dimen  name="sf_tv_40_margin_top">100dp</dimen>
 </resources>

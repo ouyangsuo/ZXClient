@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="70dp"
-    android:orientation="horizontal" 
-    android:descendantFocusability="afterDescendants">
+    android:layout_height="@dimen/common_item_height"
+    android:descendantFocusability="afterDescendants"
+    android:orientation="horizontal" >
 
     <TextView
         android:id="@+id/tv_num"
         style="@style/BigBlackTitle"
-        android:layout_width="40dp"
+        android:layout_width="@dimen/wmi_tv_11_width"
         android:layout_height="fill_parent"
         android:gravity="center"
         android:text="0000"
@@ -19,56 +19,65 @@
         android:id="@+id/ll_listen"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:background="@drawable/light_bg_selector"
         android:layout_weight="3"
+        android:background="@drawable/light_bg_selector"
+        android:focusable="true"
         android:gravity="center"
-        android:orientation="vertical" 
-        android:focusable="true">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/tv_music_name"
             style="@style/BigBlackTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="15dp"
+            android:paddingLeft="@dimen/wmi_tv_33_padding_left"
+            android:paddingTop="@dimen/wmi_tv_33_padding_top"
             android:singleLine="true"
             android:text="music_namemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm" />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingTop="6dp" >
+            android:paddingLeft="@dimen/wmi_ll_42_padding_left"
+            android:paddingTop="@dimen/wmi_ll_42_padding_top" >
 
             <TextView
                 android:id="@+id/tv_music_artist"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="@dimen/wmi_tv_50_padding_left"
                 android:singleLine="true"
                 android:text="music_artist"
-                android:textSize="15sp" />
+                android:textSize="@dimen/wmi_tv_50_textsize" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/common_item_height"
         android:layout_weight="1.4"
-        android:gravity="center" >
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_listen"
+            android:layout_width="@dimen/wmi_btn_66_width_height"
+            android:layout_height="@dimen/wmi_btn_66_width_height"
+            android:background="@drawable/headphone"
+            android:gravity="center"
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/btn_buy"
             style="@style/BuyMusicText"
-            android:textSize="12sp"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:background="@drawable/buy_music_selector"
+            android:layout_width="@dimen/wmi_btn_70_width_height"
+            android:layout_height="@dimen/wmi_btn_70_width_height"
+            android:layout_marginLeft="@dimen/wmi_btn_70_margin_left"
+            android:background="@drawable/download"
             android:gravity="center"
-            android:text="读取中..." />
+            android:visibility="visible" />
     </LinearLayout>
 
 </LinearLayout>
