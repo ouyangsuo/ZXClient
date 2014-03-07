@@ -1,7 +1,8 @@
 package com.kitty.poclient.common;
 
+import java.util.List;
+
 import org.fourthline.cling.android.AndroidUpnpService;
-import org.fourthline.cling.model.meta.Device;
 import org.fourthline.cling.model.meta.Service;
 import org.fourthline.cling.model.types.UDN;
 
@@ -17,7 +18,12 @@ import android.util.Log;
 import com.kitty.poclient.R;
 import com.kitty.poclient.activity.LoginActivity;
 import com.kitty.poclient.activity.MainActivity;
+import com.kitty.poclient.dao.AlbumDao;
+import com.kitty.poclient.dao.MusicDao;
+import com.kitty.poclient.data.VirtualData;
 import com.kitty.poclient.db.DBHelper;
+import com.kitty.poclient.domain.Album;
+import com.kitty.poclient.domain.Music;
 import com.kitty.poclient.models.StateModel;
 import com.kitty.poclient.upnp.BoxSubscription;
 import com.kitty.poclient.upnp.CacheControlSubscriptionCallback;
@@ -29,11 +35,11 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 public class UpnpApp extends Application {
 
 	public static final String TAG = "UpnpApp";
-	
+
 	public static Context context;
-	
+
 	public static MainActivity mainActivity;
-	
+
 	public static AndroidUpnpService upnpService;
 	public static Service directoryService;
 	public static Service avTransportService;
@@ -43,7 +49,7 @@ public class UpnpApp extends Application {
 	public static Service connectionManagerService;
 	public static UDN BOXUDN;
 	public static CacheControlSubscriptionCallback myCacheSub;
-//	public static AVTransportSubscriptionCallback myAVSub;
+	// public static AVTransportSubscriptionCallback myAVSub;
 	public static BoxSubscription myBoxSub;
 
 	public static MainHandler mainHandler = new MainHandler();
@@ -51,11 +57,11 @@ public class UpnpApp extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		
+
 		// ken,为捕获系统崩溃故障添加2013.07.17
 		CrashHandler crashHandler = CrashHandler.getInstance();
 		crashHandler.init(getApplicationContext());
-		
+
 		if (Constant.Config.DEVELOPER_MODE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
 			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
@@ -65,9 +71,10 @@ public class UpnpApp extends Application {
 		System.setProperty("org.xml.sax.driver", "org.xmlpull.v1.sax2.Driver");
 		context = getApplicationContext();
 		System.out.println("getApplicationContext()=" + context);
-		
+
 		initImageLoader(context);
 		initDB(1);
+		initLocalData();
 	}
 
 	public static void initImageLoader(Context context) {
@@ -77,11 +84,11 @@ public class UpnpApp extends Application {
 
 	public static boolean isUpnpAlive() {
 		if (UpnpApp.upnpService == null) {
-//			UpnpApp.showToastMessage("通信异常：pnpService==null");
+			// UpnpApp.showToastMessage("通信异常：pnpService==null");
 			UpnpApp.mainHandler.showAlert(R.string.network_unnormal_alert);
 			return false;
 		} else if (UpnpApp.upnpService.getControlPoint() == null) {
-//			UpnpApp.showToastMessage("通信异常：controlPoint==null");
+			// UpnpApp.showToastMessage("通信异常：controlPoint==null");
 			UpnpApp.mainHandler.showAlert(R.string.network_unnormal_alert);
 			return false;
 		}
@@ -90,18 +97,21 @@ public class UpnpApp extends Application {
 
 	// 重连盒子
 	public static void reconnect() {
-/*		System.gc();
+		/*
+		 * System.gc();
+		 * 
+		 * Looper.prepare(); Intent intent = new Intent(context,
+		 * LoginActivity.class); //
+		 * intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		 * intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); Log.e(TAG,
+		 * "reconnect from upnpapp.java");
+		 * UpnpApp.context.startActivity(intent); //
+		 * CustomToast.makeText(UpnpApp.context, "连接中断，请重连设备",
+		 * Toast.LENGTH_LONG).show();
+		 * UpnpApp.mainHandler.showAlert(R.string.device_disconnect_alert);
+		 * Looper.loop();
+		 */
 
-		Looper.prepare();
-		Intent intent = new Intent(context, LoginActivity.class);
-		// intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		Log.e(TAG, "reconnect from upnpapp.java");
-		UpnpApp.context.startActivity(intent);
-//		CustomToast.makeText(UpnpApp.context, "连接中断，请重连设备", Toast.LENGTH_LONG).show();
-    	UpnpApp.mainHandler.showAlert(R.string.device_disconnect_alert);
-		Looper.loop();*/
-		
 		Intent loginIntent = new Intent(context, LoginActivity.class);
 		loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		Bundle bundle = new Bundle();
@@ -109,43 +119,46 @@ public class UpnpApp extends Application {
 		loginIntent.putExtras(bundle);
 		UpnpApp.context.startActivity(loginIntent);
 	}
-	
-	public static Context getContext(){
+
+	public static Context getContext() {
 		return context;
 	}
 
-	public static void initAllServices(Device rootDevice) {
-		if (rootDevice == null || rootDevice.getServices() == null) {
-			Log.e("BUG828", TAG + " initAllServices():rootDevice==null?" + (rootDevice == null));
-			return;
-		}
-		
-		for (Service service : rootDevice.getServices()) {
-			if (service.getServiceType().getType().equals("ContentDirectory")) {
-				UpnpApp.directoryService = service;
-			} else if (service.getServiceType().getType().equals("AVTransport")) {
-				UpnpApp.avTransportService = service;
-			} else if (service.getServiceType().getType().equals("RenderingControl")) {
-				UpnpApp.renderingControlService = service;
-			} else if (service.getServiceType().getType().equals("BoxControl")) {
-				UpnpApp.boxControlService = service;
-			} else if (service.getServiceType().getType().equals("CacheControl")) {
-				UpnpApp.cacheControlService = service;
-			} else if (service.getServiceType().getType().equals("ConnectionManager")) {
-				UpnpApp.connectionManagerService = service;
-			}
-		}
-	}
+	// public static void initAllServices(Device rootDevice) {
+	// if (rootDevice == null || rootDevice.getServices() == null) {
+	// Log.e("BUG828", TAG + " initAllServices():rootDevice==null?" +
+	// (rootDevice == null));
+	// return;
+	// }
+	//
+	// for (Service service : rootDevice.getServices()) {
+	// if (service.getServiceType().getType().equals("ContentDirectory")) {
+	// UpnpApp.directoryService = service;
+	// } else if (service.getServiceType().getType().equals("AVTransport")) {
+	// UpnpApp.avTransportService = service;
+	// } else if (service.getServiceType().getType().equals("RenderingControl"))
+	// {
+	// UpnpApp.renderingControlService = service;
+	// } else if (service.getServiceType().getType().equals("BoxControl")) {
+	// UpnpApp.boxControlService = service;
+	// } else if (service.getServiceType().getType().equals("CacheControl")) {
+	// UpnpApp.cacheControlService = service;
+	// } else if
+	// (service.getServiceType().getType().equals("ConnectionManager")) {
+	// UpnpApp.connectionManagerService = service;
+	// }
+	// }
+	// }
 
 	public static void restartApplication(final Context context) {
-		Log.e("BUG965", TAG+"restartApplication()");		
+		Log.e("BUG965", TAG + "restartApplication()");
 	}
-	
-	public static void sendBroadcast(String action){
+
+	public static void sendBroadcast(String action) {
 		context.sendBroadcast(new Intent(action));
 	}
-	
-	private void initDB( int version) {
+
+	private void initDB(int version) {
 		SQLiteDatabase sqlite = DBHelper.getSqLitedatabase();
 
 		if (sqlite != null) {
@@ -159,9 +172,30 @@ public class UpnpApp extends Application {
 			host = WatchDog.currentHost.replaceAll("[.,/,:]", "");
 		}
 		String dbname = WatchDog.currentUserId + host;
-		
+
 		DBHelper db = new DBHelper(UpnpApp.context, null, null, version, dbname + ".db", null);
 		db.getReadableDatabase();
 	}
-	
+
+	public static void initLocalData() {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				List<Album> tempAlbums = new AlbumDao().getAllAlbumList();
+				List<Music> tempMusics = new MusicDao().getAllMusicII();
+
+				if (tempAlbums != null) {
+					VirtualData.albums = tempAlbums;
+				}
+				if (tempMusics != null) {
+					VirtualData.musics = tempMusics;
+				}
+
+				System.out.println("VirtualData.albums.size()=" + VirtualData.albums.size());
+				System.out.println("VirtualData.musics.size()=" + VirtualData.musics.size());
+			}
+		}).start();
+	}
+
 }

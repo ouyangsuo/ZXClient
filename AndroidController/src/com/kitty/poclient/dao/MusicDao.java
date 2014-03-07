@@ -146,6 +146,38 @@ public class MusicDao {
 		return musicli;
 
 	}
+	
+	public List<Music> getAllMusicII() {
+		List<Music> musicli = null;
+		Music music = null;
+		long ctime = System.currentTimeMillis();
+		Cursor cur = DBHelper.getSqLitedatabase().rawQuery("select * from db_music", null);
+		if (cur.getCount() > 0) {
+			musicli = new ArrayList<Music>();
+			while (cur.moveToNext()) {
+				music = new Music();
+				music.setId(cur.getLong(0));
+				music.setName(cur.getString(1));
+				music.setPlay_time(cur.getString(2));
+				music.setFile_size(cur.getString(3));
+				music.setFirstChar(cur.getString(4));
+				music.setTrack_no(cur.getString(5));
+				music.setMediaurl(cur.getString(6));
+				music.setArtistName(cur.getString(7));
+				music.setArtistId(cur.getString(8));
+				music.setImgUrl(cur.getString(9));
+				music.setIscloud(5);
+				// music.set
+				musicli.add(music);
+			}
+		}
+		
+		if (cur != null) {
+			cur.close();
+		}
+		return musicli;
+		
+	}
 
 	/**
 	 * 更新清楚缓存状态信息

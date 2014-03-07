@@ -434,12 +434,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		btnBuy.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Album album=new Album();
-				album.setId(albumdetail.getAlbumId());
-				album.setName(albumName);
-				album.setImgUrl(imgUrl);
-				
-				new Collector().collectAlbum(album);
+				collectAlbum();
 			}
 		});
 
@@ -1180,6 +1175,21 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 		new MediaUtil(context).playLocally(musicId);
 	}
 
+	private void collectAlbum(){
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				Album album=new Album();
+				album.setId(albumdetail.getAlbumId());
+				album.setName(albumName);
+				album.setImgUrl(imgUrl);
+				
+				new Collector().collectAlbum(album);	
+			}
+		}).start();
+	}
+	
 	private void collectMusic(final Long musicId) {
 		Toast.makeText(context, "collectMusic...", Toast.LENGTH_SHORT).show();
 
@@ -1204,7 +1214,7 @@ public class WebAlbumDetailFragment extends Fragment implements NobleMan, Titleb
 				music.setPlay_time(mDetail.getDuration());
 				music.setUri(mDetail.getListenUrl());
 				
-				VirtualData.musics.add(music);
+				new Collector().collectMusic(music);
 			}
 		}).start();
 	}

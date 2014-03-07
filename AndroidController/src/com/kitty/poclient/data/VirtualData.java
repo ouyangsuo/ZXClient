@@ -31,7 +31,7 @@ public class VirtualData {
 	public static final String TAG = "VirtualData";
 
 	public static boolean dataInitiated = false;
-	public static List<Album> albums = new ArrayList<Album>();// VirtualData.albums.add
+	public static List<Album> albums = new ArrayList<Album>();// VirtualData.albums.add,VirtualData.albums
 	public static List<Music> musics = new ArrayList<Music>();
 	public static List<Pack> packs = new ArrayList<Pack>();//VirtualData.packs.add
 

@@ -537,6 +537,56 @@ public class AlbumDao {
 		}
 		return li;
 	}
+	
+	public List<Album> getAllAlbumList() {
+		SQLiteDatabase mdb = DBHelper.getSqLitedatabase();
+		Cursor cur = mdb.rawQuery("select * from db_album", null);
+		
+		List<Album> li = new ArrayList<Album>();
+		if (cur != null) {
+			if (cur.getCount() == 0) {
+				System.out.println("getAllAlbumList return null");
+				return null;
+			}
+			Album album = null;
+			String[] artistId;
+			String[] artistName;
+			List<Artist> artistLi;
+			Artist artist = null;
+			
+			try {
+				while (cur.moveToNext()) {// 知道返回false说明表到了数据末尾
+					
+					album = new Album();
+					album.setId(cur.getLong(0));
+					album.setName(cur.getString(1));
+					album.setImgUrl(cur.getString(2));
+					artistId = cur.getString(3) != null ? cur.getString(3).split(",") : null;
+					artistName = cur.getString(4) != null ? cur.getString(4).split(",") : null;
+					album.setIsCloud(cur.getInt(5));
+					artistLi = new ArrayList<Artist>();
+					if (artistId != null && artistName != null && artistId.length > 0 && artistName.length > 0) {
+						for (int i = 0; i < artistId.length; i++) {
+							artist = new Artist();
+							artist.setId(Long.parseLong(artistId[i]));
+							artist.setName(artistName[i]);
+							artistLi.add(artist);
+						}
+						album.setArtistli(artistLi);
+					}
+					li.add(album);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			} finally {
+				if (cur != null)
+					cur.close();
+				
+			}
+		}
+		return li;
+	}
 
 	/**
 	 * 获得本地专辑列表

@@ -59,6 +59,7 @@ import com.kitty.poclient.util.ExitApplication;
 import com.kitty.poclient.util.FileUtil;
 import com.kitty.poclient.widget.StandardCustomDialog;
 
+//initDB
 public class MainActivity extends SlidingBaseActivity implements
 		MainFragment.OnMainChangedListener, OnMenuChangedListener,
 		OnSearchViewClickListener {
@@ -214,6 +215,7 @@ public class MainActivity extends SlidingBaseActivity implements
 		MymusicManager.mainActivity = this;
 		UpnpApp.mainActivity = this;		
 		ExitApplication.getInstance().addActivity(this);
+//		UpnpApp.initLocalData();
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 //		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); // 设置全屏

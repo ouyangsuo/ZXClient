@@ -340,8 +340,8 @@ public class LoginActivity extends Activity {
 			CroutonHelper.showAlertCrouton(this, croutonText);
 			return;
 		}
-		initServices((BoxDevice) WatchDog.choseboxObj);
-		getBoxVersion();
+//		initServices((BoxDevice) WatchDog.choseboxObj);
+//		getBoxVersion();
 		
 //		if(true){
 //			model.setState(StateModel.STATE_ERROR);
@@ -350,9 +350,9 @@ public class LoginActivity extends Activity {
 //		}
 	}
 
-	private void getBoxVersion() {
-		new BoxControl().getBoxVersion(this);
-	}
+//	private void getBoxVersion() {
+//		new BoxControl().getBoxVersion(this);
+//	}
 
 	private ServiceConnection serviceConnection = new ServiceConnection() {
 
@@ -478,13 +478,13 @@ public class LoginActivity extends Activity {
 		}
 	}
 
-	private void initServices(BoxDevice deviceDisplay) {
-		Device rootDevice = deviceDisplay.getDevice();
-		WatchDog.currentDevice = "当前设备：" + rootDevice.getDetails().getFriendlyName();
-
-		UpnpApp.BOXUDN = deviceDisplay.getDevice().getIdentity().getUdn();
-		UpnpApp.initAllServices(rootDevice);
-	}
+//	private void initServices(BoxDevice deviceDisplay) {
+//		Device rootDevice = deviceDisplay.getDevice();
+//		WatchDog.currentDevice = "当前设备：" + rootDevice.getDetails().getFriendlyName();
+//
+//		UpnpApp.BOXUDN = deviceDisplay.getDevice().getIdentity().getUdn();
+//		UpnpApp.initAllServices(rootDevice);
+//	}
 
 //	public void notifyIfAccessingRemovedDevice() {
 //		Log.e("BUG828", TAG+"notifyIfAccessingRemovedDevice()");
